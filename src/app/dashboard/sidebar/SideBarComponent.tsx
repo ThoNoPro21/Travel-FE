@@ -33,6 +33,10 @@ const SideBarComponent = (props: Props) => {
             key: '/dashboard/article',
             label: <div>Bài viết <Badge count={countPost_Pending ? countPost_Pending : 0} /></div>,
         },
+        {
+            key: '/dashboard/carousel',
+            label: <div>Ảnh</div>,
+        },
     ];
 
     const handleMenuBarOnClick: MenuProps['onClick'] = (e) => {

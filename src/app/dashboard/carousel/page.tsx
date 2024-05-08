@@ -1,21 +1,19 @@
 'use client'
-import NavBarTabComponent from '@/src/components/common/nav/NavBarTabComponent'
-import React, { useEffect, useState } from 'react'
-import CreateForm from './CreateForm'
-import { Flex, MenuProps } from 'antd'
-import { useAppDispatch } from '@/src/store/hooks'
-import { setSelectedKeys } from '@/src/store/slices/common.slice'
+import NavBarTabComponent from '@/src/components/common/nav/NavBarTabComponent';
+import { setSelectedKeys } from '@/src/store/slices/common.slice';
+import { Card, Flex, MenuProps } from 'antd';
+import React, { useEffect, useState } from 'react';
+import CreateForm from './CreateForm';
+import { useAppDispatch } from '@/src/store/hooks';
 
-type Props = {}
+type Props = {};
+
 const items: MenuProps['items'] = [
     {
-        label: 'Tổng quan',
         key: '0',
+        label: 'Slide',
     },
-    {
-        label: 'Thêm',
-        key: '1',
-    },
+    { key: '1', label: 'Thêm' },
 ];
 
 const page = (props: Props) => {
@@ -29,13 +27,15 @@ const page = (props: Props) => {
     const getTabActive = (value:number) => {
         setTabActive(value)
     }
+
     return (
         <Flex vertical gap='small'>
             <NavBarTabComponent items={items} selectedTab={getTabActive}/>
+            <Card className='tw-h-screen'>
             {tabActive ===1 && <CreateForm  />}
-
+            </Card>
         </Flex>
-    );
-}
+    )
+};
 
-export default page
+export default page;
