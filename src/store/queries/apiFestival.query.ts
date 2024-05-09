@@ -6,11 +6,11 @@ import { selectToken } from '../slices/auth.slice';
 import { RootState } from '../store';
 import { festivalType } from '@/src/types/Festival';
 
-export const apiFestivalQuery =createApi({
+export const apiFestivalQuery = createApi({
     reducerPath: 'apiFestival',
     baseQuery: fetchBaseQuery({
         baseUrl: 'http://127.0.0.1:8000/api/v1',
-        prepareHeaders: (headers,{getState}) => {
+        prepareHeaders: (headers, { getState }) => {
             headers.set('Accept', 'application/json');
             const token = selectToken(getState() as RootState);
             if (token) {
@@ -20,8 +20,8 @@ export const apiFestivalQuery =createApi({
         },
     }),
     endpoints: (builder) => ({
-        getFestival: builder.query<ApiResponse<festivalType[]>, string>({
-            query: () => 'festival/show',
+        getFestival: builder.query<ApiResponse<PaginationApiResponseData<festivalType>>, number[]>({
+            query: ([type, page]) => `festival/show?page=${page}&type=${type}`,
         }),
         addFestival: builder.mutation({
             query: (data) => ({
@@ -30,29 +30,39 @@ export const apiFestivalQuery =createApi({
                 body: data,
             }),
         }),
-        getFestivalById: builder.query<ApiResponse<festivalType>,number>({
+        getFestivalById: builder.query<ApiResponse<festivalType>, number>({
             query: (id) => ({
                 url: `festival/show/${id}`,
             }),
         }),
-        getFestivalPagination: builder.query<ApiResponse<PaginationApiResponseData<festivalType>>, number[]>({
-            query: ([id,page]) => `festival/show/month/${id}?page=${page}`,
+        getFestivalByMonth: builder.query<ApiResponse<PaginationApiResponseData<festivalType>>, number[]>({
+            query: ([id, page]) => `festival/show/month/${id}?page=${page}`,
         }),
-        // updateMonHoc: builder.mutation({
-        //     query: ({ maMonHoc, ...body }) => ({
-        //         url: `monhoc/update/${maMonHoc}`,
-        //         method: 'PUT',
-        //         body,
-        //     }),
-        // }),
 
-        // deleteMonHoc: builder.mutation({
-        //     query: (maMonHoc) => ({
-        //         url: `monhoc/delete/${maMonHoc}`,
-        //         method: 'DELETE',
-        //     }),
-        // }),
+        updateStatusFestival: builder.mutation({
+            query: ([id, data]) => ({
+                url: `festival/updateStatus/${id}`,
+                method: 'POST',
+                body: data,
+                headers: {
+                    'X-HTTP-Method-Override': 'PUT',
+                },
+            }),
+        }),
+        deleteFestival: builder.mutation({
+            query: (id) => ({
+                url: `festival/delete/${id}`,
+                method: 'DELETE',
+            }),
+        }),
     }),
 });
 
-export const {useGetFestivalQuery ,useGetFestivalByIdQuery, useAddFestivalMutation ,useGetFestivalPaginationQuery} = apiFestivalQuery;
+export const {
+    useGetFestivalQuery,
+    useGetFestivalByIdQuery,
+    useAddFestivalMutation,
+    useGetFestivalByMonthQuery,
+    useUpdateStatusFestivalMutation,
+    useDeleteFestivalMutation,
+} = apiFestivalQuery;

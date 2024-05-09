@@ -30,15 +30,6 @@ export const apiCategoryQuery = createApi({
             }),
         }),
 
-        // --------------Carousel-----------------
-        addCarousel:builder.mutation({
-            query: (data) => ({
-                url: 'carousel/add',
-                method: 'POST',
-                body: data,
-            }),
-        }),
-
 
         // updateMonHoc: builder.mutation({
         //     query: ({ maMonHoc, ...body }) => ({
@@ -57,4 +48,4 @@ export const apiCategoryQuery = createApi({
     }),
 });
 
-export const {useAddCategoryMutation,useGetCategoryQuery,useAddCarouselMutation } = apiCategoryQuery;
+export const {useAddCategoryMutation,useGetCategoryQuery } = apiCategoryQuery;

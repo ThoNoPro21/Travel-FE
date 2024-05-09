@@ -1,7 +1,7 @@
 'use client';
 import { Avatar, Button, Card, Divider, Flex, List, Spin, Upload, message, notification } from 'antd';
 import React, { use, useEffect, useRef, useState } from 'react';
-import { IconCamera, IconCheck, IconExclamation, IconUser } from '../components/IconComponent';
+import { IconCamera, IconCheck, IconExclamation, IconUser } from '../../components/IconComponent';
 import { useAppSelector } from '@/src/store/hooks';
 import { RootState } from '@/src/store/store';
 import TextArea from 'antd/es/input/TextArea';

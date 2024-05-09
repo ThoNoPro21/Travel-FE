@@ -9,8 +9,8 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { config } from '@fortawesome/fontawesome-svg-core';
-import HeaderComponent from './components/navbars/HeaderComponent';
-import FooterComponent from './components/navbars/FooterComponent';
+import HeaderComponent from '../components/navbars/HeaderComponent';
+import FooterComponent from '../components/navbars/FooterComponent';
 library.add(fas);
 config.autoAddCss = false;
 const lora = Lora({

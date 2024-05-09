@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { loginType } from '@/src/types/Auth';
 import { useGetMeQuery, useLoginMutation } from '@/src/store/queries/apiAuth.query';
 import { useRouter } from 'next/navigation';
-import { IconEmail, IconLock } from '../../components/IconComponent';
+import { IconEmail, IconLock } from '../../../components/IconComponent';
 import Link from 'next/link';
 import Account from '@/src/components/Account';
 type Props = {};

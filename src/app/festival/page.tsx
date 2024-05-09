@@ -1,8 +1,8 @@
 'use client'
 import React, { useEffect } from 'react'
-import SideBarComponent from './components/SideBarComponent';
+import SideBarComponent from '../../components/festivals/client/SideBarComponent';
 import { Card } from 'antd';
-import MainComponent from './components/main/MainComponent';
+import MainComponent from '../../components/festivals/client/MainComponent';
 import { useAppDispatch } from '@/src/store/hooks';
 import { setSelectedKeys } from '@/src/store/slices/common.slice';
 

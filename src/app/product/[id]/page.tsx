@@ -1,14 +1,14 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { useGetProductByIdQuery } from '@/src/store/queries/apiProduct.query';
-import OverviewComponent from './OverviewComponent';
-import ShopComponent from './ShopComponent';
+import OverviewComponent from '../../../components/products/id/OverviewComponent';
+import ShopComponent from '../../../components/products/id/ShopComponent';
 import ResultComponent from '@/src/components/result/ResultComponent';
 import { useAppSelector } from '@/src/store/hooks';
 import { RootState } from '@/src/store/store';
 import { Skeleton, Spin } from 'antd';
-import InfoProductComponent from './InfoProductComponent';
-import RelatedProductComponent from './RelatedProductComponent';
+import InfoProductComponent from '../../../components/products/id/InfoProductComponent';
+import RelatedProductComponent from '../../../components/products/id/RelatedProductComponent';
 
 type Props = {};
 

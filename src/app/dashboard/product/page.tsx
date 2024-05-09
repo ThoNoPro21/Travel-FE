@@ -20,7 +20,7 @@ import { categoryType, productType } from '@/src/types/Product';
 import { useAppDispatch } from '@/src/store/hooks';
 import { setSelectedKeys } from '@/src/store/slices/common.slice';
 import dynamic from 'next/dynamic';
-import { IconCheck, IconExclamation } from '../../components/IconComponent';
+import { IconCheck, IconExclamation } from '../../../components/IconComponent';
 import { useGetLocationQuery } from '@/src/store/queries/apiLocation.query.';
 import { locationType } from '@/src/types/Location';
 import { useGetCategoryQuery } from '@/src/store/queries/apiCategory.query';

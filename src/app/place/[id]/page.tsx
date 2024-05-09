@@ -1,12 +1,12 @@
 'use client';
 import { Avatar, Button, Card, Divider, Flex, Progress, Segmented, Skeleton, Space, Spin, Steps } from 'antd';
 import React, { use, useEffect, useState } from 'react';
-import Overview from '../components/Overview';
-import TabsComponent from '../../components/common/TabsComponent';
-import Discover from '../components/Discover';
+import Overview from '../../../components/places/id/Overview';
+import TabsComponent from '../../../components/common/tab/TabsComponent';
+import Discover from '../../../components/places/id/Discover';
 import { useGetCommentByPlaceQuery, useGetPlaceByIdQuery } from '@/src/store/queries/apiPlace.query';
-import { isValidJsonString } from '../../components/common/validate/String';
-import CommentPlace from '../components/CommentPlace';
+import { isValidJsonString } from '../../../components/validate/String';
+import CommentPlace from '../../../components/places/id/CommentPlace';
 import ResultComponent from '@/src/components/result/ResultComponent';
 import { useAppSelector } from '@/src/store/hooks';
 import { RootState } from '@/src/store/store';

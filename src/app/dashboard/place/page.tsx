@@ -4,7 +4,7 @@ import { Button, Card, Col, Divider, Form, Input, Row, Select, Space, Spin, Uplo
 import { placeType } from '@/src/types/Place';
 import { useAddPlaceMutation } from '@/src/store/queries/apiPlace.query';
 import { useAppDispatch } from '@/src/store/hooks';
-import { IconCheck, IconClose, IconExclamation } from '../../components/IconComponent';
+import { IconCheck, IconClose, IconExclamation } from '../../../components/IconComponent';
 import dynamic from 'next/dynamic';
 import { setSelectedKeys } from '@/src/store/slices/common.slice';
 import { useGetLocationQuery } from '@/src/store/queries/apiLocation.query.';

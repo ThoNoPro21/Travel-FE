@@ -1,8 +1,8 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { Flex, Skeleton, Spin } from 'antd';
-import SideBarLef from '@/src/app/components/article/SideBarLef';
-import SideMain from '@/src/app/components/article/SideMain';
+import SideBarLef from '@/src/components/articles/client/SideBarLef';
+import SideMain from '@/src/components/articles/client/SideMain';
 import { useGetPostByIdQuery } from '@/src/store/queries/apiArticle.query';
 import { useAppSelector } from '@/src/store/hooks';
 import { RootState } from '@/src/store/store';

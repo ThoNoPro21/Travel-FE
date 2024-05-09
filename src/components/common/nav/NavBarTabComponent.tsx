@@ -1,5 +1,5 @@
 'use client'
-import { IconSearch } from '@/src/app/components/IconComponent';
+import { IconSearch } from '@/src/components/IconComponent';
 import { Card, Flex, Input, Menu, MenuProps } from 'antd';
 import React, { useState } from 'react';
 

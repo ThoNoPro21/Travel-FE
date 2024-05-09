@@ -1,5 +1,5 @@
 'use client';
-import FormUpload from './FormUpload';
+import FormUpload from '../../../components/articles/client/FormUpload';
 
 import { Card, Spin } from 'antd';
 import { useEffect, useState } from 'react';
@@ -30,7 +30,7 @@ const page = (props: Props) => {
                     subTitle="Vui lòng đăng nhập !"
                     textButtonCancel="Quay lại"
                     textButtonOk="Đăng nhập"
-                    linkOk='login'
+                    linkOk='/login'
                     linkCancel='/'
                 />;
     }

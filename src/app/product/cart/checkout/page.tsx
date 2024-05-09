@@ -1,6 +1,6 @@
 'use client';
-import { IconCheck } from '@/src/app/components/IconComponent';
-import { formatVND, validatePhoneNumber } from '@/src/app/components/common/validate/String';
+import { IconCheck } from '@/src/components/IconComponent';
+import { formatVND, validatePhoneNumber } from '@/src/components/validate/String';
 import ResultComponent from '@/src/components/result/ResultComponent';
 import { useAppSelector } from '@/src/store/hooks';
 import {

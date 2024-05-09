@@ -5,13 +5,13 @@ import { setSelectedKeys } from '@/src/store/slices/common.slice';
 import { getArticleType } from '@/src/types/Article';
 import { Badge, Card, Drawer, Flex, Input, Menu, MenuProps, Pagination, Popconfirm, Space, Spin, Table, TableColumnsType, Tag, message } from 'antd';
 import React, { useEffect, useState } from 'react';
-import { IconCheck, IconClose, IconDelete, IconEye, IconSearch } from '../../components/IconComponent';
-import { isValidJsonString } from '../../components/common/validate/String';
+import { IconCheck, IconClose, IconDelete, IconEye, IconSearch } from '../../../components/IconComponent';
+import { isValidJsonString } from '../../../components/validate/String';
 import Image from 'next/image';
-import PostTable from './components/PostTable';
+import PostTable from '../../../components/articles/admin/PostTable';
 import { RootState } from '@/src/store/store';
 import { setCountPostPending } from '@/src/store/slices/article.slice';
-import DrawPreviewPost from './components/DrawPreviewPost';
+import DrawPreviewPost from '../../../components/articles/admin/DrawPreviewPost';
 
 type Props = {};
 type contentDraw = {
@@ -281,21 +281,21 @@ const page = (props: Props) => {
             </Card>
             <Card styles={{ body: { padding: 0 } }} className="tw-h-full tw-w-full">
                 <Flex gap="middle" vertical className="tw-h-full tw-w-full">
-                    {isSuccessGetPost && (
-                        <PostTable
-                            columns={columnPostFulfilled.filter((column) => {
-                                if (navBarCurrent === 0) {
-                                    return column.key !== 'action1';
-                                } else if (navBarCurrent === 1) {
-                                    return column.key !== 'action2';
-                                } else {
-                                    return column.key !== 'action2';
-                                }
-                            })}
-                            loading={isLoadingGetPost}
-                            data={dataSource}
-                        />
-                    )}
+                    <Table
+                        columns={columnPostFulfilled.filter((column) => {
+                            if (navBarCurrent === 0) {
+                                return column.key !== 'action1';
+                            } else if (navBarCurrent === 1) {
+                                return column.key !== 'action2';
+                            } else {
+                                return column.key !== 'action2';
+                            }
+                        })}
+                        loading={isLoadingGetPost}
+                        dataSource={dataSource}
+                        pagination={false}
+                        scroll={{ x: 768 }}
+                    />
                     <Pagination
                         className="tw-flex-initial tw-m-auto"
                         onChange={onChangeNewPage}

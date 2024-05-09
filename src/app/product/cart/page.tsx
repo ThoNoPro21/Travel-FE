@@ -1,7 +1,7 @@
 'use client';
 import { Button, Card, Flex, Input, InputNumber, Modal, Space, Spin, Table, TableColumnsType, message } from 'antd';
 import React, { useEffect, useState } from 'react';
-import { IconDelete, IconEdit, IconExclamation, IconLeft, IconMinus, IconPlus } from '../../components/IconComponent';
+import { IconDelete, IconEdit, IconExclamation, IconLeft, IconMinus, IconPlus } from '../../../components/IconComponent';
 import '@/src/styles/app.scss';
 import { productInCart, productType } from '@/src/types/Product';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
@@ -9,7 +9,7 @@ import { RootState } from '@/src/store/store';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useDeleteCartMutation, useGetCartQuery, useUpdateCartMutation } from '@/src/store/queries/apiProduct.query';
-import { formatVND } from '../../components/common/validate/String';
+import { formatVND } from '../../../components/validate/String';
 import { useRouter } from 'next/navigation';
 import { addProductSelected } from '@/src/store/slices/product.slice';
 import ResultComponent from '@/src/components/result/ResultComponent';

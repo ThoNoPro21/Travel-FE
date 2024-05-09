@@ -13,4 +13,5 @@ export type festivalType = {
     listImg?:any[]
     avatar?: any[];
     location:locationType;
+    status:number
 }

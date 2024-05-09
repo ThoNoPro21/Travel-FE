@@ -14,6 +14,7 @@ import commonSlice from './slices/common.slice';
 import { apiLocationQuery } from './queries/apiLocation.query.';
 import { apiCategoryQuery } from './queries/apiCategory.query';
 import { apiFestivalQuery } from './queries/apiFestival.query';
+import { apiCommonQuery } from './queries/apiCommon.query';
 
 export const store = configureStore({
     reducer: {
@@ -32,6 +33,7 @@ export const store = configureStore({
         [apiCategoryQuery.reducerPath]: apiCategoryQuery.reducer,
         [apiFestivalQuery.reducerPath]: apiFestivalQuery.reducer,
         [apiProvinceQuery.reducerPath]: apiProvinceQuery.reducer,
+        [apiCommonQuery.reducerPath]: apiCommonQuery.reducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(
@@ -44,9 +46,10 @@ export const store = configureStore({
             apiCategoryQuery.middleware,
             apiFestivalQuery.middleware,
             apiProvinceQuery.middleware,
+            apiCommonQuery.middleware,
         ),
 });
 
 setupListeners(store.dispatch);
 export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+export type AppDispatch = typeof store.dispatch

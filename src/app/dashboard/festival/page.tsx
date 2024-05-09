@@ -1,10 +1,11 @@
 'use client'
 import NavBarTabComponent from '@/src/components/common/nav/NavBarTabComponent'
 import React, { useEffect, useState } from 'react'
-import CreateForm from './CreateForm'
+import CreateForm from '../../../components/festivals/admin/CreateForm'
 import { Flex, MenuProps } from 'antd'
 import { useAppDispatch } from '@/src/store/hooks'
 import { setSelectedKeys } from '@/src/store/slices/common.slice'
+import Overview from '@/src/components/festivals/admin/Overview'
 
 type Props = {}
 const items: MenuProps['items'] = [
@@ -23,7 +24,7 @@ const page = (props: Props) => {
     const [tabActive,setTabActive] = useState(0)
 
     useEffect(()=>{
-        dispatch(setSelectedKeys('/dashboard/carousel'))
+        dispatch(setSelectedKeys('/dashboard/festival'))
     },[])
 
     const getTabActive = (value:number) => {
@@ -32,8 +33,8 @@ const page = (props: Props) => {
     return (
         <Flex vertical gap='small'>
             <NavBarTabComponent items={items} selectedTab={getTabActive}/>
+            {tabActive ===0 && <Overview  />}
             {tabActive ===1 && <CreateForm  />}
-
         </Flex>
     );
 }

@@ -2,8 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Empty, Flex, Pagination, Skeleton, Spin } from 'antd';
 import { useGetPostByTopicQuery, useGetPostQuery, useGetTopicQuery } from '@/src/store/queries/apiArticle.query';
-import TabsComponent from '../../components/common/TabsComponent';
-import ArticleComponent from '../../components/article/ArticleComponent';
+import TabsComponent from '../../../components/common/tab/TabsComponent';
+import ArticleComponent from '../../../components/articles/client/ArticleComponent';
 import { useRouter } from 'next/navigation';
 
 type Props = {};

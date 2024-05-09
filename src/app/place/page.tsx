@@ -1,6 +1,6 @@
 import React from 'react';
-import SideBarComponent from './components/sidebar/SideBarComponent';
-import MainComponent from './components/main/MainComponent';
+import SideBarComponent from '../../components/places/client/sidebar/SideBarComponent';
+import MainComponent from '../../components/places/client/main/MainComponent';
 import { Card } from 'antd';
 
 type Props = {};
