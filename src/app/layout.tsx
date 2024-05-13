@@ -9,9 +9,6 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { config } from '@fortawesome/fontawesome-svg-core';
-import HeaderComponent from '../components/navbars/HeaderComponent';
-import FooterComponent from '../components/navbars/FooterComponent';
-import { useAppSelector } from '../store/hooks';
 library.add(fas);
 config.autoAddCss = false;
 const lora = Lora({
@@ -28,15 +25,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }:Readonly<{
     children: React.ReactNode;
 }>) {
-    const header = useAppSelector((state=>state.dataCommon.setHeader));
     return (
         <html lang="en">
             <link rel="icon" href="https://res.cloudinary.com/thodo2001/image/upload/v1714020433/travel/festival/z1dplr4wbqglgxtrp1du.jpg" />
             <body className={`${lora.variable} tw-font-lora`}>
                 <StoreProvider>
-                    {header && <HeaderComponent />}
                     {children}
-                    {header && <FooterComponent />}
                 </StoreProvider>
             </body>
         </html>
