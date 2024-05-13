@@ -4,16 +4,23 @@ import FormUpload from '../../../components/articles/client/FormUpload';
 import { Card, Spin } from 'antd';
 import { useEffect, useState } from 'react';
 import ResultComponent from '@/src/components/result/ResultComponent';
-import { useAppSelector } from '@/src/store/hooks';
+import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { RootState } from '@/src/store/store';
+import { setSelectedMenuHeader } from '@/src/store/slices/common.slice';
 
 type Props = {};
 
 const page = (props: Props) => {
+    const dispatch = useAppDispatch()
+
     const [content, setContent] = useState('');
     const isLogin = useAppSelector((state: RootState) => state.dataAuth.isLogin);
     const status = useAppSelector((state: RootState) => state.dataAuth.isStatus);
     const [isCheckLogin,setIsCheckLogin] = useState(true)
+    
+    useEffect(() => {
+        dispatch(setSelectedMenuHeader('/blog'))
+    },[])
 
     useEffect(() => {
         if (status) {

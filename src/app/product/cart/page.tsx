@@ -188,7 +188,7 @@ const page = (props: Props) => {
                 subTitle="Vui lòng đăng nhập !"
                 textButtonCancel="Quay lại"
                 textButtonOk="Đăng nhập"
-                linkOk="./login"
+                linkOk="login"
                 linkCancel="/"
             />
         );

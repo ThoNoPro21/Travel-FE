@@ -1,14 +1,17 @@
 'use client';
+import { useAppDispatch } from '@/src/store/hooks';
 import { useRegisterMutation } from '@/src/store/queries/apiAuth.query';
+import { setSelectedMenuHeader } from '@/src/store/slices/common.slice';
 import { registerType } from '@/src/types/Auth';
 import { Flex, Form, Input, Spin, message } from 'antd';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 type Props = {};
 
 const page = (props: Props) => {
+    const dispatch = useAppDispatch()
     const [form] = Form.useForm();
     const router = useRouter();
 
@@ -27,6 +30,10 @@ const page = (props: Props) => {
             }
         });
     };
+
+    useEffect(() => {
+        dispatch(setSelectedMenuHeader('/'))
+    },[])
 
     return (
         <Spin spinning={isLoading_register} tip="Chờ xíu...">

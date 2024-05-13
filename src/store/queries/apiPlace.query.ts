@@ -11,7 +11,7 @@ import { commentType, getArticleType } from '@/src/types/Article';
 export const apiPlaceQuery = createApi({
     reducerPath: 'apiPlace',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://127.0.0.1:8000/api/v1',
+        baseUrl: 'https://travel-be-deploy-production.up.railway.app/api/v1',
         prepareHeaders: (headers, { getState }) => {
             headers.set('Accept', 'application/json');
             const token = selectToken(getState() as RootState);

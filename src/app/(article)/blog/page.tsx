@@ -5,10 +5,18 @@ import { useGetPostByTopicQuery, useGetPostQuery, useGetTopicQuery } from '@/src
 import TabsComponent from '../../../components/common/tab/TabsComponent';
 import ArticleComponent from '../../../components/articles/client/ArticleComponent';
 import { useRouter } from 'next/navigation';
+import { useAppDispatch } from '@/src/store/hooks';
+import { setSelectedMenuHeader } from '@/src/store/slices/common.slice';
 
 type Props = {};
 
 const page = (props: Props) => {
+
+    const dispatch = useAppDispatch()
+    useEffect(() => {
+        dispatch(setSelectedMenuHeader('/blog'))
+    },[])
+
     const tabOptions: any[] = [{ value: '0' + '', label: <div style={{ padding: 4 }}>Tất cả</div> }];
     const router = useRouter();
     const [tabActive, setTabActive] = useState(0);

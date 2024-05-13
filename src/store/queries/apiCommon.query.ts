@@ -8,7 +8,7 @@ import { carouselType } from '@/src/types/Carousel';
 export const apiCommonQuery = createApi({
     reducerPath: 'apiCommon ',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://127.0.0.1:8000/api/v1/',
+        baseUrl: 'https://travel-be-deploy-production.up.railway.app/api/v1/',
         prepareHeaders: (headers, { getState }) => {
             headers.set('Accept', 'application/json');
             const token = selectToken(getState() as RootState);
@@ -49,6 +49,19 @@ export const apiCommonQuery = createApi({
         getCarouselForHomePage: builder.query<ApiResponse<carouselType[]>, any>({
             query: () => 'carousel/showAll',
         }),
+
+        //----------Reviews-----------
+        addReview: builder.mutation({
+            query: (body) => ({
+                url: 'review/add',
+                method: 'POST',
+                body
+            }),
+        }),
+
+        getReview: builder.query<ApiResponse<any>,any>({
+            query: () => 'review/getAverageRating',
+        }),
     }),
 });
 
@@ -58,4 +71,6 @@ export const {
     useDeleteCarouselMutation,
     useUpdateStatusCarouselMutation,
     useGetCarouselForHomePageQuery,
+    useAddReviewMutation,
+    useGetReviewQuery
 } = apiCommonQuery;

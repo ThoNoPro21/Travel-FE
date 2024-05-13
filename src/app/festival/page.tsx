@@ -4,7 +4,7 @@ import SideBarComponent from '../../components/festivals/client/SideBarComponent
 import { Card } from 'antd';
 import MainComponent from '../../components/festivals/client/MainComponent';
 import { useAppDispatch } from '@/src/store/hooks';
-import { setSelectedKeys } from '@/src/store/slices/common.slice';
+import { setSelectedMenuHeader } from '@/src/store/slices/common.slice';
 
 type Props = {}
 
@@ -12,7 +12,7 @@ const page = (props: Props) => {
     const dispatch = useAppDispatch();
 
     useEffect(()=>{
-        dispatch(setSelectedKeys('/festival'))
+        dispatch(setSelectedMenuHeader('/festival'))
     },[])
 
   return (

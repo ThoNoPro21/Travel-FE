@@ -52,9 +52,9 @@ const HeaderComponent = (props: Props) => {
                     </h1>
                 </div>
                 <Flex className="tw-flex-1 ">
-                    <Flex className="tw-m-auto tw-w-160">
+                    <div className="tw-m-auto ">
                         <NavMiddleComponent />
-                    </Flex>
+                    </div>
                 </Flex>
                 <NavRightComponent />
             </nav>

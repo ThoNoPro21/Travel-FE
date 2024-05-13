@@ -7,10 +7,14 @@ import { useRouter } from 'next/navigation';
 import { IconEmail, IconLock } from '../../../components/IconComponent';
 import Link from 'next/link';
 import Account from '@/src/components/Account';
+import { useAppDispatch } from '@/src/store/hooks';
+import { setSelectedMenuHeader } from '@/src/store/slices/common.slice';
 type Props = {};
 
 const page = (props: Props) => {
+    const dispatch = useAppDispatch();
     const router = useRouter();
+    
     const { refetch:refetch_me} = useGetMeQuery('');
     const [form] = Form.useForm();
     const [error_Auth, setError_Auth] = useState<any>({
@@ -34,15 +38,19 @@ const page = (props: Props) => {
         });
     };
 
+    useEffect(() => {
+        dispatch(setSelectedMenuHeader('/'))
+    },[])
+
     return (
         <Spin spinning={isLoading_Login} tip="Chờ xíu...">
             <main className="tw-relative md:tw-pt-20 md:tw-px-13 tw-min-h-screen tw-bg-[url('/bg/image2.png')] tw-bg-center tw-bg-cover tw-font-lora ">
                 <Flex justify="center" align="center">
                     <Flex
                         vertical
-                        className="tw-w-130 tw-backdrop-blur-md  tw-bg-white/10 tw-text-white tw-p-4 tw-rounded-lg tw-z-10"
+                        className="tw-w-130 tw-backdrop-blur-sm  tw-bg-white/50 tw-text-white tw-p-4 tw-rounded-lg tw-z-10"
                     >
-                        <h1 className="tw-text-4xl tw-py-10 tw-font-black ">Đăng nhập</h1>
+                        <h1 className="tw-text-4xl tw-py-10 tw-font-black tw-text-black ">Đăng nhập</h1>
                         <Form layout="vertical" form={form} onFinish={handleFormFinish}>
                             <Form.Item
                                 label={<span className="tw-text-white">Emai</span>}
@@ -100,7 +108,7 @@ const page = (props: Props) => {
                     </Flex>
                 </Flex>
             </main>
-            <div className="tw-absolute tw-top-0 tw-left-0 tw-w-full tw-h-full tw-bg-black tw-opacity-50"></div>
+            <div className="tw-absolute tw-top-0 tw-left-0 tw-w-full tw-h-full tw-bg-black tw-opacity-70"></div>
         </Spin>
     );
 };

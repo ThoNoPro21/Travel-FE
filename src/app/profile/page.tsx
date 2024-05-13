@@ -106,7 +106,7 @@ const page = (props: Props) => {
                             <Upload
                                 maxCount={1}
                                 name="file"
-                                action="http://127.0.0.1:8000/api/upload"
+                                action="https://travel-be-deploy-production.up.railway.app/api/v1/uploadPreview"
                                 showUploadList={false}
                                 onChange={(info) => {
                                     if (info.file.status === 'done') {

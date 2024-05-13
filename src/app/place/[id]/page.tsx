@@ -18,12 +18,8 @@ const tabOptions = [
         value: '0',
     },
     {
-        label: <p className="tw-p-2">Đánh giá</p>,
-        value: '1',
-    },
-    {
         label: <p className="tw-p-2">Ảnh (145)</p>,
-        value: '2',
+        value: '1',
     },
 ];
 const page = ({ params }: { params: { id: string } }) => {
@@ -69,8 +65,6 @@ const page = ({ params }: { params: { id: string } }) => {
             <Overview location={data?.location?.name} place_name={data?.name} listJson={data?.images} />
             <TabsComponent options={tabOptions} getTab={getTabActive} />
             {tabActive === 0 && <TongQuan content={data?.description} />}
-            {tabActive === 1 && <Comment />}
-            {tabActive === 3 && <QuyDinh />}
             <Discover place_id={parseInt(params.id)} />
             <CommentPlace place_id={parseInt(params.id)} />
         </main>
@@ -79,51 +73,7 @@ const page = ({ params }: { params: { id: string } }) => {
 
 export default page;
 
-const Comment = () => {
-    return (
-        <Card hoverable className=" tw-bg-gradient-to-r tw-from-purple-500 tw-to-pink-500">
-            <Flex gap="middle" className="tw-w-full">
-                {/* <Flex vertical className="tw-flex-1" gap={16}>
-                    <CommentComponent />
-                    <CommentComponent />
-                    <CommentComponent />
-                    <CommentComponent />
-                </Flex> */}
-                <Card hoverable bordered={false} className="tw-h-fit">
-                    <Flex className="tw-min-w-120 tw-h-fit" gap="middle">
-                        <Flex vertical>
-                            <p className="tw-text-7xl tw-text-orange-600 tw-font-black">
-                                4.5<span className="tw-text-2xl tw-font-light">/5</span>
-                            </p>
-                            <h1 className="tw-text-lg tw-font-bold ">Đánh giá tốt</h1>
-                            <p className="tw-text-base tw-snap-normal">
-                                Dựa trên :
-                                <span className="tw-text-red-400 tw-font-medium tw-ms-2 tw-text-sm">Đánh giá số</span>
-                            </p>
-                        </Flex>
-                        <Flex gap="small" vertical className="tw-flex-1">
-                            <Progress percent={80} strokeColor="orange" format={(percent) => `${percent} %`} />
-                            <Progress
-                                percent={60}
-                                status="active"
-                                strokeColor="orange"
-                                format={(percent) => `${percent} %`}
-                            />
-                            <Progress percent={20} strokeColor="orange" format={(percent) => `${percent} %`} />
-                            <Progress percent={10} strokeColor="orange" />
-                            <Progress
-                                percent={5}
-                                showInfo={true}
-                                strokeColor="orange"
-                                format={(percent) => `${percent} %`}
-                            />
-                        </Flex>
-                    </Flex>
-                </Card>
-            </Flex>
-        </Card>
-    );
-};
+
 
 const TongQuan = ({ content }: any) => {
     let text = '';
@@ -136,16 +86,3 @@ const TongQuan = ({ content }: any) => {
         </Card>
     );
 };
-const QuyDinh = () => {
-    return <h1>Quy định</h1>;
-};
-
-// (
-//     <ResultComponent
-//         status={404}
-//         title="Không tìm thấy URL !"
-//         subTitle="Có vẻ như đã có lỗi xảy ra :(("
-//         textButtonOk="Quay lại trang chủ"
-//         linkOk="/"
-//     />
-// );

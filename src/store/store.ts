@@ -1,6 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { apiMonHocQuery } from './queries/apiMonHoc.query';
-import monHocSlice from './slices/monHoc.slice';
 import { apiProductQuery, apiProvinceQuery } from './queries/apiProduct.query';
 import { apiPlaceQuery } from './queries/apiPlace.query';
 import { setupListeners } from '@reduxjs/toolkit/query';
@@ -18,13 +16,11 @@ import { apiCommonQuery } from './queries/apiCommon.query';
 
 export const store = configureStore({
     reducer: {
-        MonHoc: monHocSlice,
         dataProduct: productSlide,
         dataAuth:authSlice,
         dataArticle:articleSlice,
         dataPlace:placeSlice,
         dataCommon:commonSlice,
-        [apiMonHocQuery.reducerPath]: apiMonHocQuery.reducer,
         [apiProductQuery.reducerPath]: apiProductQuery.reducer,
         [apiPlaceQuery.reducerPath]: apiPlaceQuery.reducer,
         [apiAuthQuery.reducerPath]: apiAuthQuery.reducer,
@@ -37,7 +33,6 @@ export const store = configureStore({
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(
-            apiMonHocQuery.middleware,
             apiProductQuery.middleware,
             apiPlaceQuery.middleware,
             apiAuthQuery.middleware,

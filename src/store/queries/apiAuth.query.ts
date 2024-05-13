@@ -1,15 +1,15 @@
 // Import the RTK Query methods from the React-specific entry point
 import { loginType, registerType } from '@/src/types/Auth';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { ApiResponse } from './apiMonHoc.query';
 import { userType } from '@/src/types/User';
 import { selectToken } from '../slices/auth.slice';
 import { RootState } from '../store';
+import { ApiResponse } from '@/src/types/ApiRespone';
 
 export const apiAuthQuery = createApi({
     reducerPath: 'apiAuth',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://127.0.0.1:8000/',
+        baseUrl: 'https://travel-be-deploy-production.up.railway.app/',
         prepareHeaders: (headers, { getState }) => {
             headers.set('Accept', 'application/json');
             const token = selectToken(getState() as RootState);

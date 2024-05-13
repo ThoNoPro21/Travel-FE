@@ -2,6 +2,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { apiAuthQuery } from '../queries/apiAuth.query';
 import { userType } from '@/src/types/User';
 import { RootState } from '../store';
+import { isValidJsonString } from '@/src/components/validate/String';
 
 type State = {
     isStatus: boolean;
@@ -42,7 +43,7 @@ export const authSlice = createSlice({
 
         builder.addMatcher(apiAuthQuery.endpoints.getMe.matchFulfilled, (state, action) => {
             state.isLogin = true;
-            state.token =  JSON.parse(localStorage.getItem('token')||'');
+            state.token = isValidJsonString(String(localStorage.getItem('token'))) ? JSON.parse(String(localStorage.getItem('token'))):'';
             state.user=action.payload?.data
         });
         builder.addMatcher(apiAuthQuery.endpoints.getMe.matchRejected, (state, action) => {

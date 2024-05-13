@@ -1,5 +1,5 @@
 'use client'
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Layout, Flex, Spin } from 'antd';
 
 import ArticleNew from '../components/articles/ArticleNew';
@@ -7,10 +7,16 @@ import HomeBanner from '../components/festivals/homepage/HomeBanner';
 import PlaceHot from '../components/places/PlaceHot';
 import Discover from '../components/Discover';
 import CarouselIntroduce from '../components/carousels/CarouselIntroduce';
+import { useAppDispatch } from '../store/hooks';
+import { setSelectedMenuHeader } from '../store/slices/common.slice';
 
 const { Content } = Layout;
 
 export default function HomeTravel() {
+    const dispatch = useAppDispatch()
+    useEffect(() => {
+        dispatch(setSelectedMenuHeader('/'))
+    },[])
 
     return (
         <Layout className="tw-relative tw-container2xl tw-p-0 tw-m-0 tw-font-lora">

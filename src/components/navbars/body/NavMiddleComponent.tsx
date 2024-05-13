@@ -1,6 +1,8 @@
+import { useAppSelector } from '@/src/store/hooks';
 import { Flex, Menu, MenuProps } from 'antd';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
+
 
 type Props = {};
 const menuItems = [
@@ -24,25 +26,28 @@ const menuItems = [
         key: '/place',
         label: 'ĐỊA DANH',
     },
+    {
+        key: '/review',
+        label: 'ĐÁNH GIÁ',
+    },
 ];
 const NavMiddleComponent = (props: Props) => {
     const router = useRouter();
-    const [selectedKeys, setSelectedKeys] = useState('/');
+    const selectedKeys = useAppSelector((state) => state.dataCommon.selectedMenuHeader);
     const handleMenuBarOnClick: MenuProps['onClick'] = (e) => {
         router.push(e.key);
-        setSelectedKeys(e.key);
+        e.key;
     };
     return (
-        <Flex align='center' justify='center' className='tw-w-full'>
+        <div className="menu-header">
             <Menu
                 mode="horizontal"
                 onClick={handleMenuBarOnClick}
                 selectedKeys={[selectedKeys ?? '/']}
                 items={menuItems}
-                style={{width:'100%'}}
-                className="tw-text-lg tw-text-white tw-font-bold tw-bg-transparent tw-align-baseline"
+                className="tw-bg-transparent tw-w-full "
             />
-        </Flex>
+        </div>
     );
 };
 

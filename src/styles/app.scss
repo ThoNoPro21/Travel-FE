@@ -80,6 +80,22 @@
 
 }
 
+
+.menu-header .ant-menu-horizontal > .ant-menu-item{
+    font-weight: 500;
+    color: white;
+}
+.menu-header .ant-menu-horizontal > .ant-menu-item-selected{
+    color: orangered !important;
+}
+.menu-header .ant-menu-horizontal > .ant-menu-item:hover{
+    color: orangered !important;
+}
+.menu-header  ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 /* end of app css */
 
 .subDescription {

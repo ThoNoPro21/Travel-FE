@@ -237,7 +237,7 @@ const page = (props: Props) => {
                             ]}
                         >
                             <Upload
-                                action="http://127.0.0.1:8000/api/upload"
+                                action="https://travel-be-deploy-production.up.railway.app/api/upload"
                                 listType="picture-card"
                                 maxCount={1}
                                 accept=".png,.jpg,.jpeg"
@@ -272,7 +272,7 @@ const page = (props: Props) => {
                             ]}
                         >
                             <Upload
-                                action="http://127.0.0.1:8000/api/upload"
+                                action="https://travel-be-deploy-production.up.railway.app/api/upload"
                                 listType="picture-card"
                                 multiple
                                 accept=".png,.jpg,.jpeg"
