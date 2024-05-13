@@ -6,12 +6,11 @@ import SideMain from '@/src/components/articles/client/SideMain';
 import { useGetPostByIdQuery } from '@/src/store/queries/apiArticle.query';
 import { useAppSelector } from '@/src/store/hooks';
 import { RootState } from '@/src/store/store';
-import { Result } from 'postcss';
 import ResultComponent from '@/src/components/result/ResultComponent';
 
 type Props = {};
 
-const page = ({ params }: { params: { id: string } }) => {
+const Page = ({ params }: { params: { id: string } }) => {
     const [componentLoad, setComponentLoad] = useState(false);
     const isStatus = useAppSelector((state: RootState) => state.dataAuth.isStatus);
     useEffect(() => {
@@ -67,4 +66,4 @@ const page = ({ params }: { params: { id: string } }) => {
         </main>
 };
 
-export default page;
+export default Page;

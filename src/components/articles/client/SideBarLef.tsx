@@ -6,7 +6,6 @@ import TextArea from 'antd/es/input/TextArea';
 import { useAppSelector } from '@/src/store/hooks';
 import { RootState } from '@/src/store/store';
 import { useGetCommentArticleQuery, usePostCommentArticleMutation } from '@/src/store/queries/apiArticle.query';
-import { commentType } from '@/src/types/Article';
 import { truncateDescription } from '../../validate/String';
 import CommentComponent from '../../common/comment/CommentComponent';
 

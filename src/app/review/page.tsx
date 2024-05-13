@@ -12,7 +12,7 @@ import React, { useEffect, useState } from 'react';
 
 type Props = { open: boolean };
 
-const page = (props: Props) => {
+const Page = (props: Props) => {
     const router = useRouter();
     const [form] = Form.useForm();
     const [open, setOpen] = useState(props.open);
@@ -128,4 +128,4 @@ const page = (props: Props) => {
     );
 };
 
-export default page;
+export default Page;

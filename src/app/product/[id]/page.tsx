@@ -12,7 +12,7 @@ import RelatedProductComponent from '../../../components/products/id/RelatedProd
 
 type Props = {};
 
-const page = ({ params }: { params: { id: string } }) => {
+const Page = ({ params }: { params: { id: string } }) => {
     const [componentLoad, setComponentLoad] = useState(false);
 
     const isStatus = useAppSelector((state: RootState) => state.dataAuth.isStatus);
@@ -62,4 +62,4 @@ const page = ({ params }: { params: { id: string } }) => {
     )
 };
 
-export default page;
+export default Page;

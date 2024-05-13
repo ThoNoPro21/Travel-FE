@@ -22,7 +22,7 @@ const tabOptions = [
         value: '1',
     },
 ];
-const page = ({ params }: { params: { id: string } }) => {
+const Page = ({ params }: { params: { id: string } }) => {
     const [tabActive, setTabActive] = useState(0);
 
     const [componentLoad, setComponentLoad] = useState(false);
@@ -71,7 +71,7 @@ const page = ({ params }: { params: { id: string } }) => {
     )
 };
 
-export default page;
+export default Page;
 
 
 

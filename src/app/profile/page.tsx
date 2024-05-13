@@ -11,7 +11,7 @@ import { useRouter } from 'next/navigation';
 
 type Props = {};
 
-const page = (props: Props) => {
+const Page = (props: Props) => {
     const router = useRouter();
     const status = useAppSelector((state: RootState) => state.dataAuth.isStatus);
     const user = useAppSelector((state: RootState) => state.dataAuth.user);
@@ -190,4 +190,4 @@ const page = (props: Props) => {
     );
 };
 
-export default page;
+export default Page;

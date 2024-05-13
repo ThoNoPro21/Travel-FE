@@ -24,7 +24,7 @@ const tabOptions = [
         value: '2',
     },
 ];
-const page = ({ params }: { params: { id: string } }) => {
+const Page = ({ params }: { params: { id: string } }) => {
     const [tabActive, setTabActive] = useState(0);
     const isStatus = useAppSelector((state) => state.dataAuth.isStatus);
     const [componentLoad, setComponentLoad] = useState(false);
@@ -81,4 +81,4 @@ const page = ({ params }: { params: { id: string } }) => {
     );
 };
 
-export default page;
+export default Page;

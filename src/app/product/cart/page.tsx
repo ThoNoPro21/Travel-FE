@@ -24,7 +24,7 @@ export interface DataTypeProductInCart {
     product_id: number;
 }
 
-const page = (props: Props) => {
+const Page = (props: Props) => {
     const router = useRouter();
 
     const isLogin = useAppSelector((state: RootState) => state.dataAuth.isLogin);
@@ -261,4 +261,4 @@ const page = (props: Props) => {
     );
 };
 
-export default page;
+export default Page;

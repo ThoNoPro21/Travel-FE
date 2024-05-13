@@ -54,7 +54,7 @@ const items = [
     },
 ];
 
-const page = (props: Props) => {
+const Page = (props: Props) => {
     const [form] = Form.useForm();
     const router = useRouter();
     const isLogin = useAppSelector((state: RootState) => state.dataAuth.isLogin);
@@ -504,4 +504,4 @@ const page = (props: Props) => {
     );
 };
 
-export default page;
+export default Page;

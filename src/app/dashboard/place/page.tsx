@@ -28,7 +28,7 @@ const normFile = (e: any) => {
     return e?.fileList;
 };
 
-const page = (props: Props) => {
+const Page = (props: Props) => {
     const [error, setError] = useState<Error>({
         content: '',
         selectLocation:'',
@@ -338,4 +338,4 @@ const page = (props: Props) => {
     );
 };
 
-export default page;
+export default Page;

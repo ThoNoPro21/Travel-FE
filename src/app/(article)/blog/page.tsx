@@ -10,7 +10,7 @@ import { setSelectedMenuHeader } from '@/src/store/slices/common.slice';
 
 type Props = {};
 
-const page = (props: Props) => {
+const Page = (props: Props) => {
 
     const dispatch = useAppDispatch()
     useEffect(() => {
@@ -95,4 +95,4 @@ const page = (props: Props) => {
     );
 };
 
-export default page;
+export default Page;

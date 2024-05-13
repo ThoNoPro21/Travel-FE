@@ -18,7 +18,7 @@ const items: MenuProps['items'] = [
     { key: '1', label: 'Thêm' },
 ];
 
-const page = (props: Props) => {
+const Page = (props: Props) => {
     const dispatch = useAppDispatch();
     const [tabActive, setTabActive] = useState(0);
     const [pageCarousel, setPageCarousel] = useState(1);
@@ -59,4 +59,4 @@ const page = (props: Props) => {
     );
 };
 
-export default page;
+export default Page;

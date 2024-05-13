@@ -19,7 +19,7 @@ const items: MenuProps['items'] = [
     },
 ];
 
-const page = (props: Props) => {
+const Page = (props: Props) => {
     const dispatch = useAppDispatch();
     const [tabActive,setTabActive] = useState(0)
 
@@ -39,4 +39,4 @@ const page = (props: Props) => {
     );
 }
 
-export default page
+export default Page

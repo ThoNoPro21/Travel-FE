@@ -10,7 +10,7 @@ import React, { useEffect } from 'react';
 
 type Props = {};
 
-const page = (props: Props) => {
+const Page = (props: Props) => {
     const dispatch = useAppDispatch()
     const [form] = Form.useForm();
     const router = useRouter();
@@ -124,4 +124,4 @@ const page = (props: Props) => {
     );
 };
 
-export default page;
+export default Page;

@@ -26,7 +26,7 @@ const filterItems: MenuProps['items'] = [
         key: '3',
     },
 ];
-const page = (props: Props) => {
+const Page = (props: Props) => {
     const dispatch = useAppDispatch();
     const [filterCurrent, setFilterCurrent] = useState(0);
 
@@ -55,4 +55,4 @@ const page = (props: Props) => {
     );
 };
 
-export default page;
+export default Page;

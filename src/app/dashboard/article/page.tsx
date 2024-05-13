@@ -20,7 +20,7 @@ type contentDraw = {
 };
 
 
-const page = (props: Props) => {
+const Page = (props: Props) => {
     let dataSource: getArticleType[] = [];
     const dispatch = useAppDispatch();
     const countPost_Pending = useAppSelector((state:RootState)=>state.dataArticle.countPostPending)
@@ -316,4 +316,4 @@ const page = (props: Props) => {
     );
 };
 
-export default page;
+export default Page;
