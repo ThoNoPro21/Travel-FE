@@ -39,7 +39,7 @@ const MainComponent = (props: Props) => {
                     <div
                         className=""
                         key={index}
-                        onClick={() => router.push(`http://localhost:3355/place/${item.places_id}`)}
+                        onClick={() => router.push(`place/${item.places_id}`)}
                     >
                         <CardPlaceComponent
                             address={item.address}
