@@ -31,6 +31,7 @@ export default function RootLayout({ children }:Readonly<{
     const header = useAppSelector((state=>state.dataCommon.setHeader));
     return (
         <html lang="en">
+            <link rel="icon" href="https://res.cloudinary.com/thodo2001/image/upload/v1714020433/travel/festival/z1dplr4wbqglgxtrp1du.jpg" />
             <body className={`${lora.variable} tw-font-lora`}>
                 <StoreProvider>
                     {header && <HeaderComponent />}
