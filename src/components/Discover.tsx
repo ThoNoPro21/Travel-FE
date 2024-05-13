@@ -32,7 +32,7 @@ const Discover = (props: Props) => {
                                 quality={100}
                                 priority
                                 alt="Picture..."
-                                className=" tw-bg-center tw-rounded-lg tw-bg-cover tw-w-full tw-h-full tw-transition tw-duration-700 tw-ease-in-out "
+                                className=" tw-bg-center tw-rounded-lg tw-bg-cover tw-w-full tw-h-full tw-transition tw-duration-700 tw-ease-in-out hover:tw-scale-110 "
                             />
                             <Flex
                                 className="tw-absolute tw-bottom-0 tw-h-1/3 tw-text-center tw-w-full tw-text-white 
@@ -55,7 +55,7 @@ const Discover = (props: Props) => {
                                 quality={100}
                                 priority
                                 alt="Picture..."
-                                className="tw-relative tw-bg-center tw-rounded-lg tw-bg-cover tw-w-full tw-h-full tw-transition tw-duration-700 tw-ease-in-out"
+                                className="tw-relative tw-bg-center tw-rounded-lg tw-bg-cover tw-w-full tw-h-full tw-transition tw-duration-700 tw-ease-in-out hover:tw-scale-110"
                             />
                             <Flex
                                 vertical
@@ -79,7 +79,7 @@ const Discover = (props: Props) => {
                                 quality={100}
                                 priority
                                 alt="Picture..."
-                                className="tw-relative tw-bg-center tw-rounded-lg tw-bg-cover tw-w-full tw-h-full tw-transition tw-duration-700 tw-ease-in-out "
+                                className="tw-relative tw-bg-center tw-rounded-lg tw-bg-cover tw-w-full tw-h-full tw-transition tw-duration-700 tw-ease-in-out hover:tw-scale-110 "
                             />
                             <Flex
                                 vertical
@@ -103,7 +103,7 @@ const Discover = (props: Props) => {
                                 quality={100}
                                 priority
                                 alt="Picture..."
-                                className="tw-relative tw-bg-center tw-rounded-lg tw-bg-cover tw-w-full tw-h-full tw-transition tw-duration-700 tw-ease-in-out"
+                                className="tw-relative tw-bg-center tw-rounded-lg tw-bg-cover tw-w-full tw-h-full tw-transition tw-duration-700 tw-ease-in-out hover:tw-scale-110"
                             />
                             <Flex
                                 vertical
