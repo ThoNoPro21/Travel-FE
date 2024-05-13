@@ -121,8 +121,6 @@ const Page = (props: Props) => {
                         cursor: 'pointer',
                     },
                 });
-                if ('status' in res.error) {
-                }
             }
         });
     };
