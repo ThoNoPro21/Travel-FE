@@ -32,7 +32,7 @@ const Discover = (props: Props) => {
                                 quality={100}
                                 priority
                                 alt="Picture..."
-                                className=" tw-bg-center tw-rounded-lg tw-bg-cover tw-w-full tw-h-full hover:tw-scale-90 "
+                                className=" tw-bg-center tw-rounded-lg tw-bg-cover tw-w-full tw-h-full transition duration-700 ease-in-out "
                             />
                             <Flex
                                 className="tw-absolute tw-bottom-0 tw-h-1/3 tw-text-center tw-w-full tw-text-white 
@@ -55,7 +55,7 @@ const Discover = (props: Props) => {
                                 quality={100}
                                 priority
                                 alt="Picture..."
-                                className="tw-relative tw-bg-center tw-rounded-lg tw-bg-cover tw-w-full tw-h-full hover:tw-scale-90"
+                                className="tw-relative tw-bg-center tw-rounded-lg tw-bg-cover tw-w-full tw-h-full transition duration-700 ease-in-out"
                             />
                             <Flex
                                 vertical
@@ -73,13 +73,13 @@ const Discover = (props: Props) => {
                             onClick={() => router.push('product')}
                         >
                             <Image
-                                src="https://res.cloudinary.com/thodo2001/image/upload/v1713950226/travel/upload/xs2uhkbykmjbpyexqaru.jpg "
+                                src="https://res.cloudinary.com/thodo2001/image/upload/v1713950226/travel/upload/xs2uhkbykmjbpyexqaru.jpg"
                                 height={1000}
                                 width={1000}
                                 quality={100}
                                 priority
                                 alt="Picture..."
-                                className="tw-relative tw-bg-center tw-rounded-lg tw-bg-cover tw-w-full tw-h-full hover:tw-scale-90 "
+                                className="tw-relative tw-bg-center tw-rounded-lg tw-bg-cover tw-w-full tw-h-full transition duration-700 ease-in-out "
                             />
                             <Flex
                                 vertical
@@ -103,7 +103,7 @@ const Discover = (props: Props) => {
                                 quality={100}
                                 priority
                                 alt="Picture..."
-                                className="tw-relative tw-bg-center tw-rounded-lg tw-bg-cover tw-w-full tw-h-full hover:tw-scale-90"
+                                className="tw-relative tw-bg-center tw-rounded-lg tw-bg-cover tw-w-full tw-h-full transition duration-700 ease-in-out"
                             />
                             <Flex
                                 vertical
