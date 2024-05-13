@@ -5,17 +5,16 @@ import { useAppSelector } from '@/src/store/hooks';
 import { useAddReviewMutation } from '@/src/store/queries/apiCommon.query';
 import { reviewType } from '@/src/types/Review';
 import { Button, Form, Modal, Rate, notification } from 'antd';
-import { useForm } from 'antd/es/form/Form';
 import TextArea from 'antd/es/input/TextArea';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
-type Props = { open: boolean };
+type Props = { };
 
 const Page = (props: Props) => {
     const router = useRouter();
     const [form] = Form.useForm();
-    const [open, setOpen] = useState(props.open);
+    const [open, setOpen] = useState(true);
     const [valueInput, setValueInput] = useState('');
     const isLogin = useAppSelector((state) => state.dataAuth.isLogin);
     const status = useAppSelector((state) => state.dataAuth.isStatus);
@@ -23,9 +22,6 @@ const Page = (props: Props) => {
     const [valueErr, setValueError] = useState('');
 
     const [addReview] = useAddReviewMutation();
-    useEffect(() => {
-        setOpen(true); // Update the open state when the props change
-    }, []);
 
     useEffect(() => {
         if (status) {
