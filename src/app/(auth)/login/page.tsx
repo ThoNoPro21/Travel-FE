@@ -32,7 +32,7 @@ const Page = (props: Props) => {
             if ('error' in res) {
                 console.log(res.error);
                 if ('status' in res.error) {
-                    res.error.status === 401 ? setError_Auth(res.error.data) : '';
+                    res.error?.status === 401 ? setError_Auth(res.error.data) : '';
                 }
             }
         });
