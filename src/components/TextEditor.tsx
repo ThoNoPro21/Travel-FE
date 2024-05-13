@@ -14,7 +14,7 @@ type Props = {
 
 const editorConfiguration = {
     ckfinder: {
-        uploadUrl: 'https://travel-be-deploy-production.up.railway.app/api/v1/uploadPreview',
+        uploadUrl: 'https://travel-be-deploy-production.up.railway.app/api/v1/upload',
         options: {
             resourceType: 'Images',
             // headers: {
