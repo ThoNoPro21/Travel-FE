@@ -11,6 +11,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import HeaderComponent from '../components/navbars/HeaderComponent';
 import FooterComponent from '../components/navbars/FooterComponent';
+import { useAppSelector } from '../store/hooks';
 library.add(fas);
 config.autoAddCss = false;
 const lora = Lora({
@@ -27,13 +28,14 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }:Readonly<{
     children: React.ReactNode;
 }>) {
+    const header = useAppSelector((state=>state.dataCommon.setHeader));
     return (
         <html lang="en">
             <body className={`${lora.variable} tw-font-lora`}>
                 <StoreProvider>
-                    <HeaderComponent />
+                    {header && <HeaderComponent />}
                     {children}
-                    <FooterComponent />
+                    {header && <FooterComponent />}
                 </StoreProvider>
             </body>
         </html>

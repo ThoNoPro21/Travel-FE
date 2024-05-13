@@ -1,7 +1,7 @@
 'use client';
 import { useAppDispatch } from '@/src/store/hooks';
 import { useRegisterMutation } from '@/src/store/queries/apiAuth.query';
-import { setSelectedMenuHeader } from '@/src/store/slices/common.slice';
+import { setHeader, setSelectedMenuHeader } from '@/src/store/slices/common.slice';
 import { registerType } from '@/src/types/Auth';
 import { Flex, Form, Input, Spin, message } from 'antd';
 import Link from 'next/link';
@@ -33,6 +33,7 @@ const Page = (props: Props) => {
 
     useEffect(() => {
         dispatch(setSelectedMenuHeader('/'))
+        dispatch(setHeader())
     },[])
 
     return (

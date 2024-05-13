@@ -6,9 +6,8 @@ import { useGetMeQuery, useLoginMutation } from '@/src/store/queries/apiAuth.que
 import { useRouter } from 'next/navigation';
 import { IconEmail, IconLock } from '../../../components/IconComponent';
 import Link from 'next/link';
-import Account from '@/src/components/Account';
 import { useAppDispatch } from '@/src/store/hooks';
-import { setSelectedMenuHeader } from '@/src/store/slices/common.slice';
+import { setHeader, setSelectedMenuHeader } from '@/src/store/slices/common.slice';
 type Props = {};
 
 const Page = (props: Props) => {
@@ -35,6 +34,7 @@ const Page = (props: Props) => {
 
     useEffect(() => {
         dispatch(setSelectedMenuHeader('/'))
+        dispatch(setHeader())
     },[])
 
     return (

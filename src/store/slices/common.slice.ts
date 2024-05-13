@@ -6,14 +6,16 @@ type State = {
     selectedKeys: string;
     listPost: getArticleType[];
     MenuId: number;
-    selectedMenuHeader:string;
+    selectedMenuHeader: string;
+    setHeader: boolean;
 };
 
 const initialState: State = {
     listPost: [],
     selectedKeys: '/dashboard/',
     MenuId: 0,
-    selectedMenuHeader:'/'
+    selectedMenuHeader: '/',
+    setHeader: true,
 };
 
 export const commonSlice = createSlice({
@@ -29,9 +31,11 @@ export const commonSlice = createSlice({
         setMenuId: (state, action: PayloadAction<number>) => {
             state.MenuId = action.payload;
         },
+        setHeader: (state) => {
+            state.setHeader = false;
+        },
     },
-    extraReducers: (builder) => {
-    },
+    extraReducers: (builder) => {},
 });
-export const { setSelectedKeys,setSelectedMenuHeader,setMenuId } = commonSlice.actions;
+export const { setSelectedKeys, setSelectedMenuHeader, setMenuId, setHeader } = commonSlice.actions;
 export default commonSlice.reducer;

@@ -1,11 +1,13 @@
 'use client';
+import { setHeader } from '@/src/store/slices/common.slice';
 import SideBarComponent from './sidebar/SideBarComponent';
-import { useAppSelector } from '@/src/store/hooks';
+import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { RootState } from '@/src/store/store';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
     const router = useRouter();
+    const dispatch = useAppDispatch();
     const status = useAppSelector((state: RootState) => state.dataAuth.isStatus);
     const user = useAppSelector((state: RootState) => state.dataAuth.user);
     const [permission,setPermission] = useState(false);
@@ -18,6 +20,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             }
         }
     }, [status]);
+
+    useEffect(()=>{
+        dispatch(setHeader())
+    },[])
     if (!status) {
         return null;
     }
