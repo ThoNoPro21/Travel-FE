@@ -243,7 +243,7 @@ const FormUpload = (props: Props) => {
                         ]}
                     >
                         <Upload
-                            action="http://localhost:3355/"
+                            action="https://travel-be-deploy-production.up.railway.app/api/v1/uploadPreview"
                             listType="picture-card"
                             maxCount={1}
                             accept=".png,.jpg,.jpeg"
