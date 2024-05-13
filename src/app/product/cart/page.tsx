@@ -1,7 +1,14 @@
 'use client';
 import { Button, Card, Flex, Input, InputNumber, Modal, Space, Spin, Table, TableColumnsType, message } from 'antd';
 import React, { useEffect, useState } from 'react';
-import { IconDelete, IconEdit, IconExclamation, IconLeft, IconMinus, IconPlus } from '../../../components/IconComponent';
+import {
+    IconDelete,
+    IconEdit,
+    IconExclamation,
+    IconLeft,
+    IconMinus,
+    IconPlus,
+} from '../../../components/IconComponent';
 import '@/src/styles/app.scss';
 import { productInCart, productType } from '@/src/types/Product';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
@@ -130,6 +137,14 @@ const Page = (props: Props) => {
         });
     };
 
+    useEffect(() => {
+        if (status && !isLogin) {
+            setIsCheckLogin(false);
+        } else {
+            setIsCheckLogin(true);
+        }
+    }, [status, isLogin]);
+
     const {
         data: response_getCart,
         isSuccess: isSuccess_getCart,
@@ -171,14 +186,6 @@ const Page = (props: Props) => {
         router.push('cart/checkout');
         dispatch(addProductSelected(productSelected));
     };
-
-    useEffect(() => {
-        if (status) {
-            if (!isLogin) {
-                setIsCheckLogin(false);
-            }
-        }
-    }, [status, isLogin]);
 
     if (!isCheckLogin) {
         return (

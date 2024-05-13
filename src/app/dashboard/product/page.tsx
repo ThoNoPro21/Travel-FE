@@ -40,7 +40,7 @@ const normFile = (e: any) => {
     }
     return e?.fileList;
 };
-const page = (props: Props) => {
+const Page = (props: Props) => {
     const [content, setContent] = useState('');
     const disPatch = useAppDispatch();
     useEffect(() => {
@@ -299,4 +299,4 @@ const page = (props: Props) => {
     );
 };
 
-export default page;
+export default Page;
