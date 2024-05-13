@@ -7,7 +7,7 @@ type State = {
     listPost: getArticleType[];
     MenuId: number;
     selectedMenuHeader: string;
-    setHeader: boolean;
+    showHeader: boolean;
 };
 
 const initialState: State = {
@@ -15,7 +15,7 @@ const initialState: State = {
     selectedKeys: '/dashboard/',
     MenuId: 0,
     selectedMenuHeader: '/',
-    setHeader: true,
+    showHeader: true,
 };
 
 export const commonSlice = createSlice({
@@ -32,7 +32,7 @@ export const commonSlice = createSlice({
             state.MenuId = action.payload;
         },
         setHeader: (state) => {
-            state.setHeader = false;
+            state.showHeader = false;
         },
     },
     extraReducers: (builder) => {},
