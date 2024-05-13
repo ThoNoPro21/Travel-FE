@@ -1,12 +1,12 @@
 'use client';
 import { useGetFestivalByIdQuery } from '@/src/store/queries/apiFestival.query';
 import { Button, Card, Flex, Spin, Steps } from 'antd';
-import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import TabsComponent from '../../../components/common/tab/TabsComponent';
 import Overview from '../../../components/festivals/id/Overview';
 import ResultComponent from '@/src/components/result/ResultComponent';
-import { useAppSelector } from '@/src/store/hooks';
+import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
+import { setSelectedMenuHeader } from '@/src/store/slices/common.slice';
 
 type Props = {};
 
@@ -26,6 +26,7 @@ const tabOptions = [
 ];
 const Page = ({ params }: { params: { id: string } }) => {
     const [tabActive, setTabActive] = useState(0);
+    const dispatch = useAppDispatch();
     const isStatus = useAppSelector((state) => state.dataAuth.isStatus);
     const [componentLoad, setComponentLoad] = useState(false);
 
@@ -35,6 +36,9 @@ const Page = ({ params }: { params: { id: string } }) => {
         }
     }, [isStatus]);
 
+    useEffect(()=>{
+        dispatch(setSelectedMenuHeader('/festival'))
+    },[])
 
     const getTabActive = (value: number) => {
         setTabActive(value);

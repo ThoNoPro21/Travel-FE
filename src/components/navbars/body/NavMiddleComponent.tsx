@@ -43,7 +43,8 @@ const NavMiddleComponent = (props: Props) => {
             <Menu
                 mode="horizontal"
                 onClick={handleMenuBarOnClick}
-                selectedKeys={[selectedKeys ?? '/']}
+                defaultSelectedKeys={['/']}
+                selectedKeys={[selectedKeys]}
                 items={menuItems}
                 className="tw-bg-transparent tw-w-full "
             />

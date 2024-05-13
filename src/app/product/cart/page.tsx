@@ -20,6 +20,7 @@ import { formatVND } from '../../../components/validate/String';
 import { useRouter } from 'next/navigation';
 import { addProductSelected } from '@/src/store/slices/product.slice';
 import ResultComponent from '@/src/components/result/ResultComponent';
+import { setSelectedMenuHeader } from '@/src/store/slices/common.slice';
 type Props = {};
 
 export interface DataTypeProductInCart {
@@ -152,6 +153,9 @@ const Page = (props: Props) => {
         refetch: refetch_getCart,
     } = useGetCartQuery('', { skip: !isLogin });
 
+    useEffect(()=>{
+        dispatch(setSelectedMenuHeader('/festival'))
+    },[])
     useEffect(() => {
         if (onChangeCart) {
             refetch_getCart();

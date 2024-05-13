@@ -8,8 +8,9 @@ import { useGetCommentByPlaceQuery, useGetPlaceByIdQuery } from '@/src/store/que
 import { isValidJsonString } from '../../../components/validate/String';
 import CommentPlace from '../../../components/places/id/CommentPlace';
 import ResultComponent from '@/src/components/result/ResultComponent';
-import { useAppSelector } from '@/src/store/hooks';
+import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { RootState } from '@/src/store/store';
+import { setSelectedMenuHeader } from '@/src/store/slices/common.slice';
 type Props = {};
 
 const tabOptions = [
@@ -24,10 +25,15 @@ const tabOptions = [
 ];
 const Page = ({ params }: { params: { id: string } }) => {
     const [tabActive, setTabActive] = useState(0);
-
+    const dispatch = useAppDispatch()
     const [componentLoad, setComponentLoad] = useState(false);
 
     const isStatus = useAppSelector((state: RootState) => state.dataAuth.isStatus);
+
+    useEffect(()=>{
+        dispatch(setSelectedMenuHeader('/place'))
+    },[])
+
     useEffect(() => {
         if (isStatus) {
             setComponentLoad(true);

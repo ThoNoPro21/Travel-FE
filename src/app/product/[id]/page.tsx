@@ -4,18 +4,25 @@ import { useGetProductByIdQuery } from '@/src/store/queries/apiProduct.query';
 import OverviewComponent from '../../../components/products/id/OverviewComponent';
 import ShopComponent from '../../../components/products/id/ShopComponent';
 import ResultComponent from '@/src/components/result/ResultComponent';
-import { useAppSelector } from '@/src/store/hooks';
+import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { RootState } from '@/src/store/store';
 import { Skeleton, Spin } from 'antd';
 import InfoProductComponent from '../../../components/products/id/InfoProductComponent';
 import RelatedProductComponent from '../../../components/products/id/RelatedProductComponent';
+import { setSelectedMenuHeader } from '@/src/store/slices/common.slice';
 
 type Props = {};
 
 const Page = ({ params }: { params: { id: string } }) => {
     const [componentLoad, setComponentLoad] = useState(false);
+    const dispatch = useAppDispatch()
 
     const isStatus = useAppSelector((state: RootState) => state.dataAuth.isStatus);
+
+    useEffect(()=>{
+        dispatch(setSelectedMenuHeader('/product'))
+    },[])
+    
     useEffect(() => {
         if (isStatus) {
             setComponentLoad(true);
