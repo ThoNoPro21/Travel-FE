@@ -17,9 +17,7 @@ const Page = (props: Props) => {
     
     const { refetch:refetch_me} = useGetMeQuery('');
     const [form] = Form.useForm();
-    const [error_Auth, setError_Auth] = useState<any>({
-        message: '',
-    });
+    const [error_Auth, setError_Auth] = useState('');
     const [login, { isLoading: isLoading_Login }] = useLoginMutation();
     const handleFormFinish = async (value: loginType) => {
         await login(value).then(async(res) => {
@@ -86,7 +84,7 @@ const Page = (props: Props) => {
                             </Form.Item>
                             {!!error_Auth && (
                                 <p className="tw-text-red-500 tw-pb-2 tw-text-sm tw-font-medium">
-                                    {error_Auth?.message}
+                                    {error_Auth}
                                 </p>
                             )}
                             <button
