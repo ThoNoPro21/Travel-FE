@@ -48,7 +48,7 @@ const CreateForm = (props: Props) => {
                     rules={[{ required: true, message: 'Vui lòng nhập ảnh liên quan!' }]}
                 >
                     <Upload
-                        action="http://127.0.0.1:8000/api/upload"
+                        action="https://travel-be-deploy-production.up.railway.app/api/v1/upload"
                         listType="picture-card"
                         multiple
                         accept=".png,.jpg,.jpeg"
