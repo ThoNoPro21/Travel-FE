@@ -113,9 +113,9 @@ const NavRightComponent = (props: Props) => {
         },
     ];
 
-    if(logout){
-        refetch_getMe();
-    }
+    useEffect(()=>{
+        refetch_getMe()
+    },[logout])
 
     const handleOnClickProfile = (e: any) => {
         e.preventDefault();
