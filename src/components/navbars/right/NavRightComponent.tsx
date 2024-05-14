@@ -30,6 +30,10 @@ const NavRightComponent = (props: Props) => {
     const { data: response_logout, refetch: refetch_logout } = useLogoutQuery('', { skip: !logout });
     const { refetch: refetch_getMe } = useGetMeQuery('', { skip: !logout });
 
+    useEffect(()=>{
+        refetch_getMe();
+    },[logout])
+    
     useEffect(() => {
         setComponentLoad(true);
     }, [isStatus]);
@@ -106,7 +110,6 @@ const NavRightComponent = (props: Props) => {
                         setLogout(true)
                         refetch_logout();
                         localStorage.removeItem('token');
-                        refetch_getMe();
                     },
                     onCancel() {},
                 });
