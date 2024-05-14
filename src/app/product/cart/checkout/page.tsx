@@ -2,7 +2,7 @@
 import { IconCheck } from '@/src/components/IconComponent';
 import { formatVND, validatePhoneNumber } from '@/src/components/validate/String';
 import ResultComponent from '@/src/components/result/ResultComponent';
-import { useAppSelector } from '@/src/store/hooks';
+import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import {
     useAddOrdersMutation,
     useGetCityQuery,
@@ -30,6 +30,7 @@ import {
 import TextArea from 'antd/es/input/TextArea';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import { setSelectedMenuHeader } from '@/src/store/slices/common.slice';
 
 type Props = {};
 type FieldType = {
@@ -56,6 +57,7 @@ const items = [
 
 const Page = (props: Props) => {
     const [form] = Form.useForm();
+    const dispatch = useAppDispatch();
     const router = useRouter();
     const isLogin = useAppSelector((state: RootState) => state.dataAuth.isLogin);
     const status = useAppSelector((state: RootState) => state.dataAuth.isStatus);
@@ -142,6 +144,10 @@ const Page = (props: Props) => {
     useEffect(() => {
         setSelectedWard('');
     }, [setSelectedDistrict]);
+
+    useEffect(()=>{
+        dispatch(setSelectedMenuHeader('/product'))
+    },[])
 
     const handleOnChangeInput = (e: any) => {
         const { name, value } = e.target;

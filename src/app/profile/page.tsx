@@ -119,7 +119,7 @@ const Page = (props: Props) => {
                                             message.error('Không thể lấy URL của ảnh!');
                                         }
                                     } else if (info.file.status === 'error') {
-                                        message.error('Tải lên thất bại!');
+                                        message.error('Tải lên thất bại, Ảnh quá lớn!');
                                     }
                                 }}
                             >

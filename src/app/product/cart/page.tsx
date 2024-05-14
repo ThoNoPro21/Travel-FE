@@ -154,7 +154,7 @@ const Page = (props: Props) => {
     } = useGetCartQuery('', { skip: !isLogin });
 
     useEffect(()=>{
-        dispatch(setSelectedMenuHeader('/festival'))
+        dispatch(setSelectedMenuHeader('/product'))
     },[])
     useEffect(() => {
         if (onChangeCart) {
