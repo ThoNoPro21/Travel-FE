@@ -19,7 +19,7 @@ const ReviewComponent = (props: Props) => {
             value: '5',
             label: (
                 <span>
-                    5 <IconStar />({props.data.totalFiveStar})
+                    5 <IconStar />({props.data?.totalFiveStar || 0})
                 </span>
             ),
         },
@@ -27,7 +27,7 @@ const ReviewComponent = (props: Props) => {
             value: '4',
             label: (
                 <span>
-                    4 <IconStar />({props.data.totalFourStar})
+                    4 <IconStar />({props.data?.totalFourStar || 0})
                 </span>
             ),
         },
@@ -35,7 +35,7 @@ const ReviewComponent = (props: Props) => {
             value: '3',
             label: (
                 <span>
-                    3 <IconStar />({props.data.totalThreeStar})
+                    3 <IconStar />({props.data?.totalThreeStar || 0})
                 </span>
             ),
         },
@@ -43,7 +43,7 @@ const ReviewComponent = (props: Props) => {
             value: '2',
             label: (
                 <span>
-                    2 <IconStar />({props.data.totalTwoStar})
+                    2 <IconStar />({props.data?.totalTwoStar || 0})
                 </span>
             ),
         },
@@ -51,7 +51,7 @@ const ReviewComponent = (props: Props) => {
             value: '1',
             label: (
                 <span>
-                    1 <IconStar />({props.data.totalOneStar})
+                    1 <IconStar />({props.data?.totalOneStar || 0})
                 </span>
             ),
         },
