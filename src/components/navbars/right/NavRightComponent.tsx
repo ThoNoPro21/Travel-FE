@@ -41,11 +41,9 @@ const NavRightComponent = (props: Props) => {
     }, [onChangeCart]);
 
     useEffect(() => {
-        if (logout) {
             refetch_logout();
             localStorage.removeItem('token');
             refetch_getMe();
-        }
     }, [logout]);
 
     const items: MenuProps['items'] = [
@@ -140,7 +138,7 @@ const NavRightComponent = (props: Props) => {
             >
                 {isLogin ? (
                     <>
-                        <Link href="http://localhost:3355/product/cart">
+                        <Link href="product/cart">
                             <Badge count={response_getCart?.data?.length || 0} size="small">
                                 <div className="tw-p-2">
                                     <IconCartShopping />
