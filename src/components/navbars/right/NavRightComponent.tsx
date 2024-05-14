@@ -29,7 +29,7 @@ const NavRightComponent = (props: Props) => {
     const { data: response_getCart, refetch: refetch_getCart } = useGetCartQuery('', { skip: !isLogin });
     const { data: response_logout, refetch: refetch_logout } = useLogoutQuery('', { skip: !logout });
     const { refetch: refetch_getMe } = useGetMeQuery('', { skip: !logout });
-    
+
     useEffect(() => {
         setComponentLoad(true);
     }, [isStatus]);
@@ -103,8 +103,7 @@ const NavRightComponent = (props: Props) => {
                     content: 'Nhấn OK mọi thứ sẽ đăng xuất ....',
                     cancelText: 'Hủy',
                     onOk() {
-                        setLogout(true)
-                        refetch_logout();
+                        setLogout(true);
                         localStorage.removeItem('token');
                     },
                     onCancel() {},
@@ -113,9 +112,16 @@ const NavRightComponent = (props: Props) => {
         },
     ];
 
-    useEffect(()=>{
-        refetch_getMe()
-    },[logout])
+    useEffect(() => {
+        const performLogout = async () => {
+            if (logout) {
+                await refetch_logout(); // Đợi refetch_logout hoàn thành
+                await refetch_getMe(); // Sau đó gọi refetch_getMe
+            }
+        };
+
+        performLogout();
+    }, [logout]);
 
     const handleOnClickProfile = (e: any) => {
         e.preventDefault();
