@@ -54,8 +54,9 @@ const ReviewComponent = (props: Props) => {
                         </Flex>
                     </Flex>
                 </Card>
-                {props.reviewData?.data.map((item) => (
+                {props.reviewData?.data.map((item,index) => (
                     <CommentComponent
+                        key={index}
                         content={item.content}
                         username={item.user?.name}
                         avatar={item.user?.avatar}
