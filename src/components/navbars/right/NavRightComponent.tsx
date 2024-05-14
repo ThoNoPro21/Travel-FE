@@ -40,11 +40,6 @@ const NavRightComponent = (props: Props) => {
         }
     }, [onChangeCart]);
 
-    useEffect(() => {
-            refetch_logout();
-            localStorage.removeItem('token');
-            refetch_getMe();
-    }, [logout]);
 
     const items: MenuProps['items'] = [
         {
@@ -106,8 +101,10 @@ const NavRightComponent = (props: Props) => {
                     icon: <IconExclamation />,
                     content: 'Nhấn OK mọi thứ sẽ đăng xuất ....',
                     cancelText: 'Hủy',
-                    onOk() {
-                        setLogout(true);
+                    async onOk() {
+                        refetch_logout();
+                        localStorage.removeItem('token');
+                        refetch_getMe();
                     },
                     onCancel() {},
                 });
