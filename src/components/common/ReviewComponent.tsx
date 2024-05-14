@@ -18,7 +18,7 @@ const ReviewComponent = (props: Props) => {
                     <Flex className="tw-min-w-120 tw-h-fit" gap="middle">
                         <Flex vertical>
                             <p className="tw-text-7xl tw-text-orange-600 tw-font-black">
-                                {props.data?.average || 0}
+                                {props.data?.average.toFixed(1) || 0}
                                 <span className="tw-text-2xl tw-font-light">/5</span>
                             </p>
                             <h1 className="tw-text-lg tw-font-bold ">Đánh giá tốt</h1>
@@ -29,24 +29,24 @@ const ReviewComponent = (props: Props) => {
                         </Flex>
                         <Flex gap="small" vertical className="tw-flex-1">
                             <Progress
-                                percent={props.data?.fiveStar}
+                                percent={Math.round(props.data?.fiveStar)}
                                 strokeColor="orange"
                                 format={(percent) => `${percent} %`}
                             />
                             <Progress
-                                percent={props.data?.fourStar}
+                                percent={Math.round(props.data?.fourStar)}
                                 status="active"
                                 strokeColor="orange"
                                 format={(percent) => `${percent} %`}
                             />
                             <Progress
-                                percent={props.data?.threeStar}
+                                percent={Math.round(props.data?.threeStar)}
                                 strokeColor="orange"
                                 format={(percent) => `${percent} %`}
                             />
-                            <Progress percent={props.data?.twoStar} strokeColor="orange" />
+                            <Progress percent={Math.round(props.data?.twoStar)} strokeColor="orange" />
                             <Progress
-                                percent={props.data?.oneStar}
+                                percent={Math.round(props.data?.oneStar)}
                                 showInfo={true}
                                 strokeColor="orange"
                                 format={(percent) => `${percent} %`}

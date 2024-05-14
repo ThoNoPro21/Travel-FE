@@ -29,10 +29,6 @@ const NavRightComponent = (props: Props) => {
     const { data: response_getCart, refetch: refetch_getCart } = useGetCartQuery('', { skip: !isLogin });
     const { data: response_logout, refetch: refetch_logout } = useLogoutQuery('', { skip: !logout });
     const { refetch: refetch_getMe } = useGetMeQuery('', { skip: !logout });
-
-    useEffect(()=>{
-        refetch_getMe();
-    },[logout])
     
     useEffect(() => {
         setComponentLoad(true);
@@ -116,6 +112,10 @@ const NavRightComponent = (props: Props) => {
             },
         },
     ];
+
+    if(logout){
+        refetch_getMe();
+    }
 
     const handleOnClickProfile = (e: any) => {
         e.preventDefault();
