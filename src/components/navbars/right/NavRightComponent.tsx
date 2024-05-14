@@ -135,7 +135,7 @@ const NavRightComponent = (props: Props) => {
             >
                 {isLogin ? (
                     <>
-                        <Link href="product/cart">
+                        <Link href="/product/cart">
                             <Badge count={response_getCart?.data?.length || 0} size="small">
                                 <div className="tw-p-2">
                                     <IconCartShopping />
