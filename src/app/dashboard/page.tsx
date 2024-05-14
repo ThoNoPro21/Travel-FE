@@ -13,6 +13,11 @@ type Props = {};
 const Page = (props: Props) => {
     const dispatch = useAppDispatch();
     const [pageReview,setPageReview] = useState(1)
+    const [ratingActive,setRatingActive] = useState(5)
+
+    const getRatingActive = (value:number) => {
+        setRatingActive(value)
+    }
     const {
         data: response_getPost,
         isLoading: isLoadingGetPost,
@@ -30,7 +35,7 @@ const Page = (props: Props) => {
         data: response_getReviewByRating,
         isLoading: isLoading_getReviewByRating,
         isSuccess: isSuccess_getReviewByRating,
-    } = useGetReviewByRatingQuery([5, pageReview]);
+    } = useGetReviewByRatingQuery([ratingActive, pageReview]);
 
     let countPostPending: string | null = null;
 
@@ -52,7 +57,7 @@ const Page = (props: Props) => {
     }, []);
     return (
         <Card className='tw-w-full tw-h-full'>
-            <ReviewComponent data={response_getReview?.data} reviewData = {response_getReviewByRating?.data}/>
+            <ReviewComponent getRatingActive={getRatingActive} data={response_getReview?.data} reviewData = {response_getReviewByRating?.data}/>
         </Card>
     );
 };
