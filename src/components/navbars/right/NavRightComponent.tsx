@@ -43,15 +43,17 @@ const NavRightComponent = (props: Props) => {
     const items: MenuProps['items'] = [
         {
             label: (
-                <Space>
-                    <Avatar size={52} src={user?.avatar}>
-                        {user?.avatar ? null : <IconUser />}
-                    </Avatar>
-                    <Flex gap={'small'} vertical>
-                        <p className="tw-font-bold tw-text-base ">{user?.name}</p>
-                        <p className="tw-font-light tw-text-sm">{truncateDescription(user?.story || '', 25)}</p>
-                    </Flex>
-                </Space>
+                <Link href={'/profile'}>
+                    <Space>
+                        <Avatar size={52} src={user?.avatar}>
+                            {user?.avatar ? null : <IconUser />}
+                        </Avatar>
+                        <Flex gap={'small'} vertical>
+                            <p className="tw-font-bold tw-text-base ">{user?.name}</p>
+                            <p className="tw-font-light tw-text-sm">{truncateDescription(user?.story || '', 25)}</p>
+                        </Flex>
+                    </Space>
+                </Link>
             ),
             key: '0',
         },
@@ -103,7 +105,7 @@ const NavRightComponent = (props: Props) => {
                     onOk() {
                         refetch_logout();
                         localStorage.removeItem('token');
-                        refetch_getMe();
+                        window.location.reload()
                     },
                     onCancel() {},
                 });
