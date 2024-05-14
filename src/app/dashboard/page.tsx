@@ -3,15 +3,16 @@
 import ReviewComponent from '@/src/components/common/ReviewComponent';
 import { useAppDispatch } from '@/src/store/hooks';
 import { useGetPostQuery } from '@/src/store/queries/apiArticle.query';
-import { useGetReviewQuery } from '@/src/store/queries/apiCommon.query';
+import { useGetReviewByRatingQuery, useGetReviewQuery } from '@/src/store/queries/apiCommon.query';
 import { setCountPostPending } from '@/src/store/slices/article.slice';
 import { setSelectedKeys } from '@/src/store/slices/common.slice';
 import { Card } from 'antd';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 type Props = {};
 const Page = (props: Props) => {
     const dispatch = useAppDispatch();
+    const [pageReview,setPageReview] = useState(1)
     const {
         data: response_getPost,
         isLoading: isLoadingGetPost,
@@ -23,7 +24,13 @@ const Page = (props: Props) => {
         data: response_getReview,
         isLoading: isLoading_getReview,
         isSuccess: isSuccess_getReview,
-    } = useGetReviewQuery([1, 0]);
+    } = useGetReviewQuery('');
+
+    const {
+        data: response_getReviewByRating,
+        isLoading: isLoading_getReviewByRating,
+        isSuccess: isSuccess_getReviewByRating,
+    } = useGetReviewByRatingQuery([5, pageReview]);
 
     let countPostPending: string | null = null;
 
@@ -45,7 +52,7 @@ const Page = (props: Props) => {
     }, []);
     return (
         <Card className='tw-w-full tw-h-full'>
-            <ReviewComponent data={response_getReview?.data}/>
+            <ReviewComponent data={response_getReview?.data} reviewData = {response_getReviewByRating?.data}/>
         </Card>
     );
 };

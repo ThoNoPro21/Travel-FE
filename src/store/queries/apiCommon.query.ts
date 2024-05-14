@@ -4,6 +4,7 @@ import { selectToken } from '../slices/auth.slice';
 import { RootState } from '../store';
 import { ApiResponse, PaginationApiResponseData } from '@/src/types/ApiRespone';
 import { carouselType } from '@/src/types/Carousel';
+import { commentType } from '@/src/types/Article';
 
 export const apiCommonQuery = createApi({
     reducerPath: 'apiCommon ',
@@ -55,12 +56,15 @@ export const apiCommonQuery = createApi({
             query: (body) => ({
                 url: 'review/add',
                 method: 'POST',
-                body
+                body,
             }),
         }),
 
-        getReview: builder.query<ApiResponse<any>,any>({
+        getReview: builder.query<ApiResponse<any>, any>({
             query: () => 'review/getAverageRating',
+        }),
+        getReviewByRating: builder.query<ApiResponse<PaginationApiResponseData<commentType>>, number[]>({
+            query: ([rating, page]) => `review/getReviewByRating/${rating}?page=${page}`,
         }),
     }),
 });
@@ -72,5 +76,6 @@ export const {
     useUpdateStatusCarouselMutation,
     useGetCarouselForHomePageQuery,
     useAddReviewMutation,
-    useGetReviewQuery
+    useGetReviewQuery,
+    useGetReviewByRatingQuery,
 } = apiCommonQuery;
