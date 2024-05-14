@@ -102,9 +102,9 @@ const NavRightComponent = (props: Props) => {
                     content: 'Nhấn OK mọi thứ sẽ đăng xuất ....',
                     cancelText: 'Hủy',
                     async onOk() {
-                        refetch_logout();
-                        localStorage.removeItem('token');
-                        refetch_getMe();
+                        await refetch_logout();
+                            localStorage.removeItem('token');
+                        await refetch_getMe();
                     },
                     onCancel() {},
                 });
