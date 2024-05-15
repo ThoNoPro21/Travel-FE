@@ -44,7 +44,7 @@ const HeaderComponent = (props: Props) => {
                         QuanTum
                     </h1>
                 </div>
-                <Flex className="tw-flex-1 sm:tw-hidden lg:tw-flex">
+                <Flex className="tw-flex-1 tw-hidden lg:tw-flex">
                     <div className="tw-m-auto ">
                         <NavMiddleComponent mode='horizontal' />
                     </div>

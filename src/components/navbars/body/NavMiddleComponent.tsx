@@ -41,7 +41,7 @@ const NavMiddleComponent = (props: Props) => {
         e.key;
     };
     return (
-        <div className="menu-header sm:tw-hidden lg:tw-block">
+        <div className="menu-header">
             <Menu
                 mode={props.mode}
                 onClick={handleMenuBarOnClick}
