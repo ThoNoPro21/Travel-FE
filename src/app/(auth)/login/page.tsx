@@ -39,11 +39,10 @@ const Page = (props: Props) => {
 
     return (
         <Spin spinning={isLoading_Login} tip="Chờ xíu...">
-            <main className="tw-relative md:tw-pt-20 md:tw-px-13 tw-min-h-screen tw-bg-[url('/bg/image2.png')] tw-bg-center tw-bg-cover tw-font-lora ">
-                <Flex justify="center" align="center">
+            <main className="tw-relative tw-flex md:tw-pt-20 md:tw-px-13 tw-min-h-screen tw-bg-[url('/bg/image2.png')] tw-bg-center tw-bg-cover tw-font-lora ">
                     <Flex
                         vertical
-                        className="tw-w-auto lg:tw-w-130 tw-backdrop-blur-sm  tw-bg-white/50 tw-text-white tw-p-4 tw-rounded-lg tw-z-10"
+                        className="tw-w-auto tw-m-auto lg:tw-w-130 tw-backdrop-blur-sm  tw-bg-white/50 tw-text-white tw-p-4 tw-rounded-lg tw-z-10"
                     >
                         <h1 className="tw-text-4xl tw-py-10 tw-font-black tw-text-black ">Đăng nhập</h1>
                         <Form layout="vertical" form={form} onFinish={handleFormFinish}>
@@ -101,7 +100,6 @@ const Page = (props: Props) => {
                             </Link>
                         </p>
                     </Flex>
-                </Flex>
             </main>
             <div className="tw-absolute tw-top-0 tw-left-0 tw-w-full tw-h-full tw-bg-black tw-opacity-70"></div>
         </Spin>
