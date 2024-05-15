@@ -45,7 +45,7 @@ const Page = (props: Props) => {
                     <SideBarComponent mode={'vertical '} />
                 </div>
                 <div className="tw-col-span-12  sm:tw-hidden  tw-rounded-lg tw-h-fit">
-                    <SideBarComponent mode={'vertical '} />
+                    <SideBarComponent mode={'inline'} />
                 </div>
                 <div className="tw-col-span-12 lg:tw-col-span-8 tw-min-h-screen">
                     <Flex gap={16} vertical className="tw-grid-cols-12">
