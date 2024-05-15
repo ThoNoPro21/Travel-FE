@@ -4,7 +4,9 @@ import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
 
-type Props = {};
+type Props = {
+    mode:any;
+};
 const menuItems = [
     {
         key: '/',
@@ -41,7 +43,7 @@ const NavMiddleComponent = (props: Props) => {
     return (
         <div className="menu-header">
             <Menu
-                mode="horizontal"
+                mode={props.mode}
                 onClick={handleMenuBarOnClick}
                 defaultSelectedKeys={['/']}
                 selectedKeys={[selectedKeys]}

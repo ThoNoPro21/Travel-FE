@@ -36,13 +36,13 @@ const FestivalComponent = (props: Props) => {
                             <Flex
                                 align="center"
                                 justify="center"
-                                className="tw-flex-1 tw-text-6xl tw-font-lora tw-text-yellow-300 tw-font-bold"
+                                className="tw-flex-1 tw-text-xl lg:tw-text-6xl tw-font-lora tw-text-yellow-300 tw-font-bold"
                             >
                                 {props.name}
                             </Flex>
                             <Flex
                                 vertical
-                                className=" lg:tw-text-4xl tw-text-3xl tw-text-center tw-font-lora tw-font-bold tw-overflow-hidden tw-text-orange-500"
+                                className=" lg:tw-text-4xl tw-text-lg tw-text-center tw-font-lora tw-font-bold tw-overflow-hidden tw-text-orange-500"
                             >
                                 {formattedStartDate} - {formattedEndDate}
                                 <Divider className="tw-bg-white" />

@@ -36,24 +36,17 @@ const HeaderComponent = (props: Props) => {
                     width="50%"
                     className="sm:tw-hidden"
                 >
-                    <ul className=" tw-text-black tw-font-bold tw-text-base ">
-                        <Space size={'large'} direction="vertical" align="start">
-                            <li>Home</li>
-                            <li>Destinations</li>
-                            <li>Honeymoon Deals</li>
-                            <li>Foreigner Tours</li>
-                            <li>Car Rentals</li>
-                        </Space>
-                    </ul>
+                    <NavMiddleComponent mode='vertical' />
+
                 </Drawer>
                 <div className="tw-hidden tw-text-center tw-py-3 tw-gap-3 sm:tw-flex lg:tw-items-start  ">
                     <h1 className="lg:tw-text-2xl tw-text-xl sm:tw-text-sm tw-font-bold tw-text-emerald-300 ">
                         QuanTum
                     </h1>
                 </div>
-                <Flex className="tw-flex-1 ">
+                <Flex className="tw-flex-1 sm:tw-hidden lg:tw-flex">
                     <div className="tw-m-auto ">
-                        <NavMiddleComponent />
+                        <NavMiddleComponent mode='horizontal' />
                     </div>
                 </Flex>
                 <NavRightComponent />

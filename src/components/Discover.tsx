@@ -19,7 +19,7 @@ const Discover = (props: Props) => {
             </Col>
             <Col>
                 <Card>
-                    <div className="tw-grid tw-grid-cols-4 tw-grid-rows-1 tw-gap-4 tw-cursor-pointer ">
+                    <div className="tw-grid tw-grid-cols-2  tw-grid-rows-2 lg:tw-grid-cols-4 lg:tw-grid-rows-1 tw-gap-4 tw-cursor-pointer ">
                         <Flex
                             vertical
                             className="tw-relative tw-h-60 tw-overflow-hidden"
