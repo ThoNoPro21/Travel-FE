@@ -6,7 +6,9 @@ import { RootState } from '@/src/store/store';
 import { Badge, Card, List, Menu, MenuProps, Skeleton, Space } from 'antd';
 import React, { useState } from 'react';
 
-type Props = {};
+type Props = {
+    mode:any;
+};
 
 const SideBarComponent = (props: Props) => {
     const dispatch = useAppDispatch();
@@ -35,7 +37,8 @@ const SideBarComponent = (props: Props) => {
             header={<h1 className="tw-text-base tw-font-black tw-text-center">Danh mục sản phẩm</h1>}
             className="tw-bg-white tw-rounded-lg tw-min-h-fit"
         >
-            <Menu
+            <Menu 
+                mode={props.mode}
                 onClick={handleMenuBarOnClick}
                 selectedKeys={[String(selectedKeys)]}
                 items={categoryItems}
