@@ -92,9 +92,7 @@
     color: orangered !important;
 }
 .menu-header  ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @apply lg:tw-flex lg:tw-justify-center lg:tw-items-center;
 }
 /* end of app css */
 
