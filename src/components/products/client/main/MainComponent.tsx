@@ -41,7 +41,7 @@ const MainComponent = (props: Props) => {
                     ) : isSuccess_ProductByCategory && response_ProductByCategory.success ? (
                         response_ProductByCategory?.data.data.map((item, index) => (
                             <div className='tw-grid tw-grid-cols-12 ' key={index} onClick={()=>router.push(`product/${item.products_id}`)}>
-                                <div className='tw-cols-span-12 sm:tw-cols-span-6 lg:tw-cols-span-3'>
+                                <div className='tw-col-span-12 sm:tw-col-span-6 lg:tw-col-span-3'>
                                     <DacSanComponent
                                         src={item.images.avatar}
                                         name={item.name}
