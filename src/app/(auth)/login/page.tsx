@@ -43,7 +43,7 @@ const Page = (props: Props) => {
                 <Flex justify="center" align="center">
                     <Flex
                         vertical
-                        className="tw-w-130 tw-backdrop-blur-sm  tw-bg-white/50 tw-text-white tw-p-4 tw-rounded-lg tw-z-10"
+                        className="tw-w-auto lg:tw-w-130 tw-backdrop-blur-sm  tw-bg-white/50 tw-text-white tw-p-4 tw-rounded-lg tw-z-10"
                     >
                         <h1 className="tw-text-4xl tw-py-10 tw-font-black tw-text-black ">Đăng nhập</h1>
                         <Form layout="vertical" form={form} onFinish={handleFormFinish}>

@@ -16,7 +16,7 @@ const CarouselIntroduce = (props: Props) => {
     return (
         <Card hoverable styles={{ body: { padding: 10 } }} className="tw-shadow-xl">
             <div className=" sm:tw-h-full tw-grid-cols-1  tw-grid md:tw-grid-cols-2 tw-gap-4 lg:tw-p-2">
-                <Carousel autoplay infinite={true} autoplaySpeed={5000} draggable className='sm:tw-max-h-60 lg:tw-h-120 tw-w-full tw-overflow-hidden'>
+                <Carousel autoplay infinite={true} autoplaySpeed={5000} draggable className='tw-max-h-60 lg:tw-h-120 tw-w-full tw-overflow-hidden'>
                     {response_getCarousel?.success && response_getCarousel?.data.map((item, index) => (
                         <Image
                             key={index}
@@ -25,7 +25,7 @@ const CarouselIntroduce = (props: Props) => {
                             width={1000}
                             quality={100}
                             alt="picture ..."
-                            className=" tw-bg-cover tw-bg-center tw-rounded-lg"
+                            className=" tw-bg-cover tw-bg-center tw-rounded-lg tw-w-full tw-h-full"
                         />
                     ))}
                 </Carousel>
