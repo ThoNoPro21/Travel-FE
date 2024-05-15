@@ -43,8 +43,8 @@ const Page = ({ params }: { params: { id: string } }) => {
     }
     return  isSuccess_postById &&
         <main className="tw-relative tw-pt-20 tw-w-full tw-min-h-screen tw-px-2 md:tw-px-5  xl:tw-px-13 ">
-            <Flex className="tw-grid tw-grid-cols-5 tw-min-h-fit tw-pt-20">
-                <div className="tw-col-span-1 ">
+            <Flex className="tw-grid tw-grid-cols-5 tw-grid-rows-1 tw-min-h-fit tw-pt-20">
+                <div className="tw-col-span-5 tw-order-2 lg:tw-col-span-1 lg:tw-order-1  ">
                     <SideBarLef
                         name={response_postById?.data?.user.name}
                         avatar={response_postById?.data?.user.avatar}
@@ -52,7 +52,7 @@ const Page = ({ params }: { params: { id: string } }) => {
                         article_id={parseInt(params.id)}
                     />
                 </div>
-                <div className="tw-col-span-4">
+                <div className="tw-col-span-5 tw-order-1 lg:tw-col-span-4 lg:tw-order-2">
                     <SideMain
                         key={response_postById?.data?.articles_id}
                         avatar_user={response_postById?.data?.user.avatar}
