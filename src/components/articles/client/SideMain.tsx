@@ -17,7 +17,7 @@ const SideMain = (props: Props) => {
     const formattedDate = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
     return (
         <Flex vertical gap={16}>
-            <h1 className="md:tw-text-7xl tw-font-bold tw-text-center ">{props.title}</h1>
+            <h1 className="tw-text-4xl md:tw-text-7xl tw-font-bold tw-text-center ">{props.title}</h1>
             <Divider />
             <Flex className="tw-flex-none lg:tw-pb-2" justify="space-between" align="center ">
                 <Space>

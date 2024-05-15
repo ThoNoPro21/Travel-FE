@@ -40,14 +40,18 @@ const Page = (props: Props) => {
 
     return (
         <main className="md:tw-pt-20 md:tw-px-13 tw-min-h-screen tw-bg-gradient-to-r tw-from-violet-200 tw-to-pink-200">
-            <div className="tw-grid tw-grid-cols-4 tw-grid-flow-row tw-gap-4 tw-py-4">
-                <div className="tw-col-span-1 tw-rounded-lg tw-h-fit">
+            <div className="tw-grid tw-grid-cols-12 tw-grid-flow-row tw-gap-4 tw-py-4">
+                <div className="tw-col-span-12 lg:tw-col-span-4  tw-rounded-lg tw-h-fit">
                     <SideBarComponent />
                 </div>
-                <div className="tw-col-span-3 tw-min-h-screen">
-                    <Flex gap={16} vertical className="tw-col-span-3">
-                        <NavBarTabComponent items={filterItems} selectedTab={getTab} />
-                        <MainComponent />
+                <div className="tw-col-span-12 lg:tw-col-span-8 tw-min-h-screen">
+                    <Flex gap={16} vertical className="tw-grid-cols-12">
+                        <div className="tw-col-span-12">
+                            <NavBarTabComponent items={filterItems} selectedTab={getTab} />
+                        </div>
+                        <div>
+                            <MainComponent />
+                        </div>
                     </Flex>
                 </div>
             </div>

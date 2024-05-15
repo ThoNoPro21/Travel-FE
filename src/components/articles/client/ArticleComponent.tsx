@@ -46,7 +46,7 @@ const ArticleComponent = (props: Props) => {
                         height={1000}
                         width={1000}
                         alt="Picture ..."
-                        className="tw-w-30 md:tw-max-w-55 tw-h-full tw-flex-shrink-0 tw-rounded-lg tw-bg-cover tw-bg-center"
+                        className="tw-max-w-30 md:tw-max-w-55 tw-h-full tw-flex-shrink-0 tw-rounded-lg tw-bg-cover tw-bg-center"
                     ></Image>
                 </Flex>
                 <Flex className="tw-flex-none tw-items-center tw-space-x-2 tw-h-15 ">
