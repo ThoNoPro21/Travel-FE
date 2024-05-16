@@ -60,7 +60,7 @@ const OverviewComponent = (props: Props) => {
                     },
                     onClick: () => {
                         handleNotificationClose();
-                        router.push('/product/cart', { scroll: false });
+                        router.push('product/cart', { scroll: false });
                     },
                 });
             }else{
@@ -80,7 +80,9 @@ const OverviewComponent = (props: Props) => {
         })
     };
 
-
+if(isLoading_addToCart){
+    return <Spin fullscreen/>
+}
 
     return (
         <Card

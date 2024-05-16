@@ -220,7 +220,7 @@ const Page = (props: Props) => {
                                     className="tw-border tw-w-max tw-p-2 tw-bg-orange-400 tw-border-orange-500 hover:border-indigo-300 tw-rounded-lg"
                                 >
                                     <IconLeft />
-                                    <Link href="http://localhost:3355/product/">
+                                    <Link href="product/">
                                         <p className="tw-text-sm tw-font-bold tw-text-white">TIẾP TỤC MUA SẮM</p>
                                     </Link>
                                 </Flex>
