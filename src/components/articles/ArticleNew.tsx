@@ -1,4 +1,3 @@
-'use client '
 import { Button, Card, Col, Flex, Grid, Pagination, Row, Space } from 'antd';
 import React from 'react';
 import CardArticle from './client/CardArticle';
@@ -35,29 +34,16 @@ const ArticleNew = (props: Props) => {
                     </Button>
                 </Link>
             </Flex>
-            <div className="">
-            <Swiper
-                modules={[Navigation, Pagination]}
-                slidesPerView={'auto'}
-                spaceBetween={10}
-                navigation
-                pagination={{ clickable: true }}
-                scrollbar={{ draggable: true }}
-            >
-                {response_article?.data.map((item, index) => (
-                    <SwiperSlide key={index} className="tw-max-w-min ">
-                        <Link href={`blog/${item.articles_id}`}>
-                            <CardArticle
-                                image={item.images}
-                                title={item.title}
-                                username={item.user.name}
-                                user_avatar={item.user.avatar}
-                            />
-                        </Link>
-                    </SwiperSlide>
-                ))}
-            </Swiper>
-            </div>
+            { isSuccess_article && response_article?.data.map((item, index) => (
+                <Link href={`blog/${item.articles_id}`}>
+                    <CardArticle
+                        image={item.images}
+                        title={item.title}
+                        username={item.user.name}
+                        user_avatar={item.user.avatar}
+                    />
+                </Link>
+            ))}
         </Flex>
     );
 };
