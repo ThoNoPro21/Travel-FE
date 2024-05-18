@@ -45,6 +45,7 @@ const ArticleNew = (props: Props) => {
                         <Link href={`blog/${item.articles_id}`}>
                             <SwiperSlide key={index} className="tw-max-w-min ">
                                 <CardArticle
+                                    key={index}
                                     image={item.images}
                                     title={item.title}
                                     username={item.user.name}
