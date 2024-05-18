@@ -51,12 +51,15 @@ const PlaceHot = (props: Props) => {
                     navigation
                     pagination={{ clickable: true }}
                     scrollbar={{ draggable: true }}
-                    className='tw-py-4'
                 >
                     {!isLoading_place ? (
                         response_place?.data.map((item) => (
-                            <div key={item.places_id} className='tw-max-w-min' onClick={() => handleOnClickCard(item.places_id)}>
-                                <SwiperSlide className="tw-max-w-min">
+                            <div
+                                key={item.places_id}
+                                className="tw-max-w-min"
+                                onClick={() => handleOnClickCard(item.places_id)}
+                            >
+                                <SwiperSlide className="tw-max-w-min tw-py-4">
                                     <CardPlaceHot
                                         src={item.images}
                                         heart="11K"

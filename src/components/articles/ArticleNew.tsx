@@ -1,4 +1,4 @@
-import { Button, Card, Col, Flex, Grid, Pagination, Row, Space } from 'antd';
+import { Button, Card, Col, Flex, Grid, Pagination, Row, Space, Spin } from 'antd';
 import React from 'react';
 import CardArticle from './client/CardArticle';
 import { useGetArticleNewQuery } from '@/src/store/queries/apiArticle.query';
@@ -38,7 +38,7 @@ const ArticleNew: React.FC<Props> = () => {
                 </Link>
             </Flex>
 
-            {isLoadingArticle && <p>Loading...</p>}
+            {isLoadingArticle && <Spin fullscreen />}
             {isErrorArticle && <p>Error loading articles</p>}
 
             {isSuccessArticle && (
