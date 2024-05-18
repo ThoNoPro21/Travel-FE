@@ -9,6 +9,9 @@ import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 
+import 'swiper/scss';
+import 'swiper/scss/navigation';
+import 'swiper/scss/pagination';
 type Props = {};
 
 const PlaceHot = (props: Props) => {
@@ -45,6 +48,7 @@ const PlaceHot = (props: Props) => {
                     modules={[Navigation, Pagination]}
                     slidesPerView={'auto'}
                     navigation
+
                     pagination={{ clickable: true }}
                     scrollbar={{ draggable: true }}
                 >
