@@ -54,8 +54,8 @@ const PlaceHot = (props: Props) => {
                 >
                     {!isLoading_place ? (
                         response_place?.data.map((item) => (
-                            <div key={item.places_id} className='tw-max-w-min' onClick={() => handleOnClickCard(item.places_id)}>
-                                <SwiperSlide className="tw-max-w-min">
+                            <div key={item.places_id} className='tw-max-w-min tw-py-4' onClick={() => handleOnClickCard(item.places_id)}>
+                                <SwiperSlide className="tw-max-w-min ">
                                     <CardPlaceHot
                                         src={item.images}
                                         heart="11K"
