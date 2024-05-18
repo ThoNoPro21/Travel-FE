@@ -6,6 +6,8 @@ import { useGetAll_PlaceQuery } from '@/src/store/queries/apiPlace.query';
 import { useRouter } from 'next/navigation';
 import CardPlaceHot from './CardPlaceHot';
 import Link from 'next/link';
+import { Swiper } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
 
 type Props = {};
 
@@ -24,21 +26,28 @@ const PlaceHot = (props: Props) => {
                         <p className="lg:tw-text-xl tw-text-base tw-font-medium font-lo">Có thể bạn sẽ thích ?</p>
                     </Space>
                     <Flex align="flex-end" className="tw-cursor-pointer tw-hidden sm:tw-block ">
-                    <div className="tw-cursor-pointer ">
-                        <Link href={'place'}>
-                            <Button
-                                type="text"
-                                className="tw-rounded-3xl tw-bg-transparent tw-border-solid tw-border-orange-500 tw-border-1 tw-text-emerald-700 "
-                            >
-                                Xem tất cả
-                            </Button>
-                        </Link>
-                </div>
+                        <div className="tw-cursor-pointer ">
+                            <Link href={'place'}>
+                                <Button
+                                    type="text"
+                                    className="tw-rounded-3xl tw-bg-transparent tw-border-solid tw-border-orange-500 tw-border-1 tw-text-emerald-700 "
+                                >
+                                    Xem tất cả
+                                </Button>
+                            </Link>
+                        </div>
                     </Flex>
                 </Flex>
             </Col>
             <Col className="gutter-row" span={24}>
-                <Flex gap="middle">
+                <Swiper
+                    // install Swiper modules
+                    modules={[Navigation, Pagination]}
+                    slidesPerView={'auto'}
+                    navigation
+                    pagination={{ clickable: true }}
+                    scrollbar={{ draggable: true }}
+                >
                     {!isLoading_place ? (
                         response_place?.data.map((item) => (
                             <div
@@ -59,27 +68,27 @@ const PlaceHot = (props: Props) => {
                         <div className="tw-grid tw-grid-cols-4 tw-place-content-center tw-w-full tw-gap-8">
                             <Space direction="vertical">
                                 <Skeleton.Image active style={{ width: 220, height: 220 }} />
-                                <Skeleton.Input active  />
-                                <Skeleton.Input active  />
+                                <Skeleton.Input active />
+                                <Skeleton.Input active />
                             </Space>
                             <Space direction="vertical">
                                 <Skeleton.Image active style={{ width: 220, height: 220 }} />
-                                <Skeleton.Input active  />
-                                <Skeleton.Input active  />
+                                <Skeleton.Input active />
+                                <Skeleton.Input active />
                             </Space>
                             <Space direction="vertical">
                                 <Skeleton.Image active style={{ width: 220, height: 220 }} />
-                                <Skeleton.Input active  />
-                                <Skeleton.Input active  />
+                                <Skeleton.Input active />
+                                <Skeleton.Input active />
                             </Space>
                             <Space direction="vertical">
                                 <Skeleton.Image active style={{ width: 220, height: 220 }} />
-                                <Skeleton.Input active  />
-                                <Skeleton.Input active  />
+                                <Skeleton.Input active />
+                                <Skeleton.Input active />
                             </Space>
                         </div>
                     )}
-                </Flex>
+                </Swiper>
             </Col>
         </Row>
     );
