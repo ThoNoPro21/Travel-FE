@@ -1,3 +1,4 @@
+'use client'
 import { Button, Card, Col, Flex, Row, Skeleton, Space } from 'antd';
 import React from 'react';
 import { IconLeft, IconRight } from '../IconComponent';
