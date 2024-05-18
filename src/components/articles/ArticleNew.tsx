@@ -4,7 +4,7 @@ import CardArticle from './client/CardArticle';
 import { useGetArticleNewQuery } from '@/src/store/queries/apiArticle.query';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination as SwiperPagination } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
 
 import 'swiper/scss';
 import 'swiper/scss/navigation';
@@ -43,12 +43,12 @@ const ArticleNew: React.FC<Props> = () => {
 
             {isSuccessArticle && (
                 <Swiper
-                    modules={[Navigation, SwiperPagination]}
-                    slidesPerView="auto"
-                    spaceBetween={10}
-                    navigation
-                    pagination={{ clickable: true }}
-                    scrollbar={{ draggable: true }}
+                modules={[Navigation, Pagination]}
+                slidesPerView={'auto'}
+                spaceBetween={10}
+                navigation
+                pagination={{ clickable: true }}
+                scrollbar={{ draggable: true }}
                 >
                     {responseArticle?.data.map((item) => (
                         <Link key={item.articles_id} href={`/blog/${item.articles_id}`}>
