@@ -6,7 +6,7 @@ import { useGetAll_PlaceQuery } from '@/src/store/queries/apiPlace.query';
 import { useRouter } from 'next/navigation';
 import CardPlaceHot from './CardPlaceHot';
 import Link from 'next/link';
-import { Swiper } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 
 type Props = {};
@@ -48,46 +48,48 @@ const PlaceHot = (props: Props) => {
                     pagination={{ clickable: true }}
                     scrollbar={{ draggable: true }}
                 >
-                    {!isLoading_place ? (
-                        response_place?.data.map((item) => (
-                            <div
-                                className="tw-max-w-min"
-                                key={item.places_id}
-                                onClick={() => handleOnClickCard(item.places_id)}
-                            >
-                                <CardPlaceHot
-                                    src={item.images}
-                                    heart="11K"
-                                    star="5.0"
-                                    location={item.location_name}
-                                    title={item.name}
-                                />
+                    <SwiperSlide>
+                        {!isLoading_place ? (
+                            response_place?.data.map((item) => (
+                                <div
+                                    className="tw-max-w-min"
+                                    key={item.places_id}
+                                    onClick={() => handleOnClickCard(item.places_id)}
+                                >
+                                    <CardPlaceHot
+                                        src={item.images}
+                                        heart="11K"
+                                        star="5.0"
+                                        location={item.location_name}
+                                        title={item.name}
+                                    />
+                                </div>
+                            ))
+                        ) : (
+                            <div className="tw-grid tw-grid-cols-4 tw-place-content-center tw-w-full tw-gap-8">
+                                <Space direction="vertical">
+                                    <Skeleton.Image active style={{ width: 220, height: 220 }} />
+                                    <Skeleton.Input active />
+                                    <Skeleton.Input active />
+                                </Space>
+                                <Space direction="vertical">
+                                    <Skeleton.Image active style={{ width: 220, height: 220 }} />
+                                    <Skeleton.Input active />
+                                    <Skeleton.Input active />
+                                </Space>
+                                <Space direction="vertical">
+                                    <Skeleton.Image active style={{ width: 220, height: 220 }} />
+                                    <Skeleton.Input active />
+                                    <Skeleton.Input active />
+                                </Space>
+                                <Space direction="vertical">
+                                    <Skeleton.Image active style={{ width: 220, height: 220 }} />
+                                    <Skeleton.Input active />
+                                    <Skeleton.Input active />
+                                </Space>
                             </div>
-                        ))
-                    ) : (
-                        <div className="tw-grid tw-grid-cols-4 tw-place-content-center tw-w-full tw-gap-8">
-                            <Space direction="vertical">
-                                <Skeleton.Image active style={{ width: 220, height: 220 }} />
-                                <Skeleton.Input active />
-                                <Skeleton.Input active />
-                            </Space>
-                            <Space direction="vertical">
-                                <Skeleton.Image active style={{ width: 220, height: 220 }} />
-                                <Skeleton.Input active />
-                                <Skeleton.Input active />
-                            </Space>
-                            <Space direction="vertical">
-                                <Skeleton.Image active style={{ width: 220, height: 220 }} />
-                                <Skeleton.Input active />
-                                <Skeleton.Input active />
-                            </Space>
-                            <Space direction="vertical">
-                                <Skeleton.Image active style={{ width: 220, height: 220 }} />
-                                <Skeleton.Input active />
-                                <Skeleton.Input active />
-                            </Space>
-                        </div>
-                    )}
+                        )}
+                    </SwiperSlide>
                 </Swiper>
             </Col>
         </Row>
