@@ -47,13 +47,14 @@ const PlaceHot = (props: Props) => {
                     // install Swiper modules
                     modules={[Navigation, Pagination]}
                     slidesPerView={'auto'}
+                    spaceBetween={10}
                     navigation
                     pagination={{ clickable: true }}
                     scrollbar={{ draggable: true }}
                 >
                     {!isLoading_place ? (
                         response_place?.data.map((item) => (
-                            <div key={item.places_id} className='tw-max-w-min tw-space-x-4' onClick={() => handleOnClickCard(item.places_id)}>
+                            <div key={item.places_id} className='tw-max-w-min' onClick={() => handleOnClickCard(item.places_id)}>
                                 <SwiperSlide className="tw-max-w-min">
                                     <CardPlaceHot
                                         src={item.images}
