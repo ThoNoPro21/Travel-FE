@@ -8,7 +8,7 @@ import { Navigation } from 'swiper/modules';
 
 import 'swiper/scss';
 import 'swiper/scss/navigation';
-import 'swiper/scss/pagination';    
+import 'swiper/scss/pagination';
 type Props = {};
 
 const ArticleNew = (props: Props) => {
@@ -34,16 +34,29 @@ const ArticleNew = (props: Props) => {
                     </Button>
                 </Link>
             </Flex>
-            { isSuccess_article && response_article?.data.map((item, index) => (
-                <Link key={index} href={`blog/${item.articles_id}`}>
-                    <CardArticle
-                        image={item.images}
-                        title={item.title}
-                        username={item.user.name}
-                        user_avatar={item.user.avatar}
-                    />
-                </Link>
-            ))}
+            <Swiper
+                // install Swiper modules
+                modules={[Navigation, Pagination]}
+                slidesPerView={'auto'}
+                spaceBetween={10}
+                navigation
+                pagination={{ clickable: true }}
+                scrollbar={{ draggable: true }}
+            >
+                {isSuccess_article &&
+                    response_article?.data.map((item, index) => (
+                        <Link key={index} href={`blog/${item.articles_id}`}>
+                            <SwiperSlide className="tw-max-w-min">
+                                <CardArticle
+                                    image={item.images}
+                                    title={item.title}
+                                    username={item.user.name}
+                                    user_avatar={item.user.avatar}
+                                />
+                            </SwiperSlide>
+                        </Link>
+                    ))}
+            </Swiper>
         </Flex>
     );
 };
