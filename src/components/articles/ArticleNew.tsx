@@ -32,7 +32,6 @@ const ArticleNew = (props: Props) => {
                 </Link>
             </Flex>
             <Swiper
-                // install Swiper modules
                 modules={[Navigation, Pagination]}
                 slidesPerView={'auto'}
                 spaceBetween={10}
@@ -40,20 +39,19 @@ const ArticleNew = (props: Props) => {
                 pagination={{ clickable: true }}
                 scrollbar={{ draggable: true }}
             >
-                {isSuccess_article &&
-                    response_article?.data.map((item, index) => (
-                        <SwiperSlide key={index} className="tw-max-w-min ">
-                            <Link href={`blog/${item.articles_id}`}>
-                                <CardArticle
-                                    key={index}
-                                    image={item.images}
-                                    title={item.title}
-                                    username={item.user.name}
-                                    user_avatar={item.user.avatar}
-                                />
-                            </Link>
-                        </SwiperSlide>
-                    ))}
+                {response_article?.data.map((item, index) => (
+                    <SwiperSlide key={index} className="tw-max-w-min ">
+                        <Link href={`blog/${item.articles_id}`}>
+                            <CardArticle
+                                key={index}
+                                image={item.images}
+                                title={item.title}
+                                username={item.user.name}
+                                user_avatar={item.user.avatar}
+                            />
+                        </Link>
+                    </SwiperSlide>
+                ))}
             </Swiper>
         </Flex>
     );
