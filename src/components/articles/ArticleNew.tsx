@@ -35,7 +35,7 @@ const ArticleNew = (props: Props) => {
                 </Link>
             </Flex>
             { isSuccess_article && response_article?.data.map((item, index) => (
-                <Link href={`blog/${item.articles_id}`}>
+                <Link key={index} href={`blog/${item.articles_id}`}>
                     <CardArticle
                         image={item.images}
                         title={item.title}
