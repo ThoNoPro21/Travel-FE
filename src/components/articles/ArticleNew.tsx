@@ -42,8 +42,8 @@ const ArticleNew = (props: Props) => {
             >
                 {isSuccess_article &&
                     response_article?.data.map((item, index) => (
-                        <Link href={`blog/${item.articles_id}`}>
-                            <SwiperSlide key={index} className="tw-max-w-min ">
+                        <SwiperSlide key={index} className="tw-max-w-min ">
+                            <Link href={`blog/${item.articles_id}`}>
                                 <CardArticle
                                     key={index}
                                     image={item.images}
@@ -51,8 +51,8 @@ const ArticleNew = (props: Props) => {
                                     username={item.user.name}
                                     user_avatar={item.user.avatar}
                                 />
-                            </SwiperSlide>
-                        </Link>
+                            </Link>
+                        </SwiperSlide>
                     ))}
             </Swiper>
         </Flex>
