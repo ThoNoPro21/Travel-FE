@@ -1,3 +1,4 @@
+'use client '
 import { Button, Card, Col, Flex, Grid, Pagination, Row, Space } from 'antd';
 import React from 'react';
 import CardArticle from './client/CardArticle';
@@ -6,6 +7,9 @@ import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 
+import 'swiper/scss';
+import 'swiper/scss/navigation';
+import 'swiper/scss/pagination';    
 type Props = {};
 
 const ArticleNew = (props: Props) => {
