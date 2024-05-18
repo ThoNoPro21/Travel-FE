@@ -31,6 +31,7 @@ const ArticleNew = (props: Props) => {
                     </Button>
                 </Link>
             </Flex>
+            <div className="">
             <Swiper
                 modules={[Navigation, Pagination]}
                 slidesPerView={'auto'}
@@ -52,6 +53,7 @@ const ArticleNew = (props: Props) => {
                     </SwiperSlide>
                 ))}
             </Swiper>
+            </div>
         </Flex>
     );
 };
