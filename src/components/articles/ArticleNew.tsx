@@ -1,10 +1,10 @@
-import { Button, Card, Col, Flex, Grid, Pagination, Row, Space, Spin } from 'antd';
+import { Button, Card, Col, Flex, Grid, Row, Space, Spin } from 'antd';
 import React from 'react';
 import CardArticle from './client/CardArticle';
 import { useGetArticleNewQuery } from '@/src/store/queries/apiArticle.query';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import { Navigation,  Pagination } from 'swiper/modules';
 
 import 'swiper/scss';
 import 'swiper/scss/navigation';
