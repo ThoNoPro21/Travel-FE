@@ -52,7 +52,7 @@ const ArticleNew: React.FC<Props> = () => {
                 >
                     {responseArticle?.data.map((item) => (
                         <Link key={item.articles_id} href={`/blog/${item.articles_id}`}>
-                            <SwiperSlide>
+                            <SwiperSlide className='tw-max-w-min'>
                                 <CardArticle
                                     image={item.images}
                                     title={item.title}
