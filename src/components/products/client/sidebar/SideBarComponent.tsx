@@ -56,7 +56,7 @@ const SideBarComponent = (props: Props) => {
                     <Skeleton active loading={isLoading_getCategory}></Skeleton>
                 </div>
             </List>
-            <Select allowClear options={categoryMobileItems} defaultValue={0}  onChange={(e) => console.log(e)} className='tw-w-full'/>
+            <Select allowClear options={categoryMobileItems} placeholder='Danh mục sản phẩm' onChange={(e) => dispatch(setMenuId(parseInt(e.key)))} className='tw-w-full'/>
         </>
     );
 };

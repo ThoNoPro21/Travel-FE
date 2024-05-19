@@ -31,7 +31,7 @@ const ShopComponent = (props: Props) => {
     return (
         <Card bordered={false} styles={{ body: { padding: 0 } }} className="tw-w-full tw-px-4 tw-bg-gray-200">
             <Flex vertical>
-                <Flex align="center">
+                <Flex align="center" className='tw-flex-col lg:tw-flex-row'>
                     <h1 className="tw-flex-1 tw-font-black tw-text-lg tw-text-black">Nơi bạn có thể tìm mua</h1>
                     <TabsComponent options={tabShopOptions} getTab={getTabShopActive} />
                 </Flex>
