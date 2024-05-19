@@ -51,6 +51,8 @@ const Page = (props: Props) => {
     const columns: TableColumnsType<DataTypeProductInCart> = [
         {
             title: 'Tên sản phẩm',
+            ellipsis:true,
+            fixed:'left',
             dataIndex: 'name',
             render: (_, record) => (
                 <Flex>
@@ -63,6 +65,7 @@ const Page = (props: Props) => {
         },
         {
             title: 'Giá',
+            ellipsis:true,
             dataIndex: 'price',
             render: (_, record) => <h1>{formatVND(record.price)}</h1>,
         },
@@ -85,7 +88,7 @@ const Page = (props: Props) => {
                     >
                         <IconMinus />
                     </Flex>
-                    <InputNumber min={1} value={record.quantity || 1} readOnly />
+                    <InputNumber size={`${windowSize.width <=1024 ? 'small' : 'large'}`}  min={1} value={record.quantity || 1} readOnly />
                     <Flex
                         align="center"
                         justify="center"
@@ -106,8 +109,11 @@ const Page = (props: Props) => {
         {
             title: 'Tạm tính',
             render: (_, record) => formatVND(record.price * record.quantity),
+            ellipsis:true,
+
         },
         {
+            fixed:'right',
             render: (_, record) => (
                 <Space size={'large'} onClick={() => handleOnDelete(parseInt(record.key.toString(), 10))}>
                     <IconDelete />
@@ -253,6 +259,7 @@ const Page = (props: Props) => {
                                         }}
                                         columns={columns}
                                         dataSource={dataSource}
+                                        scroll={{ x: 1024 }}
                                     />
                                 </Spin>
                             </Flex>
@@ -261,8 +268,8 @@ const Page = (props: Props) => {
                     <Card
                         hoverable
                         bordered={false}
-                        styles={{ body: { padding: 20 } }}
-                        className="tw-bg-gradient-to-r tw-from-violet-200 tw-to-pink-200"
+                        styles={{ body: { padding: 0 } }}
+                        className="tw-col-span-4 lg:tw-col-span-1 lg:tw-p-5 tw-bg-gradient-to-r tw-from-violet-200 tw-to-pink-200"
                     >
                         <Card>
                             <Space direction="vertical" className="tw-w-full">
