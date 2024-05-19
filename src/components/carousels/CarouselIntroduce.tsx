@@ -3,6 +3,7 @@ import Image from 'next/image';
 import React from 'react';
 import { IconEdit } from '../IconComponent';
 import { useGetCarouselForHomePageQuery } from '@/src/store/queries/apiCommon.query';
+import Link from 'next/link';
 
 type Props = {};
 
@@ -56,18 +57,22 @@ const CarouselIntroduce = (props: Props) => {
                         </div>
                     </Flex>
                     <div className="tw-flex-initial tw-w-full tw-grid tw-grid-cols-2 tw-grid-rows-1 tw-gap-x-4 ">
-                        <Card className="tw-flex tw-items-center tw-justify-center tw-bg-orange-500  tw-shadow-2xl tw-w-full tw-h-full ">
-                            <Flex vertical align="center">
-                                <div className="tw-text-2xl tw-font-bold">100+</div>
-                                <div className="tw-text-base tw-text-white tw-font-bold">ĐỊA DANH</div>
-                            </Flex>
-                        </Card>
-                        <Card className="tw-flex tw-items-center tw-justify-center tw-bg-orange-500 tw-shadow-2xl tw-w-full tw-h-full">
-                            <Flex vertical align="center">
-                                <div className="tw-text-2xl tw-font-bold">172</div>
-                                <div className="tw-text-base tw-text-white tw-font-bold">ĐẶC SẢN</div>
-                            </Flex>
-                        </Card>
+                        <Link href={'place'}>
+                            <Card className="tw-flex tw-items-center tw-justify-center tw-bg-orange-500  tw-shadow-2xl tw-w-full tw-h-full ">
+                                <Flex vertical align="center">
+                                    <div className="tw-text-2xl tw-font-bold">100+</div>
+                                    <div className="tw-text-base tw-text-white tw-font-bold">ĐỊA DANH</div>
+                                </Flex>
+                            </Card>
+                        </Link>
+                        <Link>
+                            <Card className="tw-flex tw-items-center tw-justify-center tw-bg-orange-500 tw-shadow-2xl tw-w-full tw-h-full">
+                                <Flex vertical align="center">
+                                    <div className="tw-text-2xl tw-font-bold">172</div>
+                                    <div className="tw-text-base tw-text-white tw-font-bold">ĐẶC SẢN</div>
+                                </Flex>
+                            </Card>
+                        </Link>
                     </div>
                 </Flex>
             </div>
