@@ -29,8 +29,11 @@ const SideBarComponent = (props: Props) => {
         },
     ];
     if (isSuccess_getCategory) {
-        response_getCategory?.data.map((item, index) =>
-            categoryItems.push({ key: item.categories_id + '', label: item.name })
+        response_getCategory?.data.map(
+            (item, index) => (
+                categoryItems.push({ key: item.categories_id + '', label: item.name }),
+                categoryMobileItems.push({ value: item.categories_id + '', label: item.name })
+            )
         );
     }
     const handleMenuBarOnClick: MenuProps['onClick'] = (e) => {
@@ -40,7 +43,7 @@ const SideBarComponent = (props: Props) => {
         <>
             <List
                 header={<h1 className="tw-text-base tw-font-black tw-text-center">Danh mục sản phẩm</h1>}
-                className="tw-bg-white tw-rounded-lg tw-min-h-fit"
+                className="tw-hidden lg:tw-block tw-bg-white tw-rounded-lg tw-min-h-fit"
             >
                 <Menu
                     onClick={handleMenuBarOnClick}
@@ -53,7 +56,7 @@ const SideBarComponent = (props: Props) => {
                     <Skeleton active loading={isLoading_getCategory}></Skeleton>
                 </div>
             </List>
-            <Select allowClear options={categoryMobileItems} onChange={(e) => dispatch(setMenuId(parseInt(e.key)))} />
+            <Select allowClear options={categoryMobileItems} onChange={(e) => dispatch(setMenuId(parseInt(e.key)))} className='tw-w-full'/>
         </>
     );
 };
