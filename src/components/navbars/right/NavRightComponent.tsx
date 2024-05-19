@@ -74,7 +74,7 @@ const NavRightComponent = (props: Props) => {
         {
             label: (
                 <Link href={'/post'}>
-                    <p className=" tw-text-base tw-font-normal tw-font-lora">Viết blog</p>
+                    <p className="tw-hidden lg:tw-block tw-text-base tw-font-normal tw-font-lora">Viết blog</p>
                 </Link>
             ),
             key: '2',

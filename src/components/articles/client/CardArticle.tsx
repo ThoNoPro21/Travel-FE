@@ -18,8 +18,8 @@ const CardArticle = (props: Props) => {
         imageJson=JSON.parse(props.image)
     }
     return (
-        <Card bordered={false} hoverable size="small" styles={{ body: { padding: 10 } }} className=" tw-min-w-55 tw-shrink-0">
-            <Flex vertical className='tw-h-90'>
+        <Card bordered={false} hoverable size="small" styles={{ body: { padding: 10 } }} className="tw-shrink-0">
+            <Flex vertical className='tw-h-90 tw-min-w-55 '>
                 <div className="tw-flex-none tw-h-60">
                     <Image
                         src={imageJson?.avatar}
