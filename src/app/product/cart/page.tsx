@@ -73,7 +73,7 @@ const Page = (props: Props) => {
         },
         {
             title: 'Số lượng',
-            width:120,
+            width:60,
             dataIndex: 'quantity',
             render: (_, record) => (
                 <Space>
@@ -117,7 +117,7 @@ const Page = (props: Props) => {
         },
         {
             fixed:'right',
-            width:40,
+            width:20,
             render: (_, record) => (
                 <Space size={'large'} onClick={() => handleOnDelete(parseInt(record.key.toString(), 10))}>
                     <IconDelete />
@@ -242,7 +242,7 @@ const Page = (props: Props) => {
                             hoverable
                             styles={{body:{padding:0}}}
                             bordered={false}
-                            className="lg:tw-p-5 tw-bg-gradient-to-r tw-from-violet-200 tw-to-pink-200"
+                            className="tw-p-1 lg:tw-p-5 tw-bg-gradient-to-r tw-from-violet-200 tw-to-pink-200"
                         >
                             <Flex vertical gap={16}>
                                 <Flex
