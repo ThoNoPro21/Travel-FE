@@ -88,9 +88,10 @@ const Overview = (props: Props) => {
                     <Steps
                         progressDot
                         direction="vertical"
-                        type={`${windowSize.width <= 767 ? 'inline' : 'default'}`}
+                        type={`${windowSize.width <= 1024 ? 'inline' : 'default'}`}
                         current={6}
                         items={itemSteps}
+                        className='tw-w-full'
                     />
                 </Col>
             </Row>
