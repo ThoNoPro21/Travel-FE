@@ -53,7 +53,7 @@ const Page = (props: Props) => {
             title: 'Tên sản phẩm',
             ellipsis:true,
             fixed:'left',
-            width:'40px',
+            width:40,
             dataIndex: 'name',
             render: (_, record) => (
                 <Flex>
@@ -67,13 +67,13 @@ const Page = (props: Props) => {
         {
             title: 'Giá',
             ellipsis:true,
-            width:'60px',
+            width:60,
             dataIndex: 'price',
             render: (_, record) => <h1>{formatVND(record.price)}</h1>,
         },
         {
             title: 'Số lượng',
-            width:'60px',
+            width:120,
             dataIndex: 'quantity',
             render: (_, record) => (
                 <Space>
@@ -113,11 +113,11 @@ const Page = (props: Props) => {
             title: 'Tạm tính',
             render: (_, record) => formatVND(record.price * record.quantity),
             ellipsis:true,
-            width:'60px'
+            width:60
         },
         {
             fixed:'right',
-            width:'40px',
+            width:40,
             render: (_, record) => (
                 <Space size={'large'} onClick={() => handleOnDelete(parseInt(record.key.toString(), 10))}>
                     <IconDelete />
@@ -240,8 +240,9 @@ const Page = (props: Props) => {
                     <div className="tw-col-span-4 lg:tw-col-span-3">
                         <Card
                             hoverable
+                            styles={{body:{padding:0}}}
                             bordered={false}
-                            className="tw-bg-gradient-to-r tw-from-violet-200 tw-to-pink-200"
+                            className="lg:tw-p-5 tw-bg-gradient-to-r tw-from-violet-200 tw-to-pink-200"
                         >
                             <Flex vertical gap={16}>
                                 <Flex
@@ -263,7 +264,7 @@ const Page = (props: Props) => {
                                         }}
                                         columns={columns}
                                         dataSource={dataSource}
-                                        scroll={{ x: 1024 }}
+                                        scroll={{ x: 765 }}
                                     />
                                 </Spin>
                             </Flex>
@@ -273,7 +274,7 @@ const Page = (props: Props) => {
                         hoverable
                         bordered={false}
                         styles={{ body: { padding: 0 } }}
-                        className="tw-col-span-4 lg:tw-col-span-1 lg:tw-p-5 tw-bg-gradient-to-r tw-from-violet-200 tw-to-pink-200"
+                        className="tw-col-span-4 lg:tw-col-span-1 tw-bg-gradient-to-r tw-from-violet-200 tw-to-pink-200"
                     >
                         <Card>
                             <Space direction="vertical" className="tw-w-full">
