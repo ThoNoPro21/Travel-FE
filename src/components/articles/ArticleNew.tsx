@@ -42,27 +42,29 @@ const ArticleNew: React.FC<Props> = () => {
             {isErrorArticle && <p>Error loading articles</p>}
 
             {isSuccessArticle && (
-                <Swiper
-                    modules={[Navigation, Pagination]}
-                    slidesPerView={'auto'}
-                    spaceBetween={10}
-                    navigation
-                    pagination={{ clickable: true }}
-                    scrollbar={{ draggable: true }}
-                >
-                    {responseArticle?.data.map((item) => (
-                        <SwiperSlide key={item.articles_id} className="tw-max-w-min">
-                            <Link href={`/blog/${item.articles_id}`}>
-                                <CardArticle
-                                    image={item.images}
-                                    title={item.title}
-                                    username={item.user.name}
-                                    user_avatar={item.user.avatar}
-                                />
-                            </Link>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
+                <Flex>
+                    <Swiper
+                        modules={[Navigation, Pagination]}
+                        slidesPerView={'auto'}
+                        spaceBetween={10}
+                        navigation
+                        pagination={{ clickable: true }}
+                        scrollbar={{ draggable: true }}
+                    >
+                        {responseArticle?.data.map((item) => (
+                            <SwiperSlide key={item.articles_id} className="tw-max-w-min">
+                                <Link href={`/blog/${item.articles_id}`}>
+                                    <CardArticle
+                                        image={item.images}
+                                        title={item.title}
+                                        username={item.user.name}
+                                        user_avatar={item.user.avatar}
+                                    />
+                                </Link>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                </Flex>
             )}
         </Flex>
     );
