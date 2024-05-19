@@ -1,6 +1,7 @@
+'use client';
 import { Card, Col, Flex, Row, Steps } from 'antd';
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { isValidJsonString } from '../../validate/String';
 import { imagesJson } from '@/src/types/Article';
 
@@ -45,11 +46,32 @@ const Overview = (props: Props) => {
     if (isValidJsonString(String(props.listJson))) {
         image = JSON.parse(String(props.listJson));
     }
+
+    const [windowSize, setWindowSize] = useState({
+        width: 0,
+        height: 0,
+    });
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowSize({
+                width: window.innerWidth,
+                height: window.innerHeight,
+            });
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        handleResize();
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return (
         <Card
             hoverable
             bordered={false}
-            className="tw-relative lg:tw-max-h-screen tw-mb-30 tw-px-4 tw-drop-shadow-lg  "
+            className="tw-relative tw-flex tw-justify-center tw-items-center lg:tw-max-h-screen tw-mb-30 tw-px-4 tw-drop-shadow-lg  "
             styles={{ body: { padding: 0 } }}
         >
             <Row gutter={[16, 16]} className="tw-max-h-90 tw-w-full tw-mb-30 tw-py-4">
@@ -63,7 +85,13 @@ const Overview = (props: Props) => {
                     ></Image>
                 </Col>
                 <Col xs={{ span: 24 }} lg={{ span: 12 }}>
-                    <Steps progressDot direction="vertical" current={6} items={itemSteps} />
+                    <Steps
+                        progressDot
+                        direction="vertical"
+                        type={`${windowSize.width <= 767 ? 'inline' : 'default'}`}
+                        current={6}
+                        items={itemSteps}
+                    />
                 </Col>
             </Row>
         </Card>
