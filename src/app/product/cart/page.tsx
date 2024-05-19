@@ -53,6 +53,7 @@ const Page = (props: Props) => {
             title: 'Tên sản phẩm',
             ellipsis:true,
             fixed:'left',
+            width:'50px',
             dataIndex: 'name',
             render: (_, record) => (
                 <Flex>
@@ -114,6 +115,7 @@ const Page = (props: Props) => {
         },
         {
             fixed:'right',
+            width:'50px',
             render: (_, record) => (
                 <Space size={'large'} onClick={() => handleOnDelete(parseInt(record.key.toString(), 10))}>
                     <IconDelete />
