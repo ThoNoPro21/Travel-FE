@@ -71,8 +71,8 @@ const Overview = (props: Props) => {
         <Card
             hoverable
             bordered={false}
-            className="tw-relative tw-flex tw-justify-center tw-items-center lg:tw-max-h-screen tw-mb-30 tw-px-4 tw-drop-shadow-lg  "
-            styles={{ body: { padding: 0 } }}
+            className="tw-relative lg:tw-max-h-screen tw-mb-30 tw-px-4 tw-drop-shadow-lg  "
+            styles={{ body: { padding: 0, display: 'flex', justifyContent: 'center', alignItems: 'center' } }}
         >
             <Row gutter={[16, 16]} className="tw-max-h-90 tw-w-full tw-mb-30 tw-py-4">
                 <Col xs={{ span: 24 }} lg={{ span: 12 }}>
