@@ -1,4 +1,4 @@
-import { Button, Card, Divider, Flex, InputNumber, Rate, Space, Spin, notification } from 'antd';
+import { Button, Card, Col, Divider, Flex, InputNumber, Rate, Row, Space, Spin, notification } from 'antd';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { IconCartShopping, IconCheck, IconClose, IconGripLine } from '../../IconComponent';
@@ -90,8 +90,8 @@ if(isLoading_addToCart){
             bordered={false}
             className="tw-bg-gradient-to-t tw-from-purple-100  tw-via-white  tw-to-fuchsia-200"
         >
-            <Flex gap="middle">
-                <Flex gap='middle' className="tw-flex-1 tw-h-auto tw-w-auto tw-overflow-hidden" vertical>
+            <Row gutter={[16,16]}>
+                <Col  className=" tw-h-auto tw-w-auto tw-overflow-hidden" >
                     <Flex justify='center' className="tw-h-60 ">
                         <Image
                             src={activeImage || props.images.avatar}
@@ -116,32 +116,34 @@ if(isLoading_addToCart){
                             autoPlay={false}
                         />
                     </div>
-                </Flex>
-                <Card bordered={false} className="tw-flex-1">
-                    <Flex vertical gap="small">
-                        <h1 className="tw-text-2xl tw-font-bold">{props.name}</h1>
-                        <Flex align="center" gap="small">
-                            <Rate allowHalf defaultValue={3.5} style={{ fontSize: 12 }} />
-                            <p>(12.5k đánh giá)</p>
-                            <IconGripLine />
-                            <p>5k lượt bán</p>
+                </Col>
+                <Col>
+                    <Card bordered={false}>
+                        <Flex vertical gap="small">
+                            <h1 className="tw-text-2xl tw-font-bold">{props.name}</h1>
+                            <Flex align="center" gap="small">
+                                <Rate allowHalf defaultValue={3.5} style={{ fontSize: 12 }} />
+                                <p>(12.5k đánh giá)</p>
+                                <IconGripLine />
+                                <p>5k lượt bán</p>
+                            </Flex>
+                            <p className="tw-font-black tw-text-xl">{formatVND(props.price)}</p>
+                            <Divider />
+                            <InputNumber min={1} max={100} defaultValue={1} value={quantity} onChange={(value) => setQuantity(value || 1)} />
+                            <Space>
+                                <Button disabled={!isLogin} size="large" type="primary" className="tw-text-base tw-text-white ">
+                                    Mua ngay
+                                </Button>
+                                <Button disabled={!isLogin} className="tw-bg-orange-500 tw-text-base tw-text-white tw-rounded-lg tw-p-2 tw-h-full" onClick={handleAddToCart}>
+                                    Thêm giỏ hàng
+                                    <IconCartShopping />
+                                </Button>
+                            </Space>
+                            { !isLogin && <p className='tw-font-normal tw-text-base tw-text-red-500'>Vui lòng đăng nhập trước khi mua hàng!</p>}
                         </Flex>
-                        <p className="tw-font-black tw-text-xl">{formatVND(props.price)}</p>
-                        <Divider />
-                        <InputNumber min={1} max={100} defaultValue={1} value={quantity} onChange={(value) => setQuantity(value || 1)} />
-                        <Space>
-                            <Button disabled={!isLogin} size="large" type="primary" className="tw-text-base tw-text-white ">
-                                Mua ngay
-                            </Button>
-                            <Button disabled={!isLogin} className="tw-bg-orange-500 tw-text-base tw-text-white tw-rounded-lg tw-p-2 tw-h-full" onClick={handleAddToCart}>
-                                Thêm giỏ hàng
-                                <IconCartShopping />
-                            </Button>
-                        </Space>
-                        { !isLogin && <p className='tw-font-normal tw-text-base tw-text-red-500'>Vui lòng đăng nhập trước khi mua hàng!</p>}
-                    </Flex>
-                </Card>
-            </Flex>
+                    </Card>
+                </Col>
+            </Row>
         </Card>
     );
 };

@@ -50,7 +50,7 @@ const Page = ({ params }: { params: { id: string } }) => {
         );
     }
     return isSuccess_getProductById && response_getProductById.success && (
-        <main className="lg:tw-pt-20 lg:tw-px-13 tw-min-h-screen tw-space-y-4 tw-py-4 tw-bg-slate-100">
+        <main className="tw-pt-20 lg:tw-px-13 tw-min-h-screen tw-space-y-4 tw-py-4 tw-bg-slate-100">
             {response_getProductById?.data.map((item, index) => (
                 <OverviewComponent
                     key={index}
@@ -60,7 +60,7 @@ const Page = ({ params }: { params: { id: string } }) => {
                     product_id={item.products_id}
                 />
             ))}
-            <div className="tw-grid tw-grid-cols-2 tw-grid-flow-row tw-gap-4 tw-py-4">
+            <div className="tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-grid-flow-row tw-gap-4 tw-py-4">
                 <InfoProductComponent product_id={response_getProductById?.data?.[0].products_id} content={response_getProductById?.data?.[0].description} />
                 <ShopComponent />
             </div>
