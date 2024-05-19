@@ -38,6 +38,10 @@ const Page = (props: Props) => {
     const isLogin = useAppSelector((state: RootState) => state.dataAuth.isLogin);
     const status = useAppSelector((state: RootState) => state.dataAuth.isStatus);
     const [isCheckLogin, setIsCheckLogin] = useState(true);
+    const [windowSize, setWindowSize] = useState({
+        width: 0,
+        height: 0,
+    });
 
     const [productSelected, setProductSelected] = useState<DataTypeProductInCart[]>([]);
 
@@ -153,14 +157,28 @@ const Page = (props: Props) => {
         refetch: refetch_getCart,
     } = useGetCartQuery('', { skip: !isLogin });
 
-    useEffect(()=>{
-        dispatch(setSelectedMenuHeader('/product'))
-    },[])
+    useEffect(() => {
+        dispatch(setSelectedMenuHeader('/product'));
+    }, []);
     useEffect(() => {
         if (onChangeCart) {
             refetch_getCart();
         }
     }, [onChangeCart]);
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowSize({
+                width: window.innerWidth,
+                height: window.innerHeight,
+            });
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        handleResize();
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     const dataSource = response_getCart?.data.map((item: productInCart) => ({
         name: item.products.name,
@@ -204,25 +222,6 @@ const Page = (props: Props) => {
             />
         );
     }
-    const [windowSize, setWindowSize] = useState({
-        width: 0,
-        height: 0,
-    });
-
-    useEffect(() => {
-        const handleResize = () => {
-            setWindowSize({
-                width: window.innerWidth,
-                height: window.innerHeight,
-            });
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        handleResize();
-
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
 
     return (
         isSuccess_getCart && (
