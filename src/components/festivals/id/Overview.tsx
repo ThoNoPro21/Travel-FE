@@ -81,7 +81,7 @@ const Overview = (props: Props) => {
                         alt="Picture..."
                         height={1000}
                         width={1000}
-                        className=" tw-rounded-xl tw-bg-center tw-bg-cover tw-w-auto tw-h-auto "
+                        className=" tw-rounded-xl tw-bg-center tw-bg-cover tw-w-auto tw-h-auto tw-flex tw-justify-center tw-items-center "
                     ></Image>
                 </Col>
                 <Col xs={{ span: 24 }} lg={{ span: 12 }}>
@@ -91,6 +91,7 @@ const Overview = (props: Props) => {
                         current={6}
                         items={itemSteps}
                         className='tw-w-full'
+                        responsive={true}
                     />
                 </Col>
             </Row>
