@@ -65,7 +65,7 @@ const CarouselIntroduce = (props: Props) => {
                                 </Flex>
                             </Card>
                         </Link>
-                        <Link>
+                        <Link href='product'>
                             <Card className="tw-flex tw-items-center tw-justify-center tw-bg-orange-500 tw-shadow-2xl tw-w-full tw-h-full">
                                 <Flex vertical align="center">
                                     <div className="tw-text-2xl tw-font-bold">172</div>
