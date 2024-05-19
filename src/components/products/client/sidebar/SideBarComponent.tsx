@@ -56,7 +56,7 @@ const SideBarComponent = (props: Props) => {
                     <Skeleton active loading={isLoading_getCategory}></Skeleton>
                 </div>
             </List>
-            <Select allowClear options={categoryMobileItems} onChange={(e) => dispatch(setMenuId(parseInt(e.key)))} className='tw-w-full'/>
+            <Select allowClear options={categoryMobileItems} onChange={(e) => dispatch(setMenuId(parseInt(e.value)))} className='tw-w-full'/>
         </>
     );
 };
