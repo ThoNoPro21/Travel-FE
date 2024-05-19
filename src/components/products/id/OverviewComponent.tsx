@@ -91,7 +91,7 @@ if(isLoading_addToCart){
             className="tw-bg-gradient-to-t tw-from-purple-100  tw-via-white  tw-to-fuchsia-200"
         >
             <Row gutter={[16,16]}>
-                <Col className=" tw-h-auto tw-w-auto tw-overflow-hidden tw-space-y-4" >
+                <Col xs={24}  lg={12} className=" tw-h-auto tw-w-auto tw-overflow-hidden tw-space-y-4" >
                     <Flex justify='center' className="tw-h-60 ">
                         <Image
                             src={activeImage || props.images.avatar}
@@ -117,7 +117,7 @@ if(isLoading_addToCart){
                         />
                     </div>
                 </Col>
-                <Col>
+                <Col  xs={24}  lg={12} >
                     <Card bordered={false} className='tw-h-full'>
                         <Flex vertical gap="small">
                             <h1 className="tw-text-2xl tw-font-bold">{props.name}</h1>
