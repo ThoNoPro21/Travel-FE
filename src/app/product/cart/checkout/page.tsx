@@ -274,7 +274,7 @@ const Page = (props: Props) => {
     return (
         isLogin && (
             <Spin spinning={isLoading_addOrder} tip="Đang xử lý...">
-                <main className="lg:tw-pt-20 lg:tw-px-13 tw-bg-gradient-to-r tw-from-violet-200 tw-to-pink-200">
+                <main className="tw-pt-20 lg:tw-px-13 tw-bg-gradient-to-r tw-from-violet-200 tw-to-pink-200">
                     <Flex vertical gap={16}>
                         <Card className="tw-hidden lg:tw-block">
                             <Steps current={0} items={items} />
@@ -413,59 +413,63 @@ const Page = (props: Props) => {
                                                 </Spin>
                                             </Form.Item>
                                         </Col>
-                                    </Row>
-                                    <Col span={12}>
-                                        <Form.Item<FieldType>
-                                            label={
-                                                <p className="tw-font-semibold tw-text-sm tw-text-emerald-700">
-                                                    Số điện thoại
-                                                </p>
-                                            }
-                                            validateDebounce={2000}
-                                            rules={[
-                                                { required: true, message: 'Vui lòng nhập số điện thoại!' },
-                                                {
-                                                    pattern: /^(?:\+?84|0)(?:3[2-9]|5[6-9]|7[0|6-9]|8[1-6]|9\d)\d{7}$/,
-                                                    message: 'Số điện thoại không hợp lệ!',
-                                                },
-                                            ]}
-                                        >
-                                            <>
-                                                <Input
-                                                    name="phoneNumber"
-                                                    placeholder="Số điện thoại..."
-                                                    allowClear
-                                                    onChange={(e) => {
-                                                        handleOnChangeInput(e);
-                                                        setValueError((prev: any) => ({ ...prev, phoneNumber: '' }));
-                                                    }}
-                                                />
-                                                {valueError.phoneNumber && (
-                                                    <p className="tw-text-red-400 tw-font-normal">
-                                                        {valueError.phoneNumber}
+                                        <Col span={12}>
+                                            <Form.Item<FieldType>
+                                                label={
+                                                    <p className="tw-font-semibold tw-text-sm tw-text-emerald-700">
+                                                        Số điện thoại
                                                     </p>
-                                                )}
-                                            </>
-                                        </Form.Item>
-                                    </Col>
-                                    <Col span={12}>
-                                        <Form.Item<FieldType>
-                                            label={
-                                                <p className="tw-font-semibold tw-text-sm tw-text-emerald-700">
-                                                    Ghi chú
-                                                </p>
-                                            }
-                                        >
-                                            <TextArea
-                                                onChange={handleOnChangeInput}
-                                                name="note"
-                                                showCount
-                                                maxLength={100}
-                                                placeholder="Ghi chú ..."
-                                                style={{ height: 120, resize: 'none' }}
-                                            />
-                                        </Form.Item>
-                                    </Col>
+                                                }
+                                                validateDebounce={2000}
+                                                rules={[
+                                                    { required: true, message: 'Vui lòng nhập số điện thoại!' },
+                                                    {
+                                                        pattern:
+                                                            /^(?:\+?84|0)(?:3[2-9]|5[6-9]|7[0|6-9]|8[1-6]|9\d)\d{7}$/,
+                                                        message: 'Số điện thoại không hợp lệ!',
+                                                    },
+                                                ]}
+                                            >
+                                                <>
+                                                    <Input
+                                                        name="phoneNumber"
+                                                        placeholder="Số điện thoại..."
+                                                        allowClear
+                                                        onChange={(e) => {
+                                                            handleOnChangeInput(e);
+                                                            setValueError((prev: any) => ({
+                                                                ...prev,
+                                                                phoneNumber: '',
+                                                            }));
+                                                        }}
+                                                    />
+                                                    {valueError.phoneNumber && (
+                                                        <p className="tw-text-red-400 tw-font-normal">
+                                                            {valueError.phoneNumber}
+                                                        </p>
+                                                    )}
+                                                </>
+                                            </Form.Item>
+                                        </Col>
+                                        <Col span={12}>
+                                            <Form.Item<FieldType>
+                                                label={
+                                                    <p className="tw-font-semibold tw-text-sm tw-text-emerald-700">
+                                                        Ghi chú
+                                                    </p>
+                                                }
+                                            >
+                                                <TextArea
+                                                    onChange={handleOnChangeInput}
+                                                    name="note"
+                                                    showCount
+                                                    maxLength={100}
+                                                    placeholder="Ghi chú ..."
+                                                    style={{ height: 120, resize: 'none' }}
+                                                />
+                                            </Form.Item>
+                                        </Col>
+                                    </Row>
                                 </Form>
                             </Card>
                             <Card hoverable bordered={false} className="tw-col-span-3 lg:tw-col-span-1">
