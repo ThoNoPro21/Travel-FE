@@ -68,7 +68,7 @@ const ArticleNew: React.FC<Props> = () => {
                     </Flex>
                     <div className="tw-grid tw-grid-cols-4 tw-grid-flow-row tw-gap-4">
                     {isSuccess_Article && response_Article?.data.map((item) => (
-                                    <Link href={`/blog/${item.articles_id}`}>
+                                    <Link key={item.articles_id} href={`/blog/${item.articles_id}`}>
                                         <CardArticle
                                             image={item.images}
                                             title={item.title}
