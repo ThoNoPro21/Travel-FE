@@ -117,7 +117,7 @@ const Page = (props: Props) => {
         },
         {
             fixed:'right',
-            width:'10%px',
+            width:'40px',
             render: (_, record) => (
                 <Space size={'large'} onClick={() => handleOnDelete(parseInt(record.key.toString(), 10))}>
                     <IconDelete />
