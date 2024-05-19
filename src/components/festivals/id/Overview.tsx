@@ -74,7 +74,7 @@ const Overview = (props: Props) => {
             className="tw-relative lg:tw-max-h-screen tw-mb-30 tw-px-4 tw-drop-shadow-lg  "
             styles={{ body: { padding: 0, display: 'flex', justifyContent: 'center', alignItems: 'center' } }}
         >
-            <Row gutter={[16, 16]} className="tw-max-h-90 tw-w-full tw-mb-30 tw-py-4">
+            <Row gutter={[16, 16]} className="tw-flex tw-justify-center tw-items-center tw-max-h-90 tw-w-full tw-mb-30 tw-py-4">
                 <Col xs={{ span: 24 }} lg={{ span: 12 }}>
                     <Image
                         src={image?.avatar}
@@ -87,8 +87,7 @@ const Overview = (props: Props) => {
                 <Col xs={{ span: 24 }} lg={{ span: 12 }}>
                     <Steps
                         progressDot
-                        direction="vertical"
-                        type={`${windowSize.width <= 1024 ? 'inline' : 'default'}`}
+                        direction={`${windowSize.width <= 1024 ? 'horizontal' : 'vertical'}`}
                         current={6}
                         items={itemSteps}
                         className='tw-w-full'
