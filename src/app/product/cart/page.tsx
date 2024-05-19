@@ -67,11 +67,13 @@ const Page = (props: Props) => {
         {
             title: 'Giá',
             ellipsis:true,
+            width:'60px',
             dataIndex: 'price',
             render: (_, record) => <h1>{formatVND(record.price)}</h1>,
         },
         {
             title: 'Số lượng',
+            width:'60px',
             dataIndex: 'quantity',
             render: (_, record) => (
                 <Space>
@@ -111,11 +113,11 @@ const Page = (props: Props) => {
             title: 'Tạm tính',
             render: (_, record) => formatVND(record.price * record.quantity),
             ellipsis:true,
-
+            width:'60px'
         },
         {
             fixed:'right',
-            width:'30px',
+            width:'10%px',
             render: (_, record) => (
                 <Space size={'large'} onClick={() => handleOnDelete(parseInt(record.key.toString(), 10))}>
                     <IconDelete />
