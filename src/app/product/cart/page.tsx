@@ -204,11 +204,31 @@ const Page = (props: Props) => {
             />
         );
     }
+    const [windowSize, setWindowSize] = useState({
+        width: 0,
+        height: 0,
+    });
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowSize({
+                width: window.innerWidth,
+                height: window.innerHeight,
+            });
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        handleResize();
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return (
         isSuccess_getCart && (
-            <main className="md:tw-pt-20 md:tw-ps-13">
+            <main className="tw-pt-20 md:tw-ps-13">
                 <div className="tw-grid tw-grid-cols-4 tw-grid-flow-row tw-gap-4 tw-p-4">
-                    <div className="tw-col-span-3">
+                    <div className="tw-col-span-4 lg:tw-col-span-3">
                         <Card
                             hoverable
                             bordered={false}
@@ -226,7 +246,7 @@ const Page = (props: Props) => {
                                 </Flex>
                                 <Spin spinning={isLoading_updateCart || isLoading_deleteCart}>
                                     <Table
-                                        size="large"
+                                        size={`${windowSize.width <= 1024 ? 'small' : 'large'}`}
                                         bordered={false}
                                         rowSelection={{
                                             type: 'checkbox',
