@@ -93,7 +93,7 @@ const Page = (props: Props) => {
         isLoading: isLoading_getCity,
         isSuccess: isSuccess_getCity,
         isError: isError_getCity,
-    } = useGetCityQuery('',{skip:!isLogin});
+    } = useGetCityQuery('', { skip: !isLogin });
     const {
         data: response_getDistrict,
         isLoading: isLoading_getDistrict,
@@ -145,9 +145,9 @@ const Page = (props: Props) => {
         setSelectedWard('');
     }, [setSelectedDistrict]);
 
-    useEffect(()=>{
-        dispatch(setSelectedMenuHeader('/product'))
-    },[])
+    useEffect(() => {
+        dispatch(setSelectedMenuHeader('/product'));
+    }, []);
 
     const handleOnChangeInput = (e: any) => {
         const { name, value } = e.target;
@@ -272,133 +272,148 @@ const Page = (props: Props) => {
         );
     }
     return (
-        isLogin &&
-        <Spin spinning={isLoading_addOrder} tip="Đang xử lý..." >
-            <main className="lg:tw-pt-20 lg:tw-px-13 tw-bg-gradient-to-r tw-from-violet-200 tw-to-pink-200">
-                <Flex vertical gap={16}>
-                    <Card>
-                        <Steps current={0} items={items} />
-                    </Card>
-                    <div className="tw-grid tw-grid-cols-3 tw-grid-flow-row tw-gap-4 tw-pb-4">
-                        <Card hoverable bordered={false} className="tw-col-span-2 ">
-                            <Divider orientation="center">
-                                <h1 className="tw-text-xl tw-font-black">Thông tin thanh toán</h1>
-                            </Divider>
-                            <Form layout="vertical" form={form} autoComplete='off'>
-                                <Row gutter={[16, 16]}>
-                                    <Col span={12}>
-                                        <Form.Item<FieldType>
-                                            label={
-                                                <p className="tw-font-semibold tw-text-sm tw-text-emerald-700">Địa chỉ</p>
-                                            }
-                                            rules={[{ required: true, message: 'Vui lòng nhập địa chỉ!' }]}
-                                        >
-                                            <>
-                                                <Input
-                                                    name="address"
-                                                    placeholder="Nhập địa chỉ.."
-                                                    allowClear
-                                                    onChange={(e) => {
-                                                        handleOnChangeInput(e);
-                                                        setValueError((prev) => ({ ...prev, address: '' }));
-                                                    }}
-                                                />
-                                                {valueError.address && (
-                                                    <p className="tw-text-red-400 tw-font-normal">{valueError.address}</p>
-                                                )}
-                                            </>
-                                        </Form.Item>
-                                    </Col>
-                                    <Col span={12}>
-                                        <Form.Item<FieldType>
-                                            label={
-                                                <p className="tw-font-semibold tw-text-sm tw-text-emerald-700">Tỉnh/ Tp</p>
-                                            }
-                                            name="city"
-                                            rules={[{ required: true, message: 'Vui lòng nhập tên thành phố!' }]}
-                                        >
-                                            <Spin spinning={isLoading_getCity}>
-                                                <Select
-                                                    allowClear
-                                                    style={{ width: '100%' }}
-                                                    placeholder="Tỉnh"
-                                                    options={optionCity}
-                                                    value={selectedCity}
-                                                    optionLabelProp="label"
-                                                    onChange={(e, option) => {
-                                                        setSelectedCity(e);
-                                                        setSelectedNameCity(option.label);
-                                                    }}
-                                                    filterOption={(input, option) => (option?.label ?? '').includes(input)}
-                                                />
-                                                {valueError.city && (
-                                                    <p className="tw-text-red-400 tw-font-normal">{valueError.city}</p>
-                                                )}
-                                            </Spin>
-                                        </Form.Item>
-                                    </Col>
-                                </Row>
-                                <Row gutter={[16, 16]}>
-                                    <Col span={12}>
-                                        <Form.Item<FieldType>
-                                            label={
-                                                <p className="tw-font-semibold tw-text-sm tw-text-emerald-700">
-                                                    Quận/ Huyện
-                                                </p>
-                                            }
-                                            name="district"
-                                            rules={[{ required: true, message: 'Vui lòng nhập tên huyện!' }]}
-                                        >
-                                            <Spin spinning={isLoading_getDistrict}>
-                                                <Select
-                                                    style={{ width: '100%' }}
-                                                    placeholder="Huyện"
-                                                    options={optionDistrict}
-                                                    value={selectedDistrict}
-                                                    optionLabelProp="label"
-                                                    onChange={(e, option) => {
-                                                        setSelectedDistrict(e);
-                                                        setSelectedNameDistrict(option.label);
-                                                    }}
-                                                    filterOption={(input, option) => (option?.label ?? '').includes(input)}
-                                                />
-                                                {valueError.district && (
-                                                    <p className="tw-text-red-400 tw-font-normal">{valueError.district}</p>
-                                                )}
-                                            </Spin>
-                                        </Form.Item>
-                                    </Col>
-                                    <Col span={12}>
-                                        <Form.Item<FieldType>
-                                            label={
-                                                <p className="tw-font-semibold tw-text-sm tw-text-emerald-700">
-                                                    Phường/ Xã
-                                                </p>
-                                            }
-                                            name="ward"
-                                            rules={[{ required: true, message: 'Vui lòng nhập tên xã!' }]}
-                                        >
-                                            <Spin spinning={isLoading_getWard}>
-                                                <Select
-                                                    style={{ width: '100%' }}
-                                                    placeholder="Huyện"
-                                                    options={optionWard}
-                                                    value={selectedWard}
-                                                    optionLabelProp="label"
-                                                    onChange={(e, option) => {
-                                                        setSelectedWard(e);
-                                                        setSelectedNameWard(option.label);
-                                                    }}
-                                                    filterOption={(input, option) => (option?.label ?? '').includes(input)}
-                                                />
-                                                {valueError.ward && (
-                                                    <p className="tw-text-red-400 tw-font-normal">{valueError.ward}</p>
-                                                )}
-                                            </Spin>
-                                        </Form.Item>
-                                    </Col>
-                                </Row>
-                                <Row gutter={[16, 16]}>
+        isLogin && (
+            <Spin spinning={isLoading_addOrder} tip="Đang xử lý...">
+                <main className="lg:tw-pt-20 lg:tw-px-13 tw-bg-gradient-to-r tw-from-violet-200 tw-to-pink-200">
+                    <Flex vertical gap={16}>
+                        <Card className="tw-hidden lg:tw-block">
+                            <Steps current={0} items={items} />
+                        </Card>
+                        <div className="tw-grid tw-grid-cols-3 tw-grid-flow-row tw-gap-4 tw-pb-4">
+                            <Card hoverable bordered={false} className="tw-col-span-3 lg:tw-col-span-2 ">
+                                <Divider orientation="center">
+                                    <h1 className="tw-text-xl tw-font-black">Thông tin thanh toán</h1>
+                                </Divider>
+                                <Form layout="vertical" form={form} autoComplete="off">
+                                    <Row gutter={[16, 16]}>
+                                        <Col xs={24} lg={12}>
+                                            <Form.Item<FieldType>
+                                                label={
+                                                    <p className="tw-font-semibold tw-text-sm tw-text-emerald-700">
+                                                        Địa chỉ
+                                                    </p>
+                                                }
+                                                rules={[{ required: true, message: 'Vui lòng nhập địa chỉ!' }]}
+                                            >
+                                                <>
+                                                    <Input
+                                                        name="address"
+                                                        placeholder="Nhập địa chỉ.."
+                                                        allowClear
+                                                        onChange={(e) => {
+                                                            handleOnChangeInput(e);
+                                                            setValueError((prev) => ({ ...prev, address: '' }));
+                                                        }}
+                                                    />
+                                                    {valueError.address && (
+                                                        <p className="tw-text-red-400 tw-font-normal">
+                                                            {valueError.address}
+                                                        </p>
+                                                    )}
+                                                </>
+                                            </Form.Item>
+                                        </Col>
+                                        <Col xs={12} lg={12}>
+                                            <Form.Item<FieldType>
+                                                label={
+                                                    <p className="tw-font-semibold tw-text-sm tw-text-emerald-700">
+                                                        Tỉnh/ Tp
+                                                    </p>
+                                                }
+                                                name="city"
+                                                rules={[{ required: true, message: 'Vui lòng nhập tên thành phố!' }]}
+                                            >
+                                                <Spin spinning={isLoading_getCity}>
+                                                    <Select
+                                                        allowClear
+                                                        style={{ width: '100%' }}
+                                                        placeholder="Tỉnh"
+                                                        options={optionCity}
+                                                        value={selectedCity}
+                                                        optionLabelProp="label"
+                                                        onChange={(e, option) => {
+                                                            setSelectedCity(e);
+                                                            setSelectedNameCity(option.label);
+                                                        }}
+                                                        filterOption={(input, option) =>
+                                                            (option?.label ?? '').includes(input)
+                                                        }
+                                                    />
+                                                    {valueError.city && (
+                                                        <p className="tw-text-red-400 tw-font-normal">
+                                                            {valueError.city}
+                                                        </p>
+                                                    )}
+                                                </Spin>
+                                            </Form.Item>
+                                        </Col>
+                                        <Col span={12}>
+                                            <Form.Item<FieldType>
+                                                label={
+                                                    <p className="tw-font-semibold tw-text-sm tw-text-emerald-700">
+                                                        Quận/ Huyện
+                                                    </p>
+                                                }
+                                                name="district"
+                                                rules={[{ required: true, message: 'Vui lòng nhập tên huyện!' }]}
+                                            >
+                                                <Spin spinning={isLoading_getDistrict}>
+                                                    <Select
+                                                        style={{ width: '100%' }}
+                                                        placeholder="Huyện"
+                                                        options={optionDistrict}
+                                                        value={selectedDistrict}
+                                                        optionLabelProp="label"
+                                                        onChange={(e, option) => {
+                                                            setSelectedDistrict(e);
+                                                            setSelectedNameDistrict(option.label);
+                                                        }}
+                                                        filterOption={(input, option) =>
+                                                            (option?.label ?? '').includes(input)
+                                                        }
+                                                    />
+                                                    {valueError.district && (
+                                                        <p className="tw-text-red-400 tw-font-normal">
+                                                            {valueError.district}
+                                                        </p>
+                                                    )}
+                                                </Spin>
+                                            </Form.Item>
+                                        </Col>
+                                        <Col span={12}>
+                                            <Form.Item<FieldType>
+                                                label={
+                                                    <p className="tw-font-semibold tw-text-sm tw-text-emerald-700">
+                                                        Phường/ Xã
+                                                    </p>
+                                                }
+                                                name="ward"
+                                                rules={[{ required: true, message: 'Vui lòng nhập tên xã!' }]}
+                                            >
+                                                <Spin spinning={isLoading_getWard}>
+                                                    <Select
+                                                        style={{ width: '100%' }}
+                                                        placeholder="Huyện"
+                                                        options={optionWard}
+                                                        value={selectedWard}
+                                                        optionLabelProp="label"
+                                                        onChange={(e, option) => {
+                                                            setSelectedWard(e);
+                                                            setSelectedNameWard(option.label);
+                                                        }}
+                                                        filterOption={(input, option) =>
+                                                            (option?.label ?? '').includes(input)
+                                                        }
+                                                    />
+                                                    {valueError.ward && (
+                                                        <p className="tw-text-red-400 tw-font-normal">
+                                                            {valueError.ward}
+                                                        </p>
+                                                    )}
+                                                </Spin>
+                                            </Form.Item>
+                                        </Col>
+                                    </Row>
                                     <Col span={12}>
                                         <Form.Item<FieldType>
                                             label={
@@ -422,7 +437,7 @@ const Page = (props: Props) => {
                                                     allowClear
                                                     onChange={(e) => {
                                                         handleOnChangeInput(e);
-                                                        setValueError((prev:any) => ({ ...prev, phoneNumber: '' }));
+                                                        setValueError((prev: any) => ({ ...prev, phoneNumber: '' }));
                                                     }}
                                                 />
                                                 {valueError.phoneNumber && (
@@ -436,7 +451,9 @@ const Page = (props: Props) => {
                                     <Col span={12}>
                                         <Form.Item<FieldType>
                                             label={
-                                                <p className="tw-font-semibold tw-text-sm tw-text-emerald-700">Ghi chú</p>
+                                                <p className="tw-font-semibold tw-text-sm tw-text-emerald-700">
+                                                    Ghi chú
+                                                </p>
                                             }
                                         >
                                             <TextArea
@@ -449,64 +466,70 @@ const Page = (props: Props) => {
                                             />
                                         </Form.Item>
                                     </Col>
-                                </Row>
-                            </Form>
-                        </Card>
-                        <Card hoverable bordered={false}>
-                            <Flex vertical>
-                                <Divider orientation="center">
-                                    <h1 className="tw-text-xl tw-font-black">Đơn hàng của bạn</h1>
-                                </Divider>
-                                <Flex align="center" justify="space-between">
-                                    <p className="tw-text-base tw-font-bold">Sản phẩm</p>
-                                    <p className="tw-text-base tw-font-bold">Tạm tính</p>
-                                </Flex>
-                                <Divider style={{ marginBlock: 10, borderWidth: 2, borderColor: 'orange' }}></Divider>
-                                {productSelected?.map((item, index) => (
-                                    <Flex key={index} align="center" justify="space-between" className="tw-flex-1">
-                                        <Space>
-                                            <p className="tw-font-semibold tw-text-base">{item.name}</p>
-                                            <p className="tw-text-cyan-500"> x </p>
-                                            <p className="tw-font-semibold tw-text-base">{item.quantity}</p>
-                                        </Space>
-                                        <p>{formatVND(item.quantity * item.price)}</p>
+                                </Form>
+                            </Card>
+                            <Card hoverable bordered={false} className="tw-col-span-3 lg:tw-col-span-1">
+                                <Flex vertical>
+                                    <Divider orientation="center">
+                                        <h1 className="tw-text-xl tw-font-black">Đơn hàng của bạn</h1>
+                                    </Divider>
+                                    <Flex align="center" justify="space-between">
+                                        <p className="tw-text-base tw-font-bold">Sản phẩm</p>
+                                        <p className="tw-text-base tw-font-bold">Tạm tính</p>
                                     </Flex>
-                                ))}
-                                <Divider style={{ marginBlock: 10, borderWidth: 2, borderColor: 'orange' }}></Divider>
+                                    <Divider
+                                        style={{ marginBlock: 10, borderWidth: 2, borderColor: 'orange' }}
+                                    ></Divider>
+                                    {productSelected?.map((item, index) => (
+                                        <Flex key={index} align="center" justify="space-between" className="tw-flex-1">
+                                            <Space>
+                                                <p className="tw-font-semibold tw-text-base">{item.name}</p>
+                                                <p className="tw-text-cyan-500"> x </p>
+                                                <p className="tw-font-semibold tw-text-base">{item.quantity}</p>
+                                            </Space>
+                                            <p>{formatVND(item.quantity * item.price)}</p>
+                                        </Flex>
+                                    ))}
+                                    <Divider
+                                        style={{ marginBlock: 10, borderWidth: 2, borderColor: 'orange' }}
+                                    ></Divider>
 
-                                <Flex align="center" justify="space-between">
-                                    <p className="tw-font-semibold tw-text-base">Phí ship</p>
-                                    <p>Miễn phí</p>
+                                    <Flex align="center" justify="space-between">
+                                        <p className="tw-font-semibold tw-text-base">Phí ship</p>
+                                        <p>Miễn phí</p>
+                                    </Flex>
+                                    <Divider style={{ marginBlock: 10 }}></Divider>
+                                    <Flex align="center" justify="space-between">
+                                        <p className="tw-font-semibold tw-text-base">Tổng</p>
+                                        <p>{formatVND(totalAmount || 0)}</p>
+                                    </Flex>
+                                    <Divider
+                                        style={{ marginBlock: 10, borderWidth: 2, borderColor: 'orange' }}
+                                    ></Divider>
+                                    <Divider orientation="center">
+                                        <h1 className="tw-text-base tw-font-black">Phương thức thanh toán</h1>
+                                    </Divider>
+                                    <Radio.Group value={1}>
+                                        <Space direction="vertical">
+                                            <Radio value={1}>Thanh toán khi nhận hàng</Radio>
+                                            <Radio value={2}>Ví điện tử</Radio>
+                                        </Space>
+                                    </Radio.Group>
+                                    <Divider style={{ marginBlock: 10 }}></Divider>
+                                    <Button
+                                        disabled={!productSelected || productSelected?.length === 0}
+                                        className="tw-bg-orange-400 tw-font-bold tw-text-base"
+                                        onClick={handleOnSubmit}
+                                    >
+                                        Đặt hàng
+                                    </Button>
                                 </Flex>
-                                <Divider style={{ marginBlock: 10 }}></Divider>
-                                <Flex align="center" justify="space-between">
-                                    <p className="tw-font-semibold tw-text-base">Tổng</p>
-                                    <p>{formatVND(totalAmount || 0)}</p>
-                                </Flex>
-                                <Divider style={{ marginBlock: 10, borderWidth: 2, borderColor: 'orange' }}></Divider>
-                                <Divider orientation="center">
-                                    <h1 className="tw-text-base tw-font-black">Phương thức thanh toán</h1>
-                                </Divider>
-                                <Radio.Group value={1}>
-                                    <Space direction="vertical">
-                                        <Radio value={1}>Thanh toán khi nhận hàng</Radio>
-                                        <Radio value={2}>Ví điện tử</Radio>
-                                    </Space>
-                                </Radio.Group>
-                                <Divider style={{ marginBlock: 10 }}></Divider>
-                                <Button
-                                    disabled={!productSelected || productSelected?.length === 0}
-                                    className="tw-bg-orange-400 tw-font-bold tw-text-base"
-                                    onClick={handleOnSubmit}
-                                >
-                                    Đặt hàng
-                                </Button>
-                            </Flex>
-                        </Card>
-                    </div>
-                </Flex>
-            </main>
-        </Spin>
+                            </Card>
+                        </div>
+                    </Flex>
+                </main>
+            </Spin>
+        )
     );
 };
 

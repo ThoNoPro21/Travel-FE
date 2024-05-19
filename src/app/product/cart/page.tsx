@@ -53,7 +53,7 @@ const Page = (props: Props) => {
             title: 'Tên sản phẩm',
             ellipsis:true,
             fixed:'left',
-            width:40,
+            width:'20%',
             dataIndex: 'name',
             render: (_, record) => (
                 <Flex>
