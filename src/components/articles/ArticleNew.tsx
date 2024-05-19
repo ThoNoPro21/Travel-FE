@@ -14,10 +14,10 @@ type Props = {};
 
 const ArticleNew: React.FC<Props> = () => {
     const {
-        data: responseArticle,
-        isLoading: isLoadingArticle,
-        isSuccess: isSuccessArticle,
-        isError: isErrorArticle,
+        data: response_Article,
+        isLoading: isLoading_Article,
+        isSuccess: isSuccess_Article,
+        isError: isError_Article,
     } = useGetArticleNewQuery('');
 
     return (
@@ -38,33 +38,47 @@ const ArticleNew: React.FC<Props> = () => {
                 </Link>
             </Flex>
 
-            {isLoadingArticle && <Spin fullscreen />}
-            {isErrorArticle && <p>Error loading articles</p>}
+            {isLoading_Article && <Spin fullscreen />}
+            {isError_Article && <p>Error loading articles</p>}
 
-            {isSuccessArticle && (
-                <Flex>
-                    <Swiper
-                        modules={[Navigation, Pagination]}
-                        slidesPerView={'auto'}
-                        spaceBetween={10}
-                        navigation
-                        pagination={{ clickable: true }}
-                        scrollbar={{ draggable: true }}
-                    >
-                        {responseArticle?.data.map((item) => (
-                            <SwiperSlide key={item.articles_id} className="tw-max-w-min">
-                                <Link href={`/blog/${item.articles_id}`}>
-                                    <CardArticle
-                                        image={item.images}
-                                        title={item.title}
-                                        username={item.user.name}
-                                        user_avatar={item.user.avatar}
-                                    />
-                                </Link>
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
-                </Flex>
+            {isSuccess_Article && (
+                <>
+                    <Flex className='lg:tw-hidden'>
+                        <Swiper
+                            modules={[Navigation, Pagination]}
+                            slidesPerView={'auto'}
+                            spaceBetween={10}
+                            navigation
+                            pagination={{ clickable: true }}
+                            scrollbar={{ draggable: true }}
+                        >
+                            {response_Article?.data.map((item) => (
+                                <SwiperSlide key={item.articles_id} className="tw-max-w-min">
+                                    <Link href={`/blog/${item.articles_id}`}>
+                                        <CardArticle
+                                            image={item.images}
+                                            title={item.title}
+                                            username={item.user.name}
+                                            user_avatar={item.user.avatar}
+                                        />
+                                    </Link>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    </Flex>
+                    <div className="tw-grid tw-grid-cols-4 tw-grid-flow-row tw-gap-4">
+                    {isSuccess_Article && response_Article?.data.map((item) => (
+                                    <Link href={`/blog/${item.articles_id}`}>
+                                        <CardArticle
+                                            image={item.images}
+                                            title={item.title}
+                                            username={item.user.name}
+                                            user_avatar={item.user.avatar}
+                                        />
+                                    </Link>
+                            ))}
+                    </div>
+                </>
             )}
         </Flex>
     );
