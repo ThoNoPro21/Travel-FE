@@ -74,14 +74,14 @@ const Overview = (props: Props) => {
             className="tw-relative lg:tw-max-h-screen tw-mb-30 tw-px-4 tw-drop-shadow-lg  "
             styles={{ body: { padding: 0, display: 'flex', justifyContent: 'center', alignItems: 'center' } }}
         >
-            <Row gutter={[16, 16]} className="tw-flex tw-justify-center tw-items-center tw-max-h-90 tw-w-full tw-mb-30 tw-py-4">
-                <Col xs={{ span: 24 }} lg={{ span: 12 }}>
+            <Row gutter={[16, 16]} className="tw-flex tw-justify-center tw-items-center tw-h-auto lg:tw-max-h-90 tw-w-full tw-mb-30 tw-py-4">
+                <Col xs={{ span: 24 }} lg={{ span: 12 }} className='tw-flex tw-justify-center tw-items-center'>
                     <Image
                         src={image?.avatar}
                         alt="Picture..."
                         height={1000}
                         width={1000}
-                        className=" tw-rounded-xl tw-bg-center tw-bg-cover tw-w-auto tw-h-auto tw-flex tw-justify-center tw-items-center "
+                        className=" tw-rounded-xl tw-bg-center tw-bg-cover tw-w-auto tw-h-auto  "
                     ></Image>
                 </Col>
                 <Col xs={{ span: 24 }} lg={{ span: 12 }}>
