@@ -1,18 +1,17 @@
-import { Card, Flex, Steps } from 'antd'
-import Image from 'next/image'
-import React from 'react'
+import { Card, Col, Flex, Row, Steps } from 'antd';
+import Image from 'next/image';
+import React from 'react';
 import { isValidJsonString } from '../../validate/String';
 import { imagesJson } from '@/src/types/Article';
 
-
 type Props = {
-    listJson:imagesJson;
-    address:string;
-    end_date:Date;
-    start_date:Date;
-    name:string;
-    price:number;
-}
+    listJson: imagesJson;
+    address: string;
+    end_date: Date;
+    start_date: Date;
+    name: string;
+    price: number;
+};
 const Overview = (props: Props) => {
     const startDate = new Date(props.start_date);
     const endDate = new Date(props.end_date);
@@ -39,36 +38,36 @@ const Overview = (props: Props) => {
         },
         {
             title: 'Vé',
-            description: `${props.price==0 ? 'Free' :props.price}`,
+            description: `${props.price == 0 ? 'Free' : props.price}`,
         },
     ];
-    let image:imagesJson|undefined;
-    if(isValidJsonString(String(props.listJson))){
-        image=JSON.parse(String(props.listJson));
+    let image: imagesJson | undefined;
+    if (isValidJsonString(String(props.listJson))) {
+        image = JSON.parse(String(props.listJson));
     }
-  return (
-    <Card
-    hoverable
-    bordered={false}
-    className="tw-relative lg:tw-max-h-screen tw-mb-30 tw-px-4 tw-drop-shadow-lg  "
-    styles={{ body: { padding: 0 } }}
->
-    <Flex gap={24} className="tw-max-h-90 tw-w-full tw-mb-30 tw-py-4">
-        <div className="tw-flex-1 tw-relative">
-            <Image
-                src={image?.avatar}
-                alt="Picture..."
-                height={1000}
-                width={1000}
-                className=" tw-rounded-xl tw-bg-center tw-bg-cover tw-w-auto tw-h-auto "
-            ></Image>
-        </div>
-        <Flex vertical className="tw-flex-1">
-            <Steps progressDot direction="vertical" current={6} items={itemSteps} />
-        </Flex>
-    </Flex>
-</Card>
-  )
-}
+    return (
+        <Card
+            hoverable
+            bordered={false}
+            className="tw-relative lg:tw-max-h-screen tw-mb-30 tw-px-4 tw-drop-shadow-lg  "
+            styles={{ body: { padding: 0 } }}
+        >
+            <Row gutter={[16, 16]} className="tw-max-h-90 tw-w-full tw-mb-30 tw-py-4">
+                <Col xs={{ span: 24 }} lg={{ span: 12 }}>
+                    <Image
+                        src={image?.avatar}
+                        alt="Picture..."
+                        height={1000}
+                        width={1000}
+                        className=" tw-rounded-xl tw-bg-center tw-bg-cover tw-w-auto tw-h-auto "
+                    ></Image>
+                </Col>
+                <Col xs={{ span: 24 }} lg={{ span: 12 }}>
+                    <Steps progressDot direction="vertical" current={6} items={itemSteps} />
+                </Col>
+            </Row>
+        </Card>
+    );
+};
 
-export default Overview
+export default Overview;
