@@ -12,9 +12,9 @@ import { PaginationApiResponseData } from '@/src/types/ApiRespone';
 
 type Props = {
     product_id: number;
-    refetch_getCommentByProduct:()=>void;
-    setPageComment:(value:number)=>void;
-    response_getCommentByProduct?:PaginationApiResponseData<commentType>;
+    refetch_getCommentByProduct: () => void;
+    setPageComment: (value: number) => void;
+    response_getCommentByProduct?: PaginationApiResponseData<commentType>;
 };
 
 const ReviewComponent = (props: Props) => {
@@ -48,7 +48,7 @@ const ReviewComponent = (props: Props) => {
                 <main className="tw-max-h-screen">
                     <Card className="tw-shadow-lg">
                         <Flex vertical gap={24}>
-                            <Flex>
+                            <Flex gap="small">
                                 <div className=" tw-w-14 tw-h-14">
                                     <Avatar size={52} src={user?.avatar}>
                                         {user?.avatar ? null : <IconUser />}
@@ -57,7 +57,7 @@ const ReviewComponent = (props: Props) => {
                                 <Flex vertical className="tw-w-full">
                                     {isLogin ? (
                                         <TextArea
-                                            className="tw-text-base tw-font-normal tw-font-mono"
+                                            className="tw-text-sm md:tw-text-lg tw-font-normal tw-font-mono"
                                             allowClear
                                             maxLength={255}
                                             showCount
@@ -67,7 +67,7 @@ const ReviewComponent = (props: Props) => {
                                             onChange={(e) => setComment(e.target.value)}
                                         />
                                     ) : (
-                                        <p className="tw-text-base tw-font-lora tw-font-semibold tw-text-orange-400">
+                                        <p className="tw-text-sm lg:tw-text-base tw-font-lora tw-font-semibold tw-text-orange-400">
                                             Vui lòng đăng nhập trước khi bình luận !
                                         </p>
                                     )}
@@ -81,22 +81,25 @@ const ReviewComponent = (props: Props) => {
                                     </Button>
                                 </Flex>
                             </Flex>
-                            <Flex vertical className="tw-w-full">
-                                <Divider></Divider>
-                                {props.response_getCommentByProduct?.data &&props.response_getCommentByProduct?.data?.length >0 &&
-                                    props.response_getCommentByProduct?.data?.map((item, index) => (
-                                        <div key={index}>
-                                            <CommentComponent
-                                                content={item.content}
-                                                username={item.user?.name}
-                                                avatar={item.user?.avatar}
-                                                create_at={item.create_at}
-                                            />
-                                            <Divider style={{ margin: 4 }}></Divider>
-                                        </div>
-                                    ))}
-                                <Divider></Divider>
-                                {props.response_getCommentByProduct?.data &&props.response_getCommentByProduct?.data?.length >0 && (
+                        </Flex>
+                        <Flex vertical className="tw-w-full">
+                            <Divider></Divider>
+                            {props.response_getCommentByProduct?.data &&
+                                props.response_getCommentByProduct?.data?.length > 0 &&
+                                props.response_getCommentByProduct?.data?.map((item, index) => (
+                                    <div key={index}>
+                                        <CommentComponent
+                                            content={item.content}
+                                            username={item.user?.name}
+                                            avatar={item.user?.avatar}
+                                            create_at={item.create_at}
+                                        />
+                                        <Divider style={{ margin: 4 }}></Divider>
+                                    </div>
+                                ))}
+                            <Divider></Divider>
+                            {props.response_getCommentByProduct?.data &&
+                                props.response_getCommentByProduct?.data?.length > 0 && (
                                     <Pagination
                                         className="tw-flex-initial tw-m-auto"
                                         onChange={onChangeNewPage}
@@ -106,7 +109,6 @@ const ReviewComponent = (props: Props) => {
                                         current={props.response_getCommentByProduct?.current_page || 1}
                                     />
                                 )}
-                            </Flex>
                         </Flex>
                     </Card>
                 </main>

@@ -17,9 +17,7 @@ type Props = {};
 const PlaceHot = (props: Props) => {
     const router = useRouter();
     const { data: response_place, isLoading: isLoading_place, isSuccess: isSuccess_place } = useGetAll_PlaceQuery('');
-    const handleOnClickCard = (value: number) => {
-        router.push(`/place/${value}`);
-    };
+
     return (
         <Row>
             <Col className="gutter-row" span={24}>
@@ -50,16 +48,11 @@ const PlaceHot = (props: Props) => {
                     spaceBetween={10}
                     navigation
                     pagination={{ clickable: true }}
-                    scrollbar={{ draggable: true }}
                 >
                     {!isLoading_place ? (
-                        response_place?.data.map((item) => (
-                            <div
-                                key={item.places_id}
-                                className="tw-max-w-min"
-                                onClick={() => handleOnClickCard(item.places_id)}
-                            >
-                                <SwiperSlide className="tw-max-w-min tw-py-4">
+                        response_place?.data.map((item, index) => (
+                            <div key={index} className="tw-max-w-min" >
+                                <SwiperSlide key={index} className="tw-max-w-min tw-py-8" onClick={()=>router.push(`place/${item.places_id}`)}>
                                     <CardPlaceHot
                                         src={item.images}
                                         heart="11K"

@@ -18,8 +18,10 @@ import {
     Flex,
     Form,
     Input,
+    InputRef,
     Modal,
     Radio,
+    RefSelectProps,
     Row,
     Select,
     Space,
@@ -29,7 +31,7 @@ import {
 } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
 import { useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { setSelectedMenuHeader } from '@/src/store/slices/common.slice';
 
 type Props = {};
@@ -84,6 +86,12 @@ const Page = (props: Props) => {
         district: '',
         ward: '',
     });
+
+    const addressRef = useRef<InputRef>(null);
+    const phoneNumberRef = useRef<InputRef>(null);
+    const cityRef = useRef<RefSelectProps>(null);
+    const districtRef = useRef<RefSelectProps>(null);
+    const wardRef = useRef<RefSelectProps>(null);
 
     const productSelected = useAppSelector((state: RootState) => state.dataProduct.productSelected);
     const totalAmount = productSelected?.reduce((acc, cur) => acc + cur.price * cur.quantity, 0);
@@ -156,39 +164,45 @@ const Page = (props: Props) => {
 
     const [addOrder, { isLoading: isLoading_addOrder }] = useAddOrdersMutation();
 
-    const handleOnSubmit = () => {
+    const handleOnSubmit = async() => {
         if (!valueInput.address) {
             setValueError((prev) => ({ ...prev, address: 'Không được để trống!' }));
+            addressRef?.current?.focus();
             return;
         } else {
             setValueError((prev) => ({ ...prev, address: '' }));
         }
         if (!valueInput.phoneNumber) {
             setValueError((prev) => ({ ...prev, phoneNumber: 'Không được để trống!' }));
+            phoneNumberRef.current?.focus();
             return;
         } else {
             setValueError((prev) => ({ ...prev, phoneNumber: '' }));
         }
         if (!validatePhoneNumber(valueInput.phoneNumber)) {
             setValueError((prev) => ({ ...prev, phoneNumber: 'Đây không phải là 1 số điện thoại!' }));
+            phoneNumberRef.current?.focus();
             return;
         } else {
             setValueError((prev) => ({ ...prev, phoneNumber: '' }));
         }
         if (!selectedCity) {
             setValueError((prev) => ({ ...prev, city: 'Không được để trống!' }));
+            cityRef.current?.focus();
             return;
         } else {
             setValueError((prev) => ({ ...prev, city: '' }));
         }
         if (!selectedDistrict) {
             setValueError((prev) => ({ ...prev, district: 'Không được để trống!' }));
+            districtRef.current?.focus();
             return;
         } else {
             setValueError((prev) => ({ ...prev, district: '' }));
         }
         if (!selectedWard) {
             setValueError((prev) => ({ ...prev, ward: 'Không được để trống!' }));
+            wardRef.current?.focus();
             return;
         } else {
             setValueError((prev) => ({ ...prev, ward: '' }));
@@ -211,7 +225,7 @@ const Page = (props: Props) => {
             )
         );
 
-        addOrder(formData).then((res) => {
+        await addOrder(formData).then((res) => {
             if ('data' in res) {
                 setValueInput({
                     address: '',
@@ -285,7 +299,7 @@ const Page = (props: Props) => {
                                     <h1 className="tw-text-xl tw-font-black">Thông tin thanh toán</h1>
                                 </Divider>
                                 <Form layout="vertical" form={form} autoComplete="off">
-                                    <Row gutter={[16, 16]}>
+                                    <Row gutter={{ xs: 8, sm: 16 }}>
                                         <Col xs={24} lg={12}>
                                             <Form.Item<FieldType>
                                                 label={
@@ -297,6 +311,7 @@ const Page = (props: Props) => {
                                             >
                                                 <>
                                                     <Input
+                                                        ref={addressRef}
                                                         name="address"
                                                         placeholder="Nhập địa chỉ.."
                                                         allowClear
@@ -325,6 +340,7 @@ const Page = (props: Props) => {
                                             >
                                                 <Spin spinning={isLoading_getCity}>
                                                     <Select
+                                                        ref={cityRef}
                                                         allowClear
                                                         style={{ width: '100%' }}
                                                         placeholder="Tỉnh"
@@ -359,6 +375,7 @@ const Page = (props: Props) => {
                                             >
                                                 <Spin spinning={isLoading_getDistrict}>
                                                     <Select
+                                                        ref={districtRef}
                                                         style={{ width: '100%' }}
                                                         placeholder="Huyện"
                                                         options={optionDistrict}
@@ -392,6 +409,7 @@ const Page = (props: Props) => {
                                             >
                                                 <Spin spinning={isLoading_getWard}>
                                                     <Select
+                                                        ref={wardRef}
                                                         style={{ width: '100%' }}
                                                         placeholder="Huyện"
                                                         options={optionWard}
@@ -432,6 +450,7 @@ const Page = (props: Props) => {
                                             >
                                                 <>
                                                     <Input
+                                                        ref={phoneNumberRef}
                                                         name="phoneNumber"
                                                         placeholder="Số điện thoại..."
                                                         allowClear

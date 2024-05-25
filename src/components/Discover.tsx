@@ -17,15 +17,15 @@ const Discover = (props: Props) => {
                     </Space>
                 </Flex>
             </Col>
-            <Col>
-                <div className="tw-grid tw-grid-cols-2  tw-grid-rows-2 lg:tw-grid-cols-4 lg:tw-grid-rows-1 tw-gap-4 tw-cursor-pointer ">
+            <Col span={24} className='tw-flex tw-justify-center tw-items-center'>
+                <div className="tw-grid tw-grid-cols-2 tw-grid-rows-2 lg:tw-grid-cols-4 lg:tw-grid-rows-1 tw-gap-4 tw-cursor-pointer tw-w-fit ">
                     <Flex
                         vertical
-                        className="tw-relative tw-h-60 tw-overflow-hidden"
+                        className="tw-relative tw-h-40 lg:tw-h-60 tw-max-w-64 tw-overflow-hidden"
                         onClick={() => router.push('place')}
                     >
                         <Image
-                            src="https://res.cloudinary.com/thodo2001/image/upload/v1713944384/travel/place/vqutimmr2eroz2ut9jb8.jpg"
+                            src="https://res.cloudinary.com/thodo2001/image/upload/v1715793236/travel/place/btigp580m2taqfl9cf2t.jpg"
                             height={1000}
                             width={1000}
                             quality={100}
@@ -42,7 +42,7 @@ const Discover = (props: Props) => {
                     </Flex>
                     <Flex
                         vertical
-                        className="tw-relative tw-h-60 tw-overflow-hidden"
+                        className="tw-relative tw-h-40 lg:tw-h-60 tw-max-w-64 tw-overflow-hidden"
                         onClick={() => router.push('festival')}
                     >
                         <Image
@@ -64,7 +64,7 @@ const Discover = (props: Props) => {
                     </Flex>
                     <Flex
                         vertical
-                        className="tw-relative tw-h-60 tw-overflow-hidden"
+                        className="tw-relative tw-h-40 lg:tw-h-60 tw-max-w-64  tw-overflow-hidden"
                         onClick={() => router.push('product')}
                     >
                         <Image
@@ -86,7 +86,7 @@ const Discover = (props: Props) => {
                     </Flex>
                     <Flex
                         vertical
-                        className="tw-relative tw-h-60 tw-overflow-hidden"
+                        className="tw-relative tw-h-40 lg:tw-h-60 tw-max-w-64  tw-overflow-hidden"
                         onClick={() => router.push('blog')}
                     >
                         <Image

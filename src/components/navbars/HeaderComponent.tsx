@@ -5,6 +5,7 @@ import { Header } from 'antd/es/layout/layout';
 import { IconBarMenu } from '../IconComponent';
 import NavRightComponent from './right/NavRightComponent';
 import NavMiddleComponent from './body/NavMiddleComponent';
+import Link from 'next/link';
 
 type Props = {};
 
@@ -29,7 +30,7 @@ const HeaderComponent = (props: Props) => {
                     <IconBarMenu />
                 </button>
                 <Drawer
-                    title="Travel"
+                    title="Quan Tum"
                     placement="left"
                     onClose={onClose}
                     open={openMenu}
@@ -40,11 +41,13 @@ const HeaderComponent = (props: Props) => {
 
                 </Drawer>
                 <div className="tw-hidden tw-text-center tw-py-3 tw-gap-3 sm:tw-flex lg:tw-items-start  ">
-                    <h1 className="lg:tw-text-2xl tw-text-xl sm:tw-text-sm tw-font-bold tw-text-emerald-300 ">
-                        QuanTum
-                    </h1>
+                    <Link href='/'>
+                        <h1 className="tw-text-2xl  tw-font-bold tw-text-emerald-300 ">
+                            QuanTum
+                        </h1>
+                    </Link>
                 </div>
-                <Flex className="tw-flex-1 tw-hidden lg:tw-flex">
+                <Flex className="tw-flex-1 tw-hidden md:tw-flex">
                     <div className="tw-m-auto ">
                         <NavMiddleComponent mode='horizontal' />
                     </div>

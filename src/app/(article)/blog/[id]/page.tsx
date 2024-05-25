@@ -30,6 +30,9 @@ const Page = ({ params }: { params: { id: string } }) => {
         return <Spin fullscreen />;
     }
 
+    if(isLoading_postById){
+        return <Spin fullscreen />
+    }
     if (isError_postById) {
         return (
             <ResultComponent

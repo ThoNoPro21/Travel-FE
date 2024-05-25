@@ -88,15 +88,15 @@ const Page = (props: Props) => {
                             )}
                             <button
                                 type="submit"
-                                className="tw-bg-orange-500 tw-p-2 tw-rounded-lg tw-font-bold tw-font-mono tw-text-lg tw-text-white"
+                                className="tw-bg-orange-500 tw-px-4 tw-py-1 lg:tw-py-2 tw-rounded-md lg:tw-rounded-lg tw-font-bold tw-font-mono tw-text-base lg:tw-text-lg tw-text-white"
                             >
                                 Đăng nhập
                             </button>
                         </Form>
                         <p className=" tw-font-mono tw-text-center">
-                            Bạn chưa có tài khoản!{' '}
+                            Bạn chưa có tài khoản!
                             <Link href={'/register'}>
-                                <span className="tw-text-blue-400 tw-italic">Đăng ký </span>
+                                <span className="tw-text-blue-700 tw-italic"> Đăng ký </span>
                             </Link>
                         </p>
                     </Flex>

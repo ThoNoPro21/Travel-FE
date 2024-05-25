@@ -50,17 +50,17 @@ const ArticleNew: React.FC<Props> = () => {
                             spaceBetween={10}
                             navigation
                             pagination={{ clickable: true }}
-                            scrollbar={{ draggable: true }}
                         >
                             {response_Article?.data.map((item) => (
-                                <SwiperSlide key={item.articles_id} className="tw-max-w-min">
+                                <SwiperSlide key={item.articles_id} className='tw-max-w-55 tw-py-8'>
                                     <Link href={`/blog/${item.articles_id}`}>
-                                        <CardArticle
-                                            image={item.images}
-                                            title={item.title}
-                                            username={item.user.name}
-                                            user_avatar={item.user.avatar}
-                                        />
+                                            <CardArticle
+                                                content={item.content}
+                                                image={item.images}
+                                                title={item.title}
+                                                username={item.user.name}
+                                                user_avatar={item.user.avatar}
+                                            />
                                     </Link>
                                 </SwiperSlide>
                             ))}
@@ -70,6 +70,7 @@ const ArticleNew: React.FC<Props> = () => {
                     {isSuccess_Article && response_Article?.data.map((item) => (
                                     <Link key={item.articles_id} href={`/blog/${item.articles_id}`}>
                                         <CardArticle
+                                            content={item.content}
                                             image={item.images}
                                             title={item.title}
                                             username={item.user.name}

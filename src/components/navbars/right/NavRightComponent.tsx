@@ -161,7 +161,7 @@ const NavRightComponent = (props: Props) => {
                     </>
                 ) : (
                     <Space size={'large'}>
-                        <h1 onClick={handleOnClickLogin}>Đăng nhập</h1>
+                        <h1 onClick={handleOnClickLogin} className='tw-hidden md:tw-block'>Đăng nhập</h1>
                         <button
                             className="tw-rounded-3xl tw-text-base tw-bg-orange-500 tw-px-5 tw-py-2 tw-font-bold tw-text-white"
                             onClick={handleOnClickRegister}

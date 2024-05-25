@@ -30,7 +30,7 @@ const MainComponent = (props: Props) => {
     return (
         <main className="tw-grid tw-grid-cols-1 tw-grid-flow-row tw-gap-y-2 ">
             <Card hoverable bordered={false} className="tw-bg-gray-200 tw-h-fit">
-                <div className="tw-grid tw-grid-cols-2 lg:tw-grid-cols-4 tw-grid-flow-row tw-gap-4 ">
+                <div className="tw-grid tw-grid-cols-2 md:tw-grid-cols-3 lg:tw-grid-cols-4 tw-grid-flow-row tw-gap-4 ">
                     {isLoading_ProductByCategory ? (
                         <>
                             <Skeleton active />

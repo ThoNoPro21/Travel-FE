@@ -4,6 +4,7 @@ import { IconBookMark, IconDot, IconEllipsis, IconUser } from '../../IconCompone
 import ReactPlayer from 'react-player';
 import parse from 'html-react-parser';
 import '@/src/styles/app.scss';
+import { calculateReadingTime } from '../../validate/String';
 type Props = {
     avatar_user?: string;
     content?: string | TrustedHTML;
@@ -29,7 +30,7 @@ const SideMain = (props: Props) => {
                         <Space className="tw-text-sm">
                             <p>{formattedDate}</p>
                             <IconDot />
-                            <p>5 phút đọc</p>
+                            <p>{calculateReadingTime(String(props.content))} phút đọc</p>
                         </Space>
                     </Flex>
                 </Space>

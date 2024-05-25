@@ -38,7 +38,7 @@ const Page = (props: Props) => {
 
     return (
         <Spin spinning={isLoading_register} tip="Chờ xíu...">
-            <main className="tw-relative tw-flex md:tw-pt-20 md:tw-px-13 tw-min-h-screen tw-bg-[url('/bg/image2.png')] tw-bg-center tw-bg-cover  tw-font-lora">
+            <main className="tw-relative tw-flex tw-pt-20 md:tw-px-13 tw-min-h-screen tw-bg-[url('/bg/image2.png')] tw-bg-center tw-bg-cover  tw-font-lora">
                 <Flex
                     vertical
                     className="tw-w-auto tw-m-auto lg:tw-w-130 tw-backdrop-blur-md tw-bg-white/10 tw-text-white tw-p-4 tw-rounded-lg tw-z-10"
@@ -105,7 +105,7 @@ const Page = (props: Props) => {
                         <p className="tw-text-cyan-600 tw-mb-4">Nên dùng email chính chủ để verify !</p>
                         <button
                             type="submit"
-                            className="tw-bg-orange-500 tw-p-2 tw-rounded-lg tw-font-bold tw-font-mono tw-text-lg tw-text-white"
+                            className="tw-bg-orange-500 tw-px-4 tw-py-1 lg:tw-py-2  tw-rounded-md lg:tw-rounded-lg tw-font-bold tw-font-mono tw-text-base lg:tw-text-lg tw-text-white"
                         >
                             Đăng ký
                         </button>
@@ -113,7 +113,7 @@ const Page = (props: Props) => {
                     <p className=" tw-font-mono tw-text-center">
                         Bạn đã có tài khoản!{' '}
                         <Link href={'/login'}>
-                            <span className="tw-text-blue-400 tw-italic">Đăng nhập </span>
+                            <span className="tw-text-blue-700 tw-italic">Đăng nhập </span>
                         </Link>
                     </p>
                 </Flex>

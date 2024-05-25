@@ -14,7 +14,7 @@ const TabsComponent = (props: Props) => {
                     onChange={(e) => props.getTab(parseInt(e,10))}
                     size="small"
                     options={props.options}
-                    className={`tw-m-auto tw-px-5 tw-py-2 tw-font-bold tw-bg-orange-500 tw-text-base tw-font-mono tw-text-white`}
+                    className={`tw-m-auto tw-px-5 tw-py-2 tw-font-bold tw-bg-orange-500 tw-text-xs md:tw-text-base tw-font-mono tw-text-white`}
                 />
             </Divider>
         </div>

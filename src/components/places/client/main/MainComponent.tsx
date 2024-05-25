@@ -37,7 +37,6 @@ const MainComponent = (props: Props) => {
             ) : isSuccess_getPlaceByLocation && response_getPlaceByLocation.success ? (
                 response_getPlaceByLocation?.data.data.map((item, index) => (
                     <div
-                        className=""
                         key={index}
                         onClick={() => router.push(`place/${item.places_id}`)}
                     >
@@ -50,7 +49,7 @@ const MainComponent = (props: Props) => {
                     </div>
                 ))
             ) : (
-                <Empty className="tw-col-span-6" description="Không có dữ liệu!" />
+                <Empty description="Không có dữ liệu!" />
             )}
             <Flex>
                 <Pagination

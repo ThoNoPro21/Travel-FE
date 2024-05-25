@@ -27,22 +27,9 @@ const CardPlaceComponent = (props: Props) => {
                         <span className=" tw-grow tw-overflow-hidden tw-text-ellipsis">
                             <Space>
                                 <IconLocation />
-                                <p className="tw-font-bold tw-font-nunito-sans tw-text-base">{props.location}</p>
+                                <p className="tw-font-bold tw-font-nunito-sans tw-text-xs  md:tw-text-base">{props.location}</p>
                             </Space>
                         </span>
-                        <div className="tw-min-h-5 tw-w-full">
-                            {/* <Flex justify='space-between'>
-                                <Space direction="vertical">
-                                    <span>Ngày bắt đầu:</span>
-                                    <span className="tw-font-bold">{formattedStartDate}</span>
-                                </Space>
-
-                                <Space direction="vertical">
-                                    <span>Ngày kết thúc:</span>
-                                    <span className="tw-font-bold">{formattedEndDate}</span>
-                                </Space>
-                            </Flex> */}
-                        </div>
                     </Flex>
                     <Image
                         src={props.images.avatar}

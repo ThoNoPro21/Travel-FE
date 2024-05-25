@@ -51,12 +51,12 @@ const Page = (props: Props) => {
     const columns: TableColumnsType<DataTypeProductInCart> = [
         {
             title: 'Tên sản phẩm',
-            ellipsis:true,
+            fixed:'left',
             dataIndex: 'name',
             render: (_, record) => (
-                <Flex>
-                    <h1 className="tw-w-25 tw-font-bold ">{record.name}</h1>
-                    <div className="tw-w-16 tw-h-16">
+                <Flex  className='tw-flex-col lg:tw-flex-row'>
+                    <h1 className="tw-w-full tw-font-bold ">{record.name}</h1>
+                    <div className="tw-w-20 tw-h-20">
                         <Image src={record.avatar} alt="Avatar" height={1000} width={1000} />
                     </div>
                 </Flex>
@@ -65,20 +65,19 @@ const Page = (props: Props) => {
         {
             title: 'Giá',
             ellipsis:true,
-            width:60,
+            width:120,
             dataIndex: 'price',
             render: (_, record) => <h1>{formatVND(record.price)}</h1>,
         },
         {
             title: 'Số lượng',
-            width:60,
             dataIndex: 'quantity',
             render: (_, record) => (
-                <Space>
+                <Space className='tw-w-20'>
                     <Flex
                         align="center"
                         justify="center"
-                        className="tw-bg-orange-400 tw-p-2"
+                        className="tw-bg-orange-400 md:tw-p-2 "
                         onClick={() =>
                             updateCart([parseInt(record.key.toString()), 'decrease']).then((res) => {
                                 if ('data' in res) {
@@ -89,11 +88,11 @@ const Page = (props: Props) => {
                     >
                         <IconMinus />
                     </Flex>
-                    <InputNumber size={`${windowSize.width <=1024 ? 'small' : 'large'}`}  min={1} value={record.quantity || 1} readOnly />
+                    <InputNumber size={`${windowSize.width <=1024 ? 'small' : 'large'}`}  min={1} value={record.quantity || 1} readOnly className='tw-w-auto sm:tw-w-20'/>
                     <Flex
                         align="center"
                         justify="center"
-                        className="tw-bg-blue-400 tw-p-2"
+                        className="tw-bg-blue-400 md:tw-p-2"
                         onClick={() =>
                             updateCart([parseInt(record.key.toString()), 'increase']).then((res) => {
                                 if ('data' in res) {
@@ -109,13 +108,13 @@ const Page = (props: Props) => {
         },
         {
             title: 'Tạm tính',
+            width:120,
             render: (_, record) => formatVND(record.price * record.quantity),
             ellipsis:true,
-            width:60
         },
         {
             fixed:'right',
-            width:20,
+            width:40,
             render: (_, record) => (
                 <Space size={'large'} onClick={() => handleOnDelete(parseInt(record.key.toString(), 10))}>
                     <IconDelete />
@@ -248,7 +247,7 @@ const Page = (props: Props) => {
                                     className="tw-border tw-w-max tw-p-2 tw-bg-orange-400 tw-border-orange-500 hover:border-indigo-300 tw-rounded-lg"
                                 >
                                     <IconLeft />
-                                    <Link href="product/">
+                                    <Link href="/product">
                                         <p className="tw-text-sm tw-font-bold tw-text-white">TIẾP TỤC MUA SẮM</p>
                                     </Link>
                                 </Flex>
@@ -262,7 +261,7 @@ const Page = (props: Props) => {
                                         }}
                                         columns={columns}
                                         dataSource={dataSource}
-                                        scroll={{ x: 765 }}
+                                        scroll={{ x: 520 }}
                                     />
                                 </Spin>
                             </Flex>

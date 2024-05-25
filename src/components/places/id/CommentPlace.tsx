@@ -45,67 +45,69 @@ const CommentPlace = (props: Props) => {
     return (
         <Row gutter={[16, 16]}>
             <Col className="gutter-row  tw-font-lora" span={24}>
-                <h1 className="tw-font-bold tw-text-xl lg:tw-text-2xl">Bình luận</h1>
+                <h1 className="tw-font-bold tw-text-xl lg:tw-text-2xl">
+                    Bình luận (
+                    <span className="tw-text-orange-400 tw-p-2">{response_getCommentByPlace?.data?.total || 0}</span>)
+                </h1>
             </Col>
             <Col className="gutter-row tw-font-lora" span={24}>
                 <main className="tw-max-h-screen">
                     <Card className="tw-shadow-lg">
-                        <Flex gap={24}>
-                            <div className=" tw-w-14 tw-h-14">
-                                <Avatar size={52} src={user?.avatar}>
+                        <Flex gap='small' vertical>
+                            <Flex>
+                                <Avatar size={48} src={user?.avatar}>
                                     {user?.avatar ? null : <IconUser />}
                                 </Avatar>
-                            </div>
-                            <Flex vertical className="tw-w-full">
-                                {isLogin ? (
-                                    <TextArea
-                                        className="tw-text-base tw-font-semibold tw-font-mono"
-                                        allowClear
-                                        maxLength={255}
-                                        showCount
-                                        value={comment}
-                                        placeholder="Hãy viết bình luận của bạn ..."
-                                        variant="borderless"
-                                        onChange={(e) => setComment(e.target.value)}
-                                    />
-                                ) : (
-                                    <p className="tw-text-base tw-font-lora tw-font-bold">
-                                        Vui lòng đăng nhập trước khi bình luận !
-                                    </p>
-                                )}
+                                <Flex vertical className="tw-w-full">
+                                    {isLogin ? (
+                                        <TextArea
+                                            className="tw-text-sm md:tw-text-base tw-font-semibold tw-font-mono"
+                                            allowClear
+                                            maxLength={255}
+                                            showCount
+                                            value={comment}
+                                            placeholder="Hãy viết bình luận của bạn ..."
+                                            variant="borderless"
+                                            onChange={(e) => setComment(e.target.value)}
+                                        />
+                                    ) : (
+                                        <p className="tw-text-sm md:tw-text-base tw-font-lora tw-font-bold">
+                                            Vui lòng đăng nhập trước khi bình luận !
+                                        </p>
+                                    )}
 
-                                <Button
-                                    disabled={!isLogin || comment.trim().length === 0}
-                                    className="tw-rounded-3xl tw-w-fit tw-text-sm tw-bg-orange-500 w-font-bold tw-text-white tw-self-end tw-mt-6"
-                                    onClick={handleSubmitComment}
-                                >
-                                    BÌNH LUẬN
-                                </Button>
-                                <Divider></Divider>
-                                {response_getCommentByPlace?.success &&
-                                    response_getCommentByPlace?.data?.data?.map((item, index) => (
-                                        <div key={index}>
-                                            <CommentComponent
-                                                content={item.content}
-                                                username={item.user?.name}
-                                                avatar={item.user?.avatar}
-                                                create_at={item.create_at}
-                                            />
-                                            <Divider style={{ margin: 4 }}></Divider>
-                                        </div>
-                                    ))}
-                                <Divider></Divider>
-                                {response_getCommentByPlace?.success && (
-                                    <Pagination
-                                        className="tw-flex-initial tw-m-auto"
-                                        onChange={onChangeNewPage}
-                                        defaultCurrent={1}
-                                        total={response_getCommentByPlace?.data.total || 0}
-                                        pageSize={response_getCommentByPlace?.data.per_page || 10}
-                                        current={response_getCommentByPlace?.data.current_page || 1}
-                                    />
-                                )}
+                                    <Button
+                                        disabled={!isLogin || comment.trim().length === 0}
+                                        className="tw-rounded-3xl tw-w-fit tw-text-sm tw-bg-orange-500 w-font-bold tw-text-white tw-self-end tw-mt-6"
+                                        onClick={handleSubmitComment}
+                                    >
+                                        BÌNH LUẬN
+                                    </Button>
+                                </Flex>
                             </Flex>
+                            <Divider className='tw-m-0'></Divider>
+                            {response_getCommentByPlace?.success &&
+                                response_getCommentByPlace?.data?.data?.map((item, index) => (
+                                    <div key={index}>
+                                        <CommentComponent
+                                            content={item.content}
+                                            username={item.user?.name}
+                                            avatar={item.user?.avatar}
+                                            create_at={item.create_at}
+                                        />
+                                    </div>
+                                ))}
+                            <Divider className='tw-m-0'></Divider>
+                            {response_getCommentByPlace?.success && (
+                                <Pagination
+                                    className="tw-flex-initial tw-m-auto"
+                                    onChange={onChangeNewPage}
+                                    defaultCurrent={1}
+                                    total={response_getCommentByPlace?.data.total || 0}
+                                    pageSize={response_getCommentByPlace?.data.per_page || 10}
+                                    current={response_getCommentByPlace?.data.current_page || 1}
+                                />
+                            )}
                         </Flex>
                     </Card>
                 </main>

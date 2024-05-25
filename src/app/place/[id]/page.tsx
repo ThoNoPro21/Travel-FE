@@ -55,6 +55,10 @@ const Page = ({ params }: { params: { id: string } }) => {
     if (!isStatus) {
         return null;
     }
+
+    if(isLoading_getPlaceById){
+        return <Spin fullscreen />
+    }
     if (isError_getPlaceById) {
         return (
             <ResultComponent
@@ -67,7 +71,7 @@ const Page = ({ params }: { params: { id: string } }) => {
         );
     }
     return  isSuccess_getPlaceById && response_getPlaceById.success && (
-        <main className="md:tw-pt-20 md:tw-px-13 md:tw-min-h-screen tw-space-y-10 tw-pb-4 tw-bg-gray-300 tw-font-lora">
+        <main className="tw-pt-20 tw-px-4 md:tw-px-13 md:tw-min-h-screen tw-space-y-10 tw-pb-4 tw-bg-gray-300 tw-font-lora">
             <Overview location={data?.location?.name} place_name={data?.name} listJson={data?.images} />
             <TabsComponent options={tabOptions} getTab={getTabActive} />
             {tabActive === 0 && <TongQuan content={data?.description} />}

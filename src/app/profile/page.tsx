@@ -91,10 +91,10 @@ const Page = (props: Props) => {
 
     return (
         user &&
-        <main className="md:tw-pt-20 md:tw-px-13 tw-min-h-screen tw-bg-gradient-to-r tw-from-violet-200 tw-to-pink-200">
+        <main className="tw-pt-20 tw-px-4 md:tw-px-13 tw-min-h-screen tw-bg-gradient-to-r tw-from-violet-200 tw-to-pink-200">
             <Spin spinning={isLoading_updateProfile} tip="Đang cập nhật...">
-                <div className="tw-grid tw-grid-cols-4 tw-gap-4">
-                    <Card className="tw-col-span-1">
+                <div className="tw-grid tw-grid-cols-12 tw-gap-4 tw-py-4">
+                    <Card className="tw-col-span-12 lg:tw-col-span-3">
                         <Flex align="center" gap={'small'} vertical>
                             {imagePreview ? (
                                 <Avatar size={128} src={imagePreview}></Avatar>
@@ -127,15 +127,15 @@ const Page = (props: Props) => {
                             </Upload>
                         </Flex>
                     </Card>
-                    <Card className="tw-col-span-3">
+                    <Card className="tw-col-span-12 lg:tw-col-span-9">
                         <Divider orientation="center">
                             <div className="tw-text-xl tw-font-bold tw-font-mono">Thông tin cá nhân</div>
                         </Divider>
-                        <Flex align="center">
-                            <p className=" tw-w-40 tw-text-base tw-font-semibold tw-font-mono ">Họ tên</p>
+                        <Flex gap='small'>
+                            <p className=" tw-w-20 lg:tw-w-40 tw-text-base tw-font-semibold tw-font-mono ">Họ tên</p>
                             <TextArea
                                 disabled={!textDisable.name}
-                                className="tw-flex-1 tw-font-medium"
+                                className="tw-flex-1 tw-text-center tw-font-medium"
                                 allowClear
                                 maxLength={20}
                                 value={textName}
@@ -144,7 +144,7 @@ const Page = (props: Props) => {
                                 onChange={(e) => setTextName(e.target.value)}
                             />
                             <Button
-                                className="tw-rounded-3xl tw-text-base tw-border-red-350 tw-text-emerald-700 "
+                                className="tw-rounded-3xl tw-text-xs md:tw-text-sm lg:tw-text-base tw-border-red-350 tw-text-emerald-700 "
                                 onClick={() => setTextDisable((prev) => ({ ...prev, name: true }))}
                             >
                                 Chỉnh sửa
@@ -152,7 +152,7 @@ const Page = (props: Props) => {
                         </Flex>
                         <Divider></Divider>
                         <Flex>
-                            <p className="tw-w-40 tw-text-base tw-font-semibold tw-font-mono ">Tiểu sử</p>
+                            <p className="tw-w-20 lg:tw-w-40 tw-text-base tw-font-semibold tw-font-mono ">Tiểu sử</p>
                             <TextArea
                                 disabled={!textDisable.story}
                                 className="tw-flex-1 tw-font-medium"
@@ -164,7 +164,7 @@ const Page = (props: Props) => {
                                 onChange={(e) => setTextStory(e.target.value)}
                             />
                             <Button
-                                className="tw-rounded-3xl tw-text-sm tw-border-red-350 tw-text-emerald-700 "
+                                className="tw-rounded-3xl tw-text-xs md:tw-text-sm lg:tw-text-base tw-border-red-350 tw-text-emerald-700 "
                                 onClick={() => setTextDisable((prev) => ({ ...prev, story: true }))}
                             >
                                 Chỉnh sửa
@@ -172,12 +172,12 @@ const Page = (props: Props) => {
                         </Flex>
                         <Divider></Divider>
                         <Flex>
-                            <p className="tw-w-40 tw-text-sm tw-font-semibold tw-font-mono ">Email</p>
+                            <p className="tw-w-20 lg:tw-w-40 tw-text-base tw-font-semibold tw-font-mono ">Email</p>
                             <p className="tw-flex-1 tw-font-medium">{user?.email}</p>
                         </Flex>
                         <Divider orientation="right">
                             <button
-                                className="tw-rounded-3xl tw-text-base tw-bg-orange-500 tw-px-5 tw-py-2 tw-font-bold tw-text-white"
+                                className="tw-rounded-3xl tw-text-xs md:tw-text-sm lg:tw-text-base tw-bg-orange-500 tw-px-5 tw-py-2 tw-font-bold tw-text-white"
                                 onClick={handleOnClickUpdate}
                             >
                                 Cập nhật

@@ -31,10 +31,11 @@ const RelatedProductComponent = (props: Props) => {
                 </Flex>
             </Col>
             <Col span={24}>
-                <div className="tw-grid tw-grid-cols-5 tw-grid-flow-row tw-gap-4 tw-w-full ">
+                <div className="tw-grid tw-grid-cols-12 tw-grid-flow-row tw-gap-2 md:tw-gap-4 tw-auto-rows-max tw-w-full ">
                     {response_getProduct?.success ? (
                         response_getProduct?.data.data.map((item, index) => (
                             <div
+                                className='tw-cursor-pointer tw-col-span-6 md:tw-col-span-4 lg:tw-col-span-2  '
                                 key={index}
                                 onClick={() => router.push(`/product/${item.products_id}`)}
                             >
@@ -47,10 +48,10 @@ const RelatedProductComponent = (props: Props) => {
                             </div>
                         ))
                     ) : (
-                        <Empty className="tw-col-span-5" description="Không có dữ liệu !" />
+                        <Empty className="tw-col-span-12" description="Không có dữ liệu !" />
                     )}
                     {response_getProduct?.success && (
-                        <Flex className=" tw-col-span-6">
+                        <Flex className=" tw-col-span-12">
                             <Pagination
                                 className="tw-flex-initial tw-m-auto"
                                 onChange={onChangeNewPageProduct}

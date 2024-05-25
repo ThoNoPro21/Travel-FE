@@ -1,7 +1,7 @@
 import { Button, Card, Col, Divider, Flex, InputNumber, Rate, Row, Space, Spin, notification } from 'antd';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
-import { IconCartShopping, IconCheck, IconClose, IconGripLine } from '../../IconComponent';
+import { IconCartShopping, IconCheck, IconClose, IconGripLine, IconMinus, IconPlus } from '../../IconComponent';
 import { imagesJson } from '@/src/types/Article';
 import { formatVND } from '../../validate/String';
 import SwiperComponent from '../../SwiperComponent';
@@ -17,7 +17,6 @@ type Props = {
     product_id: number;
 };
 
-
 const OverviewComponent = (props: Props) => {
     const router = useRouter();
     const [activeImage, setActiveImage] = useState('');
@@ -30,28 +29,28 @@ const OverviewComponent = (props: Props) => {
     const handleNotificationClose = () => {
         setNotificationVisible(true);
     };
-        useEffect(() => {
-            return () => {
-                if(notificationVisible){
-                    notification.destroy('addToCard');
-                    notification.destroy('removeToCard');
-                }
-            };
-        },[notificationVisible]);
+    useEffect(() => {
+        return () => {
+            if (notificationVisible) {
+                notification.destroy('addToCard');
+                notification.destroy('removeToCard');
+            }
+        };
+    }, [notificationVisible]);
 
-    const isLogin = useAppSelector((state:RootState) =>state.dataAuth.isLogin);
-    const [addToCart,{isLoading:isLoading_addToCart,isSuccess:isSuccess_addToCart}] = useAddToCartMutation()
-    const handleAddToCart = async () =>{
+    const isLogin = useAppSelector((state: RootState) => state.dataAuth.isLogin);
+    const [addToCart, { isLoading: isLoading_addToCart, isSuccess: isSuccess_addToCart }] = useAddToCartMutation();
+    const handleAddToCart = async () => {
         let formData = new FormData();
-        formData.append('product_id',String(props.product_id));
-        formData.append('quantity',String(quantity));
-        await addToCart(formData).then((res)=>{
-            if('data' in res){
+        formData.append('product_id', String(props.product_id));
+        formData.append('quantity', String(quantity));
+        await addToCart(formData).then((res) => {
+            if ('data' in res) {
                 notification.success({
                     message: <p className="tw-text-base tw-font-bold">Thêm giỏ hàng thành công!</p>,
                     description: <p className="  tw-text-sm  tw-font-normal"> Vào giỏ hàng xem ngay thôi !</p>,
                     icon: <IconCheck />,
-                    duration:3,
+                    duration: 3,
                     placement: 'bottomRight',
                     key: 'addToCart',
                     style: {
@@ -60,15 +59,15 @@ const OverviewComponent = (props: Props) => {
                     },
                     onClick: () => {
                         handleNotificationClose();
-                        router.push('product/cart', { scroll: false });
+                        router.push('/product/cart', { scroll: false });
                     },
                 });
-            }else{
+            } else {
                 notification.error({
                     message: <p className="tw-text-base tw-font-bold">Thêm giỏ hàng thất bại!</p>,
                     description: <p className="  tw-text-sm  tw-font-normal"> Có lỗi trong quá trình thực thi !</p>,
                     duration: 3,
-                    icon: <IconClose color='red' />,
+                    icon: <IconClose color="red" />,
                     placement: 'bottomRight',
                     key: 'removeToCart',
                     style: {
@@ -77,12 +76,12 @@ const OverviewComponent = (props: Props) => {
                     },
                 });
             }
-        })
+        });
     };
 
-if(isLoading_addToCart){
-    return <Spin fullscreen/>
-}
+    if (isLoading_addToCart) {
+        return <Spin fullscreen />;
+    }
 
     return (
         <Card
@@ -90,9 +89,9 @@ if(isLoading_addToCart){
             bordered={false}
             className="tw-bg-gradient-to-t tw-from-purple-100  tw-via-white  tw-to-fuchsia-200"
         >
-            <Row gutter={[16,16]}>
-                <Col xs={24}  lg={12} className=" tw-h-auto tw-w-auto tw-overflow-hidden tw-space-y-4" >
-                    <Flex justify='center' className="tw-h-60 ">
+            <Row gutter={[16, 16]}>
+                <Col xs={24} lg={12} className=" tw-h-auto tw-w-auto tw-overflow-hidden tw-space-y-4">
+                    <Flex justify="center" className="tw-h-60 ">
                         <Image
                             src={activeImage || props.images.avatar}
                             alt="Picture...."
@@ -117,8 +116,8 @@ if(isLoading_addToCart){
                         />
                     </div>
                 </Col>
-                <Col  xs={24}  lg={12} >
-                    <Card bordered={false} className='tw-h-full'>
+                <Col xs={24} lg={12}>
+                    <Card bordered={false} className="tw-h-full">
                         <Flex vertical gap="small">
                             <h1 className="tw-text-2xl tw-font-bold">{props.name}</h1>
                             <Flex align="center" gap="small">
@@ -129,17 +128,56 @@ if(isLoading_addToCart){
                             </Flex>
                             <p className="tw-font-black tw-text-xl">{formatVND(props.price)}</p>
                             <Divider />
-                            <InputNumber min={1} max={100} defaultValue={1} value={quantity} onChange={(value) => setQuantity(value || 1)} />
+                            <Flex gap="small">
+                                <Flex
+                                    align="center"
+                                    justify="center"
+                                    className="tw-bg-orange-400 tw-p-2"
+                                    onClick={() =>
+                                        quantity === 1 ? 1 : setQuantity((prevQuantity) => prevQuantity - 1)
+                                    }
+                                >
+                                    <IconMinus />
+                                </Flex>
+                                <InputNumber
+                                    min={1}
+                                    max={100}
+                                    defaultValue={1}
+                                    value={quantity}
+                                    onChange={(value) => setQuantity(value || 1)}
+                                />
+                                <Flex
+                                    align="center"
+                                    justify="center"
+                                    className="tw-bg-blue-400 tw-p-2"
+                                    onClick={() => setQuantity((prevQuantity) => prevQuantity + 1)}
+                                >
+                                    <IconPlus />
+                                </Flex>
+                            </Flex>
                             <Space>
-                                <Button disabled={!isLogin} size="large" type="primary" className="tw-text-base tw-text-white ">
+                                <Button
+                                    disabled={!isLogin}
+                                    size="large"
+                                    type="primary"
+                                    className="tw-text-base tw-text-white "
+                                >
                                     Mua ngay
                                 </Button>
-                                <Button disabled={!isLogin} className="tw-bg-orange-500 tw-text-base tw-text-white tw-rounded-lg tw-p-2 tw-h-full" onClick={handleAddToCart}>
+                                <Button
+                                    disabled={!isLogin}
+                                    className="tw-bg-orange-500 tw-text-base tw-text-white tw-rounded-lg tw-p-2 tw-h-full"
+                                    onClick={handleAddToCart}
+                                >
                                     Thêm giỏ hàng
                                     <IconCartShopping />
                                 </Button>
                             </Space>
-                            { !isLogin && <p className='tw-font-normal tw-text-base tw-text-red-500'>Vui lòng đăng nhập trước khi mua hàng!</p>}
+                            {!isLogin && (
+                                <p className="tw-font-normal tw-text-base tw-text-red-500">
+                                    Vui lòng đăng nhập trước khi mua hàng!
+                                </p>
+                            )}
                         </Flex>
                     </Card>
                 </Col>

@@ -162,6 +162,24 @@
     font-weight: 200;
 }
 
+.ck-content ul {
+    list-style-type: none; /* Loại bỏ dấu đầu dòng mặc định */
+    li{
+        list-style-type: none;
+        position: relative;
+        padding-left: 20px; /* Đảm bảo khoảng cách cho dấu đầu dòng */
+    }
+    li::before {
+        content: '•'; /* Dấu đầu dòng tùy chỉnh */
+        position: absolute;
+        left: 10px;
+        color: black; /* Tùy chỉnh màu sắc của dấu đầu dòng */
+        font-size: 1em; /* Tùy chỉnh kích thước của dấu đầu dòng */
+        line-height: 1; /* Đảm bảo dấu đầu dòng nằm chính xác */
+    }
+}
+
+
 
 /* @ckeditor/ckeditor5-table/theme/tablecaption.css */
 .ck-content .table>figcaption {

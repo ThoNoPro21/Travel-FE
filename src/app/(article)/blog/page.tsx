@@ -67,6 +67,7 @@ const Page = (props: Props) => {
                         response_postByTopic?.data?.data.map((item, index) => (
                             <div key={index} onClick={() => handleOnClickPost(item.articles_id)}>
                                 <ArticleComponent
+                                    created_at={item.created_at}
                                     src={item.images}
                                     content={item.content}
                                     title={item.title}

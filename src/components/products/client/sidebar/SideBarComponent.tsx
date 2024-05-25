@@ -1,10 +1,12 @@
 'use client';
+import { IconSearch } from '@/src/components/IconComponent';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { useGetCategoryQuery } from '@/src/store/queries/apiCategory.query';
 import { setMenuId } from '@/src/store/slices/common.slice';
 import { RootState } from '@/src/store/store';
-import { Badge, Card, List, Menu, MenuProps, Select, SelectProps, Skeleton, Space } from 'antd';
+import { Badge, Card, Flex, Input, List, Menu, MenuProps, Select, SelectProps, Skeleton, Space } from 'antd';
 import React, { useState } from 'react';
+import SearchComponent from './SearchComponent';
 
 type Props = {};
 
@@ -56,7 +58,19 @@ const SideBarComponent = (props: Props) => {
                     <Skeleton active loading={isLoading_getCategory}></Skeleton>
                 </div>
             </List>
-            <Select allowClear options={categoryMobileItems} placeholder='Danh mục sản phẩm' onChange={(e) => dispatch(setMenuId(parseInt(e.key)))} className='tw-w-full'/>
+            <Flex gap='middle' className='tw-px-4 lg:tw-hidden'>
+                <Select
+                    allowClear
+                    defaultValue={'0'}
+                    options={categoryMobileItems}
+                    placeholder="Danh mục sản phẩm"
+                    onChange={(e) => dispatch(setMenuId(parseInt(e)))}
+                    className="tw-flex-1 tw-w-full lg:tw-hidden"
+                />
+                <div className="tw-flex-1 tw-flex-grow">
+                    <SearchComponent />
+                </div>
+            </Flex>
         </>
     );
 };

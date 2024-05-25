@@ -37,7 +37,7 @@ import { faLock } from '@fortawesome/free-solid-svg-icons/faLock';
 type Props = {};
 
 export const IconUser = () => {
-    return <FontAwesomeIcon icon={faUser} style={{ color: 'white', width: 16, height: 16 }} />;
+    return <FontAwesomeIcon icon={faUser} style={{ color: 'white', minWidth: 14, minHeight: 14 }} />;
 };
 export const IconCartShopping = () => {
     return <FontAwesomeIcon icon={faCartShopping} style={{ color: 'white', width: 16, height: 16 }} />;

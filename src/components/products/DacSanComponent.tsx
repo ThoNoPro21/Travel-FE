@@ -18,15 +18,16 @@ const DacSanComponent = (props: Props) => {
         router.push(`/product/${value}`, { scroll: false });
     };
     return (
-        <Card hoverable styles={{ body: { padding: 0, width: '100%', height: 280 } }} className='tw-shadow-lg tw-h-fit'>
+        <Card hoverable styles={{ body: { padding: 0, width: '100%' } }} className='tw-shadow-lg '>
             <Flex
                 vertical
                 gap={16}
+                align='center'
                 justify="space-between"
-                className="tw-p-2 tw-w-full tw-h-full"
+                className="tw-p-2 tw-h-50 md:tw-h-60"
                 onClick={() => handleOnClick(props.product_id)}
             >
-                <Flex justify='center' className="tw-h-60 tw-overflow-hidden">
+                <Flex justify='center' className=" tw-flex-1 tw-w-auto tw-overflow-hidden">
                     <Image
                         src={props.src}
                         alt="Picture ..."
@@ -34,10 +35,10 @@ const DacSanComponent = (props: Props) => {
                         width={1000}
                         height={1000}
                         priority={true}
-                        className="tw-bg-cover tw-w-auto tw-bg-center tw-rounded-lg"
+                        className="tw-bg-cover tw-w-auto tw-h-auto tw-bg-center tw-rounded-lg "
                     />
                 </Flex>
-                <Flex vertical  align="center" className="tw-h-16 ">
+                <Flex vertical  align="center" className="tw-h-12 md:tw-h-16 tw-flex-none">
                     <p className="tw-text-base tw-font-black">{props.name}</p>
                     <p className="tw-text-base tw-font-semibold">{formatVND(props.price)}</p>
                 </Flex>

@@ -50,7 +50,7 @@ const Discover = (props: Props) => {
     const {
         data: response_getFestivalByPlace,
         isSuccess: isSuccess_getFestivalByPlace,
-        isLoading: getFestivalByPlace,
+        isLoading: isLoading_getFestivalByPlace,
         refetch: refetch_getFestivalByPlace,
     } = useGetFestivalByPlaceQuery([props.place_id, pageFestival], { skip: tabActive === 0 || tabActive === 2 });
     const {
@@ -77,24 +77,31 @@ const Discover = (props: Props) => {
     return (
         <Row>
             <Col className="gutter-row" span={24}>
-                <Flex justify="space-between" align="flex-start" className="tw-w-full tw-font-lora">
+                <Flex
+                    justify="space-between"
+                    align="flex-start"
+                    className="tw-w-full tw-font-lora tw-flex-col md:tw-flex-row"
+                >
                     <Space direction="vertical">
                         <h1 className="tw-font-bold tw-text-xl lg:tw-text-2xl">Khám phá nơi đây</h1>
-                        <p className="lg:tw-text-lg tw-text-base tw-font-medium">Có thể bạn sẽ thích ?</p>
+                        <p className="tw-text-sm md:tw-text-base lg:tw-text-lg tw-font-medium">Có thể bạn sẽ thích ?</p>
                     </Space>
-                    <TabsComponent options={tabOptions} getTab={getTabActive} />
+                    <div className="tw-m-auto md:tw-m-0">
+                        <TabsComponent options={tabOptions} getTab={getTabActive} />
+                    </div>
                 </Flex>
             </Col>
             <Col
-                className="gutter-row tw-bg-gradient-to-r tw-from-cyan-100 tw-to-fuchsia-200 tw-rounded-lg tw-p-6 tw-space-y-10"
+                className="gutter-row tw-bg-gradient-to-r tw-from-cyan-100 tw-to-fuchsia-200 tw-rounded-lg md:tw-p-4 lg:tw-p-6 tw-space-y-10"
                 span={24}
             >
-                <div className="tw-grid tw-grid-cols-6 tw-grid-flow-row tw-gap-4 tw-w-full ">
+                <div className="tw-grid tw-grid-cols-12 tw-grid-flow-row tw-gap-4 tw-w-full ">
                     {tabActive === 0 && (
                         <>
                             {response_getProductByPlace?.success && response_getProductByPlace?.data.data.length > 0 ? (
                                 response_getProductByPlace?.data.data.map((item, index) => (
                                     <div
+                                        className="tw-col-span-6 md:tw-col-span-4 lg:tw-col-span-2"
                                         key={index}
                                         onClick={() => router.push(`/product/${item.products_id}`)}
                                     >
@@ -107,11 +114,11 @@ const Discover = (props: Props) => {
                                     </div>
                                 ))
                             ) : (
-                                <Empty className="tw-col-span-6" description="Không có dữ liệu !" />
+                                <Empty className="tw-col-span-12" description="Không có dữ liệu !" />
                             )}
 
                             {response_getProductByPlace?.success && (
-                                <Flex className=" tw-col-span-6">
+                                <Flex className=" tw-col-span-12">
                                     <Pagination
                                         className="tw-flex-initial tw-m-auto"
                                         onChange={onChangeNewPageProduct}
@@ -126,15 +133,18 @@ const Discover = (props: Props) => {
                     )}
                     {tabActive === 1 && (
                         <>
-                            {response_getFestivalByPlace?.success &&
-                            response_getFestivalByPlace?.data?.data?.length > 0 ? (
+                            {isLoading_getFestivalByPlace ? (
+                                <Flex gap="middle" className="tw-col-span-12">
+                                    <Skeleton active />
+                                    <Skeleton active />
+                                </Flex>
+                            ) : response_getFestivalByPlace?.success &&
+                              response_getFestivalByPlace?.data?.data?.length > 0 ? (
                                 response_getFestivalByPlace?.data?.data.map((item, index) => (
                                     <div
-                                        className="tw-col-span-3"
+                                        className="tw-col-span-12 md:tw-col-span-12 lg:tw-col-span-6"
                                         key={index}
-                                        onClick={() =>
-                                            router.push(`/festival/${item.festivals_id}`)
-                                        }
+                                        onClick={() => router.push(`/festival/${item.festivals_id}`)}
                                     >
                                         <FestivalComponent
                                             location={item.location.name}
@@ -147,10 +157,10 @@ const Discover = (props: Props) => {
                                     </div>
                                 ))
                             ) : (
-                                <Empty className="tw-col-span-6" description="Không có dữ liệu !" />
+                                <Empty className="tw-col-span-12" description="Không có dữ liệu !" />
                             )}
                             {response_getFestivalByPlace?.success && (
-                                <Flex className=" tw-col-span-6">
+                                <Flex className=" tw-col-span-12">
                                     <Pagination
                                         className="tw-flex-initial tw-m-auto"
                                         onChange={onChangeNewPageProduct}
@@ -166,14 +176,21 @@ const Discover = (props: Props) => {
 
                     {tabActive === 2 && (
                         <>
-                            {response_getArticleByPlace?.success && response_getArticleByPlace?.data.data.length > 0 ? (
+                            {isLoading_getArticleByPlace ? (
+                                <Flex gap="middle" className="tw-col-span-12">
+                                    <Skeleton active />
+                                    <Skeleton active />
+                                </Flex>
+                            ) : response_getArticleByPlace?.success &&
+                              response_getArticleByPlace?.data.data.length > 0 ? (
                                 response_getArticleByPlace?.data.data.map((item, index) => (
                                     <div
-                                        className="tw-col-span-2"
+                                        className="tw-col-span-6 md:tw-col-span-4 lg:tw-col-span-3"
                                         key={index}
                                         onClick={() => router.push(`/blog/${item.articles_id}`)}
                                     >
                                         <CardArticle
+                                            content={item.content}
                                             image={item.images}
                                             username={item.user.name}
                                             user_avatar={item.user.avatar}
@@ -182,10 +199,10 @@ const Discover = (props: Props) => {
                                     </div>
                                 ))
                             ) : (
-                                <Empty className="tw-col-span-6" description="Không có dữ liệu !" />
+                                <Empty className="tw-col-span-12" description="Không có dữ liệu !" />
                             )}
                             {response_getArticleByPlace?.success && (
-                                <Flex className=" tw-col-span-6">
+                                <Flex className=" tw-col-span-12">
                                     <Pagination
                                         className="tw-flex-initial tw-m-auto"
                                         onChange={onChangeNewPageArticle}

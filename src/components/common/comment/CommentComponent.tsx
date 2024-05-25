@@ -1,5 +1,6 @@
+'use client'
 import { Avatar, Flex, Space,Card } from 'antd';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { IconEllipsis, IconLike, IconUser } from '../../IconComponent';
 
 type Props = {
@@ -9,12 +10,32 @@ type Props = {
     avatar?:string;
 };
 
+
+
 const CommentComponent = (props: Props) => {
+    const [windowSize, setWindowSize] = useState({
+        width: 0,
+        height: 0,
+    });
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowSize({
+                width: window.innerWidth,
+                height: window.innerHeight,
+            });
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        handleResize();
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
     return (
-        <Card hoverable styles={{body:{padding:0}}} className='tw-shadow-2xl tw-bg-white tw-p-2 tw-max-h-34' >
-            <Flex className="tw-py-1" vertical>
+        <Card hoverable styles={{body:{padding:0}}} className='tw-shadow-2xl tw-bg-white tw-p-1 md:tw-p-2 tw-max-h-34' >
+            <Flex vertical>
                 <Space>
-                    <Avatar src={props.avatar} size={48} >
+                    <Avatar src={props.avatar} size={windowSize.width < 567 ? 32 : 48} >
                         {props.avatar?null:<IconUser />}
                     </Avatar>
                     <Flex vertical>
@@ -22,7 +43,7 @@ const CommentComponent = (props: Props) => {
                         <p className="tw-text-xs">{props.create_at}</p>
                     </Flex>
                 </Space>
-                <div className="tw-px-14">
+                <div className="tw-px-10 md:tw-px-14">
                     <p className="lg:tw-text-base tw-font-semibold tw-font-nunito-sans">
                         {props.content}
                     </p>

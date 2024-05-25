@@ -1,4 +1,5 @@
-import { useAppSelector } from '@/src/store/hooks';
+import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
+import { setSelectedMenuHeader } from '@/src/store/slices/common.slice';
 import { Flex, Menu, MenuProps } from 'antd';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
@@ -35,10 +36,11 @@ const menuItems = [
 ];
 const NavMiddleComponent = (props: Props) => {
     const router = useRouter();
+    const dispatch = useAppDispatch();
     const selectedKeys = useAppSelector((state) => state.dataCommon.selectedMenuHeader);
     const handleMenuBarOnClick: MenuProps['onClick'] = (e) => {
         router.push(e.key);
-        e.key;
+        dispatch(setSelectedMenuHeader(e.key));
     };
     return (
         <div className="menu-header">
