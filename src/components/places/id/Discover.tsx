@@ -95,7 +95,7 @@ const Discover = (props: Props) => {
                 className="gutter-row tw-bg-gradient-to-r tw-from-cyan-100 tw-to-fuchsia-200 tw-rounded-lg md:tw-p-4 lg:tw-p-6 tw-space-y-10"
                 span={24}
             >
-                <div className="tw-grid tw-grid-cols-12 tw-grid-flow-row tw-gap-4 tw-w-full ">
+                <div className="tw-grid tw-grid-cols-12 tw-grid-flow-row tw-gap-1 lg:tw-gap-4 tw-w-full ">
                     {tabActive === 0 && (
                         <>
                             {response_getProductByPlace?.success && response_getProductByPlace?.data.data.length > 0 ? (

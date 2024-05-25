@@ -31,7 +31,7 @@ const RelatedProductComponent = (props: Props) => {
                 </Flex>
             </Col>
             <Col span={24}>
-                <div className="tw-grid tw-grid-cols-12 tw-grid-flow-row tw-gap-2 md:tw-gap-4 tw-auto-rows-max tw-w-full ">
+                <div className="tw-grid tw-grid-cols-12 tw-grid-flow-row tw-gap-1 md:tw-gap-4 tw-auto-rows-max tw-w-full ">
                     {response_getProduct?.success ? (
                         response_getProduct?.data.data.map((item, index) => (
                             <div

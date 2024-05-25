@@ -26,7 +26,7 @@ const PlaceHot = (props: Props) => {
                         <h1 className="tw-font-bold tw-text-xl lg:tw-text-2xl">Điểm đến nổi bật</h1>
                         <p className="lg:tw-text-xl tw-text-base tw-font-medium font-lo">Có thể bạn sẽ thích ?</p>
                     </Space>
-                    <Flex align="flex-end" className="tw-cursor-pointer tw-hidden sm:tw-block ">
+                    <Flex align="flex-end" className="tw-cursor-pointer ">
                         <div className="tw-cursor-pointer ">
                             <Link href={'place'}>
                                 <Button

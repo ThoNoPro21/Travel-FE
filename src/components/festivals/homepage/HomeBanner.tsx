@@ -21,7 +21,7 @@ const HomeBanner = (props: Props) => {
     response_festival?.data.data.map((item, index) => ((image = JSON.parse(String(item.images))), listImage?.push(image?.avatar)));
 
     return (
-        <Carousel autoplay infinite={true} autoplaySpeed={5000} draggable className="tw-relative">
+        <Carousel autoplay infinite={true} autoplaySpeed={5000} draggable className="tw-relative ">
             { response_festival?.data.data.map((item, index) => (
                 <FestivalComponent
                     key={index}

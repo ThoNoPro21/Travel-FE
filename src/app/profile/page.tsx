@@ -91,7 +91,7 @@ const Page = (props: Props) => {
 
     return (
         user &&
-        <main className="tw-pt-20 tw-px-4 md:tw-px-13 tw-min-h-screen tw-bg-gradient-to-r tw-from-violet-200 tw-to-pink-200">
+        <main className="tw-pt-20 tw-px-2 md:tw-px-13 tw-min-h-screen tw-bg-gradient-to-r tw-from-violet-200 tw-to-pink-200">
             <Spin spinning={isLoading_updateProfile} tip="Đang cập nhật...">
                 <div className="tw-grid tw-grid-cols-12 tw-gap-4 tw-py-4">
                     <Card className="tw-col-span-12 lg:tw-col-span-3">
@@ -129,10 +129,10 @@ const Page = (props: Props) => {
                     </Card>
                     <Card className="tw-col-span-12 lg:tw-col-span-9">
                         <Divider orientation="center">
-                            <div className="tw-text-xl tw-font-bold tw-font-mono">Thông tin cá nhân</div>
+                            <div className="tw-text-base lg:tw-text-xl tw-font-bold tw-font-mono">Thông tin cá nhân</div>
                         </Divider>
                         <Flex gap='small'>
-                            <p className=" tw-w-20 lg:tw-w-40 tw-text-base tw-font-semibold tw-font-mono ">Họ tên</p>
+                            <p className=" tw-w-14 lg:tw-w-40 tw-text-xs lg:tw-text-base tw-font-semibold tw-font-mono ">Họ tên</p>
                             <TextArea
                                 disabled={!textDisable.name}
                                 className="tw-flex-1 tw-text-center tw-font-medium"
@@ -152,7 +152,7 @@ const Page = (props: Props) => {
                         </Flex>
                         <Divider></Divider>
                         <Flex>
-                            <p className="tw-w-20 lg:tw-w-40 tw-text-base tw-font-semibold tw-font-mono ">Tiểu sử</p>
+                            <p className="tw-w-14 lg:tw-w-40 tw-text-xs lg:tw-text-base tw-font-semibold tw-font-mono ">Tiểu sử</p>
                             <TextArea
                                 disabled={!textDisable.story}
                                 className="tw-flex-1 tw-font-medium"
@@ -172,17 +172,17 @@ const Page = (props: Props) => {
                         </Flex>
                         <Divider></Divider>
                         <Flex>
-                            <p className="tw-w-20 lg:tw-w-40 tw-text-base tw-font-semibold tw-font-mono ">Email</p>
+                            <p className="tw-w-14 lg:tw-w-40 tw-text-xs lg:tw-text-base tw-font-semibold tw-font-mono ">Email</p>
                             <p className="tw-flex-1 tw-font-medium">{user?.email}</p>
                         </Flex>
-                        <Divider orientation="right">
+                        <Flex justify='flex-end'>
                             <button
-                                className="tw-rounded-3xl tw-text-xs md:tw-text-sm lg:tw-text-base tw-bg-orange-500 tw-px-5 tw-py-2 tw-font-bold tw-text-white"
+                                className="tw-rounded-3xl tw-right-0 tw-text-sm lg:tw-text-base tw-bg-orange-500 tw-px-5 tw-py-2 tw-font-bold tw-text-white"
                                 onClick={handleOnClickUpdate}
                             >
                                 Cập nhật
                             </button>
-                        </Divider>
+                        </Flex>
                     </Card>
                 </div>
             </Spin>

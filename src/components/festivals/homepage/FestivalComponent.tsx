@@ -28,10 +28,10 @@ const FestivalComponent = (props: Props) => {
         image = JSON.parse(String(props.listJson));
     }
     return (
-        <div className=" tw-relative tw-container-banner tw-w-full sm:tw-h-screen tw-h-screen-75 tw-bg-cover tw-bg-center">
-            <div className="tw-absolute tw-w-full sm:tw-h-screen tw-h-screen-75 tw-t-0 tw-bg-gradient-to-r tw-from-slate-950 tw-shadow-md">
-                <Flex className="tw-pt-15 md:tw-pt-20 tw-w-full tw-h-full lg:tw-px-4 xl:tw-px-13 tw-px-2 tw-overflow-hidden">
-                    <div className="tw-grid tw-grid-cols-2 tw-w-full tw-h-full tw-gap-4 tw-box-border tw-pb-2 tw-text-white">
+        <div className=" tw-relative tw-container-banner tw-w-full sm:tw-h-screen tw-h-screen-50 tw-bg-cover tw-bg-center">
+            <div className="tw-absolute tw-w-full sm:tw-h-screen tw-h-screen-50 tw-t-0 tw-bg-gradient-to-r tw-from-slate-950 tw-shadow-md">
+                <Flex className="tw-pt-20 tw-w-full tw-h-full lg:tw-px-4 xl:tw-px-13 tw-px-2 tw-overflow-hidden">
+                    <div className="tw-grid tw-grid-cols-2 tw-w-full tw-h-full lg:tw-gap-4 tw-box-border tw-pb-2 tw-text-white">
                         <Flex vertical>
                             <Flex
                                 align="center"
@@ -45,8 +45,8 @@ const FestivalComponent = (props: Props) => {
                                 className=" lg:tw-text-4xl tw-text-lg tw-text-center tw-font-lora tw-font-bold tw-overflow-hidden tw-text-orange-500"
                             >
                                 {formattedStartDate} - {formattedEndDate}
-                                <Divider className="tw-bg-white" />
-                                <Flex align="center" gap="middle" className="tw-text-base tw-text-white tw-font-bold ">
+                                <Divider className="tw-bg-white tw-m-2 lg:tw-m-8" />
+                                <Flex align="center" gap="middle" className="tw-text-sm lg:tw-text-base tw-text-white tw-font-bold ">
                                     <IconLocation />
                                     {props.location}
                                 </Flex>
@@ -59,7 +59,7 @@ const FestivalComponent = (props: Props) => {
                                     }}
                                 ></p>
                                 <Link href={`festival/${props.festival_id}`}>
-                                    <button className=" tw-bg-yellow-500 hover:tw-bg-cyan-300 tw-px-4 tw-py-2 tw-w-30 tw-font-lora tw-text-base tw-rounded-lg tw-text-black tw-font-bold tw-cursor-pointer">
+                                    <button className=" tw-bg-yellow-500 hover:tw-bg-cyan-300 tw-px-1 lg:tw-px-4 tw-py-1 lg:tw-py-2 tw-w-20 lg:tw-w-30 tw-font-lora tw-text-sm lg:tw-text-base tw-rounded-lg tw-text-black tw-font-bold tw-cursor-pointer">
                                         Chi tiết
                                     </button>
                                 </Link>

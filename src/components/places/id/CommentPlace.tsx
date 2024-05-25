@@ -43,11 +43,11 @@ const CommentPlace = (props: Props) => {
         setPageComment(newPage);
     };
     return (
-        <Row gutter={[16, 16]}>
-            <Col className="gutter-row  tw-font-lora" span={24}>
+        <Row gutter={[0, 16]}>
+            <Col className="gutter-row tw-font-lora " span={24}>
                 <h1 className="tw-font-bold tw-text-xl lg:tw-text-2xl">
                     Bình luận (
-                    <span className="tw-text-orange-400 tw-p-2">{response_getCommentByPlace?.data?.total || 0}</span>)
+                    <span className="tw-text-orange-400 tw-px-2">{response_getCommentByPlace?.data?.total || 0}</span>)
                 </h1>
             </Col>
             <Col className="gutter-row tw-font-lora" span={24}>
@@ -55,7 +55,7 @@ const CommentPlace = (props: Props) => {
                     <Card className="tw-shadow-lg">
                         <Flex gap='small' vertical>
                             <Flex>
-                                <Avatar size={48} src={user?.avatar}>
+                                <Avatar  src={user?.avatar} className='tw-w-12 tw-h-12'>
                                     {user?.avatar ? null : <IconUser />}
                                 </Avatar>
                                 <Flex vertical className="tw-w-full">

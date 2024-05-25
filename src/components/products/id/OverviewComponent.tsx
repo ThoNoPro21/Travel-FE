@@ -87,7 +87,8 @@ const OverviewComponent = (props: Props) => {
         <Card
             hoverable
             bordered={false}
-            className="tw-bg-gradient-to-t tw-from-purple-100  tw-via-white  tw-to-fuchsia-200"
+            styles={{body:{padding:0}}}
+            className="tw-bg-gradient-to-t tw-from-purple-100  tw-via-white  tw-to-fuchsia-200 lg:tw-p-4"
         >
             <Row gutter={[16, 16]}>
                 <Col xs={24} lg={12} className=" tw-h-auto tw-w-auto tw-overflow-hidden tw-space-y-4">

@@ -53,7 +53,7 @@ const Page = ({ params }: { params: { id: string } }) => {
         );
     }
     return isSuccess_getProductById && response_getProductById.success && (
-        <main className="tw-pt-20 tw-px-4 lg:tw-px-13 tw-min-h-screen tw-space-y-4 tw-py-4 tw-bg-slate-100">
+        <main className="tw-pt-20 tw-px-2 lg:tw-px-13 tw-min-h-screen tw-space-y-4 tw-py-4 tw-bg-slate-100">
             {response_getProductById?.data.map((item, index) => (
                 <OverviewComponent
                     key={index}

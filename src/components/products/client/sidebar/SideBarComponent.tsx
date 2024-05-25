@@ -58,7 +58,7 @@ const SideBarComponent = (props: Props) => {
                     <Skeleton active loading={isLoading_getCategory}></Skeleton>
                 </div>
             </List>
-            <Flex gap='middle' className='tw-px-4 lg:tw-hidden'>
+            <Flex gap='middle' className='tw-px-2 lg:tw-hidden'>
                 <Select
                     allowClear
                     defaultValue={'0'}
