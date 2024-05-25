@@ -30,7 +30,7 @@ const FestivalComponent = (props: Props) => {
     return (
         <div className=" tw-relative tw-container-banner tw-w-full sm:tw-h-screen tw-h-screen-50 tw-bg-cover tw-bg-center ">
             <div className="tw-absolute tw-w-full sm:tw-h-screen tw-h-screen-50 tw-t-0 tw-bg-gradient-to-r tw-from-slate-950 tw-shadow-md">
-                <Flex className="tw-pt-20 tw-w-full tw-h-full lg:tw-px-4 xl:tw-px-13 tw-px-2 tw-overflow-hidden">
+                <Flex className="tw-pt-15 md:tw-pt-20 tw-w-full tw-h-full lg:tw-px-4 xl:tw-px-13 tw-px-2 tw-overflow-hidden">
                     <div className="tw-grid tw-grid-cols-2 tw-w-full tw-h-full lg:tw-gap-4 tw-box-border tw-pb-2 tw-text-white">
                         <Flex vertical>
                             <Flex

@@ -79,7 +79,24 @@
 
 
 }
-
+@media (max-width: 768px) {
+    .ant-segmented-item {
+      flex: auto; /* Chia đều không gian cho tất cả label trên mobile */
+    }
+  
+    .ant-segmented-item-label {
+        padding: 0 !important;
+    }
+  }
+  @media (min-width: 769px) {
+    .ant-segmented-item {
+      flex: auto; /* Chia đều không gian cho label trên web */
+    }
+  
+    .ant-segmented-item-label {
+      padding: 0 7px; /* Tăng kích thước font chữ cho web */
+    }
+  }
 
 .menu-header .ant-menu-horizontal > .ant-menu-item{
     font-weight: 500;
