@@ -33,6 +33,7 @@
         "antd": "^5.16.4",
         "ckeditor5-custom-build": "file:src/ckeditor5",
         "dayjs": "^1.11.10",
+        "dompurify": "^3.1.4",
         "framer-motion": "^11.0.24",
         "html-react-parser": "^5.1.10",
         "next": "^14.2.0-canary.27",
@@ -43,6 +44,7 @@
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.7",
+        "@types/dompurify": "^3.0.5",
         "@types/node": "^20",
         "@types/react": "^18",
         "@types/react-dom": "^18",

@@ -1,9 +1,10 @@
-import { Badge, Card, Flex } from 'antd';
+import { Badge, Button, Card, Flex } from 'antd';
 import React, { useState } from 'react';
 import TabsComponent from '../../common/tab/TabsComponent';
 import { PostContent } from '../../articles/client/SideMain';
 import ReviewComponent from './ReviewComponent';
 import { useGetCommentByProductQuery } from '@/src/store/queries/apiProduct.query';
+import { truncateDescription } from '../../validate/String';
 
 type Props = {
     content?: string;
@@ -14,6 +15,11 @@ const InfoProductComponent = (props: Props) => {
     const [tabInfoActive, setTabInfoActive] = useState(0);
     const [pageComment, setPageComment] = useState(1);
 
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    const handleToggleExpand = () => {
+        setIsExpanded(!isExpanded);
+    };
     const {
         data: response_getCommentByProduct,
         isSuccess: isSuccess_getCommentByProduct,
@@ -46,9 +52,26 @@ const InfoProductComponent = (props: Props) => {
     return (
         <Card bordered={false} hoverable styles={{ body: { padding: 0 } }}>
             <Flex vertical>
-                <TabsComponent options={tabInfoOptions} getTab={getTabInfoActive} />
+                <div className="tw-m-auto">
+                    <TabsComponent options={tabInfoOptions} getTab={getTabInfoActive} />
+                </div>
                 <Flex vertical className="tw-gap-2 tw-px-4 tw-pb-4">
-                    {tabInfoActive === 0 && <PostContent content={props.content || ''} />}
+                    {tabInfoActive === 0 && (
+                        <div>
+                            {isExpanded ? (
+                                <PostContent content={props.content || ''} />
+                            ) : (
+                                <PostContent content={props.content || ''} lengthString={500} />
+                            )}
+                            <Button onClick={handleToggleExpand} className="tw-w-full">
+                                {isExpanded ? (
+                                    <p className="tw-text-cyan-400">Thu gọn</p>
+                                ) : (
+                                    <p className="tw-text-cyan-400">Xem thêm</p>
+                                )}
+                            </Button>
+                        </div>
+                    )}
                     {tabInfoActive === 1 && (
                         <ReviewComponent
                             setPageComment={getPageComment}

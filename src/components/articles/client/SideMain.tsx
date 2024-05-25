@@ -4,7 +4,10 @@ import { IconBookMark, IconDot, IconEllipsis, IconUser } from '../../IconCompone
 import ReactPlayer from 'react-player';
 import parse from 'html-react-parser';
 import '@/src/styles/app.scss';
-import { calculateReadingTime } from '../../validate/String';
+import { calculateReadingTime, truncateDescription } from '../../validate/String';
+import DOMPurify from 'dompurify';
+
+
 type Props = {
     avatar_user?: string;
     content?: string | TrustedHTML;
@@ -46,7 +49,7 @@ const SideMain = (props: Props) => {
 
 export default SideMain;
 
-export const PostContent = ({ content }: { content: string }) => {
+export const PostContent = ({ content, lengthString }: { content: string; lengthString?: number }) => {
     const handleVideoEmbed = (node: any) => {
         if (node.type === 'tag' && node.name === 'oembed' && node.attribs && node.attribs.url) {
             const videoUrl = node.attribs.url;
@@ -60,6 +63,15 @@ export const PostContent = ({ content }: { content: string }) => {
     };
 
     const processedContent = parse(content, options);
+    const purifiedContent = DOMPurify.sanitize(content);
 
-    return <div className="ck-content tw-w-full tw-mb-4">{processedContent}</div>;
+  // Lấy nội dung văn bản từ chuỗi HTML đã được xử lý
+    const textContent = new DOMParser().parseFromString(purifiedContent, 'text/html').body.textContent || '';
+
+
+    return (
+        <div className="ck-content tw-w-full tw-mb-4">
+            {!lengthString ? processedContent : truncateDescription(textContent, lengthString)}
+        </div>
+    );
 };

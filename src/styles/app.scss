@@ -113,36 +113,45 @@
 }
 /* end of app css */
 
-.subDescription {
-    display: flex;
-    flex-direction: column;
+// .subDescription {
+//     display: flex;
+//     flex-direction: column;
 
-    h1 {
-        font-size: 36px;
+//     h1 {
+//         font-size: 36px;
 
-    }
+//     }
 
-    figure {
-        margin: 0 auto;
+//     figure {
+//         margin: 0 auto;
 
-        figcaption {
-            text-align: center;
-            font-size: medium;
-            font-style: italic;
-            padding: 20px 0;
-            font-weight: 500;
-        }
-    }
+//         figcaption {
+//             text-align: center;
+//             font-size: medium;
+//             font-style: italic;
+//             padding: 20px 0;
+//             font-weight: 500;
+//         }
+//     }
 
-    .media {
-        display: flex;
-        justify-content: center;
-    }
-}
+//     .media {
+//         display: flex;
+//         justify-content: center;
+//         width: 100%;
+//     }
+// }
 
 // Ant Design 
 
 
+    .media {
+        display: flex;
+        justify-content: center;
+    div{
+            width:100% !important;
+            height: auto;
+        }
+    }
 /*
  * CKEditor 5 (v41.3.1) content styles.
  * Generated on Tue, 30 Apr 2024 10:30:42 GMT.

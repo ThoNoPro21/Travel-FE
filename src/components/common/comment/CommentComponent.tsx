@@ -44,7 +44,7 @@ const CommentComponent = (props: Props) => {
                     </Flex>
                 </Space>
                 <div className="tw-px-10 md:tw-px-14">
-                    <p className="lg:tw-text-base tw-font-semibold tw-font-nunito-sans">
+                    <p className="lg:tw-text-base tw-font-normal tw-font-nunito-sans">
                         {props.content}
                     </p>
                     <Space size={16} className="tw-cursor-pointer tw-mb-0">

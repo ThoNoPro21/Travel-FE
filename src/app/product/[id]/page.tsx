@@ -15,14 +15,14 @@ type Props = {};
 
 const Page = ({ params }: { params: { id: string } }) => {
     const [componentLoad, setComponentLoad] = useState(false);
-    const dispatch = useAppDispatch()
+    const dispatch = useAppDispatch();
 
     const isStatus = useAppSelector((state: RootState) => state.dataAuth.isStatus);
 
-    useEffect(()=>{
-        dispatch(setSelectedMenuHeader('/product'))
-    },[])
-    
+    useEffect(() => {
+        dispatch(setSelectedMenuHeader('/product'));
+    }, []);
+
     useEffect(() => {
         if (isStatus) {
             setComponentLoad(true);
@@ -38,8 +38,8 @@ const Page = ({ params }: { params: { id: string } }) => {
     if (!isStatus) {
         return null;
     }
-    if(isLoading_getProductById){
-        return <Spin fullscreen />
+    if (isLoading_getProductById) {
+        return <Spin fullscreen />;
     }
     if (isError_getProductById) {
         return (
@@ -52,24 +52,30 @@ const Page = ({ params }: { params: { id: string } }) => {
             />
         );
     }
-    return isSuccess_getProductById && response_getProductById.success && (
-        <main className="tw-pt-20 tw-px-2 lg:tw-px-13 tw-min-h-screen tw-space-y-4 tw-py-4 tw-bg-slate-100">
-            {response_getProductById?.data.map((item, index) => (
-                <OverviewComponent
-                    key={index}
-                    images={item.images}
-                    name={item.name}
-                    price={item.price}
-                    product_id={item.products_id}
-                />
-            ))}
-            <div className="tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-grid-flow-row tw-gap-4 tw-py-4">
-                <InfoProductComponent product_id={response_getProductById?.data?.[0].products_id} content={response_getProductById?.data?.[0].description} />
-                <ShopComponent />
-            </div>
-            <RelatedProductComponent product_id={response_getProductById?.data?.[0].products_id} />
-        </main>
-    )
+    return (
+        isSuccess_getProductById &&
+        response_getProductById.success && (
+            <main className="tw-pt-20 tw-px-2 lg:tw-px-13 tw-min-h-screen tw-space-y-4 tw-py-4 tw-bg-slate-100">
+                {response_getProductById?.data.map((item, index) => (
+                    <OverviewComponent
+                        key={index}
+                        images={item.images}
+                        name={item.name}
+                        price={item.price}
+                        product_id={item.products_id}
+                    />
+                ))}
+                <div className="tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-grid-flow-row tw-gap-4 tw-py-4">
+                    <InfoProductComponent
+                        product_id={response_getProductById?.data?.[0].products_id}
+                        content={response_getProductById?.data?.[0].description}
+                    />
+                    <ShopComponent />
+                </div>
+                <RelatedProductComponent product_id={response_getProductById?.data?.[0].products_id} />
+            </main>
+        )
+    );
 };
 
 export default Page;
