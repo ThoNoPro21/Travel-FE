@@ -110,7 +110,7 @@ const Page = (props: Props) => {
                             Đăng ký
                         </button>
                     </Form>
-                    <p className=" tw-font-mono tw-text-center">
+                    <p className="tw-text-sm tw-py-2 tw-font-mono tw-text-center">
                         Bạn đã có tài khoản!{' '}
                         <Link href={'/login'}>
                             <span className="tw-text-blue-700 tw-italic">Đăng nhập </span>
