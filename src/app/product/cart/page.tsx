@@ -232,8 +232,8 @@ const Page = (props: Props) => {
 
     return (
         isSuccess_getCart && (
-            <main className="tw-pt-20 md:tw-ps-13">
-                <div className="tw-grid tw-grid-cols-4 tw-grid-flow-row tw-gap-4 tw-p-4">
+            <main className="tw-pt-20 tw-px-2 md:tw-px-13 tw-py-4 ">
+                <div className="tw-grid tw-grid-cols-4 tw-grid-flow-row tw-gap-4 ">
                     <div className="tw-col-span-4 lg:tw-col-span-3">
                         <Card
                             hoverable
