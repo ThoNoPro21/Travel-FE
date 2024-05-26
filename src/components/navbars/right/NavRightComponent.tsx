@@ -21,6 +21,10 @@ const NavRightComponent = (props: Props) => {
     const [openRegister, setOpenRegister] = useState(false);
     const [openProfile, setOpenProfile] = useState(false);
     const [componentLoad, setComponentLoad] = useState(false);
+    const [windowSize, setWindowSize] = useState({
+        width: 0,
+        height: 0,
+    });
 
     const isLogin = useAppSelector((state: RootState) => state.dataAuth.isLogin);
     const user = useAppSelector((state: RootState) => state.dataAuth.user);
@@ -40,6 +44,20 @@ const NavRightComponent = (props: Props) => {
         }
     }, [onChangeCart]);
 
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowSize({
+                width: window.innerWidth,
+                height: window.innerHeight,
+            });
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        handleResize();
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
     const items: MenuProps['items'] = [
         {
             label: (
@@ -78,6 +96,7 @@ const NavRightComponent = (props: Props) => {
                 </Link>
             ),
             key: '2',
+            disabled:windowSize.width<768 ? true : false,
         },
         {
             label: <p className=" tw-text-base tw-font-normal tw-font-lora">Bài viết của tôi</p>,
