@@ -3,12 +3,14 @@ import {  Input } from 'antd';
 import React from 'react'
 import { useDebounce } from '@react-hooks-hub/use-debounce';
 type Props = {
-    getValueSearch:(value:string)=>void
+    getValueSearch?:(value:string)=>void
 }
 
 const SearchComponent = (props: Props) => {
     const handleSearch = (query: string) => {
-        props.getValueSearch(query);
+        if (props.getValueSearch) {
+            props.getValueSearch(query);
+        }
     }
 
     const debouncedSearch = useDebounce(handleSearch, 1000);

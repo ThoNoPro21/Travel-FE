@@ -7,7 +7,7 @@ import SearchComponent from '../SearchComponent';
 type Props = {
     items:MenuProps['items'];
     selectedTab:(key:number)=>void;
-    getValueSearch:(value:string) => void;
+    getValueSearch?:(value:string) => void;
 };
 
 const NavBarTabComponent = (props: Props) => {
@@ -28,7 +28,7 @@ const NavBarTabComponent = (props: Props) => {
                     items={props.items}
                 />
                 <div className="tw-max-w-80 tw-flex-grow">
-                    <SearchComponent getValueSearch={props.getValueSearch} />
+                    <SearchComponent getValueSearch={props.getValueSearch||undefined} />
                 </div>
             </Flex>
         </Card>
