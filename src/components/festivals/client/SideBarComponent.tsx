@@ -130,8 +130,7 @@ const SideBarComponent = (props: Props) => {
         <Flex gap='middle' className='lg:tw-hidden'>
         <Select
             allowClear
-            defaultValue={String(new Date().getMonth() + 1)}
-            value={String(selectedKeys)}
+            value={selectedKeys === 0 ? String(new Date().getMonth() + 1) : String(selectedKeys)}
             options={festivalMobileItems}
             placeholder="Sự kiện theo tháng"
             onChange={(e) => dispatch(setMenuId(parseInt(e)))}
