@@ -29,6 +29,7 @@
         "@fortawesome/free-regular-svg-icons": "^6.5.2",
         "@fortawesome/free-solid-svg-icons": "^6.5.2",
         "@fortawesome/react-fontawesome": "^0.2.0",
+        "@react-hooks-hub/use-debounce": "^1.1.7",
         "@reduxjs/toolkit": "^2.2.1",
         "antd": "^5.16.4",
         "ckeditor5-custom-build": "file:src/ckeditor5",

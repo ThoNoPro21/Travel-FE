@@ -52,9 +52,9 @@ export const apiPlaceQuery = createApi({
                 url: `place/show/articles/${id}?page=${page}`,
             }),
         }),
-        getPlaceByLocation: builder.query<ApiResponse<PaginationApiResponseData<placeType>>, number[]>({
-            query: ([id, page]) => ({
-                url: `place/show/locations/${id}?page=${page}`,
+        getPlaceByLocation: builder.query<ApiResponse<PaginationApiResponseData<placeType>>, any[]>({
+            query: ([id, page, search]) => ({
+                url: `place/show/locations/${id}?searchParam=${search}&page=${page}`,
             }),
         }),
 

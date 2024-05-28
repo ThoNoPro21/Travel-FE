@@ -1,8 +1,8 @@
 'use client';
-import SearchComponent from '@/src/components/products/client/sidebar/SearchComponent';
+import SearchComponent from '@/src/components/common/SearchComponent';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { useGetLocationQuery } from '@/src/store/queries/apiLocation.query.';
-import { setMenuId } from '@/src/store/slices/common.slice';
+import { setMenuId, setSearch } from '@/src/store/slices/place.slice';
 import { RootState } from '@/src/store/store';
 import { Badge, Card, Flex, List, Menu, MenuProps, Select, SelectProps, Skeleton, Space } from 'antd';
 import React, { useState } from 'react';
@@ -11,7 +11,7 @@ type Props = {};
 
 const SideBarComponent = (props: Props) => {
     const dispatch = useAppDispatch();
-    const selectedKeys = useAppSelector((state: RootState) => state.dataCommon.MenuId);
+    const selectedKeys = useAppSelector((state: RootState) => state.dataPlace.MenuId);
     const {
         data: response_getLocation,
         isLoading: isLoading_getLocation,
@@ -40,6 +40,11 @@ const SideBarComponent = (props: Props) => {
     const handleMenuBarOnClick: MenuProps['onClick'] = (e) => {
         dispatch(setMenuId(parseInt(e.key)));
     };
+
+    const getValueSearch = (value:string) => {
+        dispatch(setSearch(value))
+    }
+
     return (
         <>
             <List
@@ -61,13 +66,14 @@ const SideBarComponent = (props: Props) => {
                 <Select
                     allowClear
                     defaultValue={'0'}
+                    value={String(selectedKeys)}
                     options={placeMobileItems}
                     placeholder="Danh mục địa điểm"
                     onChange={(e) => dispatch(setMenuId(parseInt(e)))}
                     className="tw-flex-1 tw-w-full lg:tw-hidden"
                 />
                 <div className="tw-flex-1 tw-flex-grow">
-                    <SearchComponent />
+                    <SearchComponent getValueSearch={getValueSearch} />
                 </div>
             </Flex>
         </>

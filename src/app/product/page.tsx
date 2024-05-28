@@ -4,8 +4,9 @@ import React, { useEffect, useState } from 'react';
 import MainComponent from '../../components/products/client/main/MainComponent';
 import SideBarComponent from '../../components/products/client/sidebar/SideBarComponent';
 import NavBarTabComponent from '@/src/components/common/nav/NavBarTabComponent';
-import { useAppDispatch } from '@/src/store/hooks';
+import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { setSelectedMenuHeader } from '@/src/store/slices/common.slice';
+import { setSearch } from '@/src/store/slices/product.slice';
 
 type Props = {};
 const filterItems: MenuProps['items'] = [
@@ -38,6 +39,10 @@ const Page = (props: Props) => {
         dispatch(setSelectedMenuHeader('/product'));
     }, []);
 
+    const getValueSearch = (value: string) => {
+        dispatch(setSearch(value));
+    };
+
     return (
         <main className="tw-pt-20 md:tw-px-13 tw-min-h-screen tw-bg-gradient-to-r tw-from-violet-200 tw-to-pink-200">
             <div className="tw-grid tw-grid-cols-4 tw-grid-flow-row tw-gap-4 tw-py-4">
@@ -47,7 +52,11 @@ const Page = (props: Props) => {
                 <div className="tw-col-span-4 lg:tw-col-span-3 tw-min-h-screen">
                     <Flex gap={16} vertical className="tw-col-span-3">
                         <div className="tw-hidden lg:tw-block">
-                            <NavBarTabComponent items={filterItems} selectedTab={getTab} />
+                            <NavBarTabComponent
+                                items={filterItems}
+                                selectedTab={getTab}
+                                getValueSearch={getValueSearch}
+                            />
                         </div>
                         <MainComponent />
                     </Flex>

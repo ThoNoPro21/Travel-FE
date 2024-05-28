@@ -35,6 +35,7 @@ const Page = (props: Props) => {
     const {
         data: response_postByTopic,
         isLoading: isLoading_postByTopic,
+        isFetching: isFetching_postByTopic,
         isSuccess: isSuccess_postByTopic,
         error: error_postByTopic,
     } = useGetPostByTopicQuery([tabActive, page]);
@@ -60,7 +61,7 @@ const Page = (props: Props) => {
                 )}
             </Flex>
             <div className="tw-grid tw-gap-4 tw-min-h-screen lg:tw-grid-cols-2 tw-grid-flow-row tw-auto-rows-max">
-                <Skeleton loading={isLoading_postByTopic} active avatar>
+                <Skeleton loading={isLoading_postByTopic || isFetching_postByTopic} active avatar>
                     {!response_postByTopic?.success ? (
                         <Empty className="tw-col-span-4" description="Không có dữ liệu !" />
                     ) : (
@@ -80,7 +81,7 @@ const Page = (props: Props) => {
                         ))
                     )}
                 </Skeleton>
-                <Skeleton loading={isLoading_postByTopic} active avatar />
+                <Skeleton loading={isLoading_postByTopic || isFetching_postByTopic} active avatar />
             </div>
             <Flex>
                 <Pagination

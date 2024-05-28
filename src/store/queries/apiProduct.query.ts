@@ -20,8 +20,8 @@ export const apiProductQuery = createApi({
         },
     }),
     endpoints: (builder) => ({
-        getProductByCategory: builder.query<ApiResponse<PaginationApiResponseData<productType>>, number[]>({
-            query: ([category, page]) => `product/show/category/${category}?page=${page}`,
+        getProductByCategory: builder.query<ApiResponse<PaginationApiResponseData<productType>>, any[]>({
+            query: ([category, page, search]) => `product/show/category/${category}?searchParam=${search}&page=${page}`,
         }),
         addProduct: builder.mutation({
             query: (product) => ({

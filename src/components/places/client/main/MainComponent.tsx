@@ -12,7 +12,8 @@ type Props = {};
 const MainComponent = (props: Props) => {
     const router = useRouter()
     const [pagePlace, setPagePlace] = useState(1);
-    const location_id = useAppSelector((state: RootState) => state.dataCommon.MenuId);
+    const location_id = useAppSelector((state) => state.dataPlace.MenuId);
+    const search = useAppSelector((state) => state.dataPlace.search);
     useEffect(() => {
         setPagePlace(1);
     }, [location_id]);
@@ -20,8 +21,9 @@ const MainComponent = (props: Props) => {
         data: response_getPlaceByLocation,
         isLoading: isLoading_getPlaceByLocation,
         isSuccess: isSuccess_getPlaceByLocation,
+        isFetching: isFetching_getPlaceByLocation,
         refetch: refetch_getPlaceByLocation,
-    } = useGetPlaceByLocationQuery([location_id, pagePlace]);
+    } = useGetPlaceByLocationQuery([location_id, pagePlace, search]);
     if (isLoading_getPlaceByLocation) {
         return <Skeleton active />;
     }
@@ -32,9 +34,9 @@ const MainComponent = (props: Props) => {
 
     return (
         <main className="tw-grid tw-grid-cols-1 tw-grid-flow-row tw-gap-y-2 ">
-            {isLoading_getPlaceByLocation ? (
+            {isLoading_getPlaceByLocation || isFetching_getPlaceByLocation ? (
                 <Skeleton active />
-            ) : isSuccess_getPlaceByLocation && response_getPlaceByLocation.success ? (
+            ) : isSuccess_getPlaceByLocation && response_getPlaceByLocation.success && response_getPlaceByLocation?.data?.data?.length > 0 ? (
                 response_getPlaceByLocation?.data.data.map((item, index) => (
                     <div
                         key={index}

@@ -1,15 +1,14 @@
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
-import { setMenuId } from '@/src/store/slices/common.slice';
 import { RootState } from '@/src/store/store';
 import { Badge, Card, Flex, List, Menu, MenuProps, Select, SelectProps, Skeleton, Space } from 'antd';
 import React from 'react';
-import SearchComponent from '../../products/client/sidebar/SearchComponent';
+import { setMenuId } from '@/src/store/slices/festival.slice';
 
 type Props = {};
 
 const SideBarComponent = (props: Props) => {
     const dispatch = useAppDispatch();
-    const selectedKeys = useAppSelector((state: RootState) => state.dataCommon.MenuId);
+    const selectedKeys = useAppSelector((state: RootState) => state.dataFestival.MenuId);
     const festivalItems: MenuProps['items'] = [
         {
             key: '1',
@@ -123,7 +122,7 @@ const SideBarComponent = (props: Props) => {
         >
             <Menu
                 onClick={handleMenuBarOnClick}
-                selectedKeys={[String(selectedKeys)==='0' ? String(new Date().getMonth() + 1)  : String(selectedKeys)]}
+                selectedKeys={selectedKeys === 0 ? [String(new Date().getMonth() + 1)] : [String(selectedKeys)]}
                 items={festivalItems}
                 className="tw-text-sm tw-font-bold tw-rounded-lg "
             />
@@ -132,14 +131,12 @@ const SideBarComponent = (props: Props) => {
         <Select
             allowClear
             defaultValue={String(new Date().getMonth() + 1)}
+            value={String(selectedKeys)}
             options={festivalMobileItems}
             placeholder="Sự kiện theo tháng"
             onChange={(e) => dispatch(setMenuId(parseInt(e)))}
             className="tw-flex-1 tw-w-full lg:tw-hidden tw-px-2"
         />
-        <div className="tw-flex-1 tw-flex-grow">
-            <SearchComponent />
-        </div>
     </Flex>
     </>
     );

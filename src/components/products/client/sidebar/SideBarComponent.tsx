@@ -1,18 +1,18 @@
 'use client';
-import { IconSearch } from '@/src/components/IconComponent';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { useGetCategoryQuery } from '@/src/store/queries/apiCategory.query';
-import { setMenuId } from '@/src/store/slices/common.slice';
 import { RootState } from '@/src/store/store';
 import { Badge, Card, Flex, Input, List, Menu, MenuProps, Select, SelectProps, Skeleton, Space } from 'antd';
 import React, { useState } from 'react';
-import SearchComponent from './SearchComponent';
+import SearchComponent from '../../../common/SearchComponent';
+import { setMenuId, setSearch } from '@/src/store/slices/product.slice';
 
 type Props = {};
 
 const SideBarComponent = (props: Props) => {
     const dispatch = useAppDispatch();
-    const selectedKeys = useAppSelector((state: RootState) => state.dataCommon.MenuId);
+    const selectedKeys = useAppSelector((state: RootState) => state.dataProduct.MenuId);
+    const valueSearch = useAppSelector((state: RootState) => state.dataProduct.search);
     const {
         data: response_getCategory,
         isLoading: isLoading_getCategory,
@@ -41,6 +41,10 @@ const SideBarComponent = (props: Props) => {
     const handleMenuBarOnClick: MenuProps['onClick'] = (e) => {
         dispatch(setMenuId(parseInt(e.key)));
     };
+
+    const getValueSearch = (value:string) => {
+        dispatch(setSearch(value))
+    }
     return (
         <>
             <List
@@ -63,12 +67,13 @@ const SideBarComponent = (props: Props) => {
                     allowClear
                     defaultValue={'0'}
                     options={categoryMobileItems}
+                    value={String(selectedKeys)}
                     placeholder="Danh mục sản phẩm"
                     onChange={(e) => dispatch(setMenuId(parseInt(e)))}
                     className="tw-flex-1 tw-w-full lg:tw-hidden"
                 />
                 <div className="tw-flex-1 tw-flex-grow">
-                    <SearchComponent />
+                    <SearchComponent getValueSearch={getValueSearch} />
                 </div>
             </Flex>
         </>

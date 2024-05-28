@@ -10,19 +10,19 @@ import CardComponent from '../CardComponent';
 type Props = {};
 
 const MainComponent = (props: Props) => {
-    const router = useRouter()
+    const router = useRouter();
     const [pagePlace, setPagePlace] = useState(1);
-    const month = useAppSelector((state: RootState) => state.dataCommon.MenuId);
+    const month = useAppSelector((state: RootState) => state.dataFestival.MenuId);
     useEffect(() => {
         setPagePlace(1);
-
     }, [month]);
     const {
         data: response_getFestivalByMonth,
         isLoading: isLoading_getFestivalByMonth,
         isSuccess: isSuccess_getFestivalByMonth,
+        isFetching: isFetching_getFestivalByMonth,
         refetch: refetch_getFestivalByMonth,
-    } = useGetFestivalByMonthQuery([month===0 ? new Date().getMonth() + 1  : month, pagePlace]);
+    } = useGetFestivalByMonthQuery([month === 0 ? new Date().getMonth() + 1 : month, pagePlace]);
     if (isLoading_getFestivalByMonth) {
         return null;
     }
@@ -33,7 +33,9 @@ const MainComponent = (props: Props) => {
 
     return (
         <main className="tw-grid tw-grid-cols-1 tw-grid-flow-row tw-gap-y-2 ">
-            {isSuccess_getFestivalByMonth && response_getFestivalByMonth.success ? (
+            {isFetching_getFestivalByMonth || isLoading_getFestivalByMonth ? (
+                <Skeleton avatar active />
+            ) : isSuccess_getFestivalByMonth && response_getFestivalByMonth.success ? (
                 response_getFestivalByMonth?.data.data.map((item, index) => (
                     <div className="" key={index} onClick={() => router.push(`festival/${item.festivals_id}`)}>
                         <CardComponent

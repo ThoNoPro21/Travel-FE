@@ -13,6 +13,7 @@ import { apiLocationQuery } from './queries/apiLocation.query.';
 import { apiCategoryQuery } from './queries/apiCategory.query';
 import { apiFestivalQuery } from './queries/apiFestival.query';
 import { apiCommonQuery } from './queries/apiCommon.query';
+import festivalSlice from './slices/festival.slice';
 
 export const store = configureStore({
     reducer: {
@@ -21,6 +22,7 @@ export const store = configureStore({
         dataArticle:articleSlice,
         dataPlace:placeSlice,
         dataCommon:commonSlice,
+        dataFestival:festivalSlice,
         [apiProductQuery.reducerPath]: apiProductQuery.reducer,
         [apiPlaceQuery.reducerPath]: apiPlaceQuery.reducer,
         [apiAuthQuery.reducerPath]: apiAuthQuery.reducer,

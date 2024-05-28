@@ -1,15 +1,26 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { apiArticleQuery } from '../queries/apiArticle.query';
-import { placeType } from '@/src/types/Place';
 
-type State = {};
+type State = {
+    MenuId:number,
+    search:string |null;
+};
 
-const initialState: State = {};
+const initialState: State = {
+    MenuId:0,
+    search:''
+};
 
 export const placeSlice = createSlice({
     name: 'dataPlace',
     initialState,
-    reducers: {},
+    reducers: {
+        setMenuId: (state, action: PayloadAction<number>) => {
+            state.MenuId = action.payload;
+        },
+        setSearch: (state, action: PayloadAction<string>) => {
+            state.search=action.payload;
+        },
+    },
     extraReducers: (builder) => {
         // builder.addMatcher(apiArticleQuery.endpoints.addPost.matchPending, (state, action) => {
         //     state.isFetching = true;
@@ -26,4 +37,5 @@ export const placeSlice = createSlice({
         // });
     },
 });
+export const {setMenuId, setSearch } = placeSlice.actions;
 export default placeSlice.reducer;

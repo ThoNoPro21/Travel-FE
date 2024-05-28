@@ -2,10 +2,12 @@
 import { IconSearch } from '@/src/components/IconComponent';
 import { Card, Flex, Input, Menu, MenuProps } from 'antd';
 import React, { useState } from 'react';
+import SearchComponent from '../SearchComponent';
 
 type Props = {
     items:MenuProps['items'];
     selectedTab:(key:number)=>void;
+    getValueSearch:(value:string) => void;
 };
 
 const NavBarTabComponent = (props: Props) => {
@@ -26,12 +28,7 @@ const NavBarTabComponent = (props: Props) => {
                     items={props.items}
                 />
                 <div className="tw-max-w-80 tw-flex-grow">
-                    <Input
-                        allowClear
-                        placeholder="Search"
-                        className="tw-rounded-4xl tw-cursor-pointer"
-                        suffix={<IconSearch />}
-                    />
+                    <SearchComponent getValueSearch={props.getValueSearch} />
                 </div>
             </Flex>
         </Card>
