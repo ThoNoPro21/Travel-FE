@@ -13,6 +13,13 @@ const Page = (props: Props) => {
     const router = useRouter();
     const dispatch = useAppDispatch();
     const isStatus = useAppSelector((state) => state.dataAuth.isStatus);
+    const isLogin = useAppSelector((state) => state.dataAuth.isLogin);
+
+    useEffect(()=>{
+        if(!isLogin&& isStatus){
+            router.push('/blog')
+        }
+    },[isStatus,isLogin])
 
     useEffect(() => {
         dispatch(setSelectedMenuHeader('/blog'));
@@ -37,7 +44,7 @@ const Page = (props: Props) => {
                         <Skeleton active avatar />
                         <Skeleton active avatar />
                     </>
-                ) : !response_postByUser?.success ?  (
+                ) : !response_postByUser?.success && isStatus ?  (
                     <Empty className="tw-col-span-4" description="Bạn chưa có bài viết nào!" />
                 ) : (
                     response_postByUser?.data?.map((item, index) => (

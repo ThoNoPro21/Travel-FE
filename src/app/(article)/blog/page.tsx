@@ -54,7 +54,7 @@ const Page = (props: Props) => {
     } = useGetPostFavouriteQuery('',{skip:!isStatus});
 
     useEffect(() => {
-        let id = response_getPostFavourite?.data.map((article)=>article.article_id)||[]
+        let id = response_getPostFavourite?.data?.map((article)=>article.article_id)||[]
         const combinedArticles = response_postByTopic?.data?.data?.map(article => ({
             ...article,
             isSaved: id.includes(article.articles_id),

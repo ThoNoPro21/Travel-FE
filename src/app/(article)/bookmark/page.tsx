@@ -5,7 +5,7 @@ import { useGetPostFavouriteQuery } from '@/src/store/queries/apiArticle.query';
 import { setSelectedMenuHeader } from '@/src/store/slices/common.slice';
 import { Empty, Skeleton } from 'antd';
 import { useRouter } from 'next/navigation';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 type Props = {};
 
@@ -13,6 +13,13 @@ const Page = (props: Props) => {
     const router = useRouter();
     const dispatch = useAppDispatch();
     const isStatus = useAppSelector((state) => state.dataAuth.isStatus);
+    const isLogin = useAppSelector((state) => state.dataAuth.isLogin);
+
+    useEffect(()=>{
+        if(!isLogin&&isStatus){
+            router.push('/blog')
+        }
+    },[isStatus])
 
     useEffect(() => {
         dispatch(setSelectedMenuHeader('/blog'))
@@ -36,7 +43,7 @@ const Page = (props: Props) => {
                         <Skeleton active avatar />
                         <Skeleton active avatar />
                     </>
-                ) : !response_postFavourite?.success ? (
+                ) : !response_postFavourite?.success && isStatus ? (
                     <Empty className="tw-col-span-4" description="Không có bài viết yêu thích !" />
                 ) : (
                     response_postFavourite?.data?.map((item, index) => (

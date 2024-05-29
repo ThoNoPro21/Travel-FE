@@ -132,6 +132,7 @@ const NavRightComponent = (props: Props) => {
                     onOk() {
                         setLogout(true);
                         localStorage.removeItem('token');
+                        window.location.reload();
                     },
                     onCancel() {},
                 });

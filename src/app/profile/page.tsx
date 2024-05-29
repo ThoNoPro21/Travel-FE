@@ -27,7 +27,7 @@ const Page = (props: Props) => {
         story: false,
     });
 
-    const [updateProfile, { isLoading: isLoading_updateProfile }] = useUpdateProfileMutation();
+    const [updateProfile, { isLoading: isLoading_updateProfile}] = useUpdateProfileMutation();
 
     useEffect(() => {
         if (status) {
