@@ -8,7 +8,7 @@ type State = {
 };
 
 const initialState: State = {
-    countPostPending:0
+    countPostPending:0,
 };
 
 export const articleSlice = createSlice({

@@ -1,6 +1,6 @@
 // Import the RTK Query methods from the React-specific entry point
 import { ApiResponse, PaginationApiResponseData } from '@/src/types/ApiRespone';
-import { commentType, getArticleByIdType, getArticleType, topicType } from '@/src/types/Article';
+import { articleFavourite, commentType, getArticleByIdType, getArticleType, topicType } from '@/src/types/Article';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { selectToken } from '../slices/auth.slice';
 import { RootState } from '../store';
@@ -40,6 +40,25 @@ export const apiArticleQuery = createApi({
         }),
         getArticleNew: builder.query<ApiResponse<getArticleType[]>, any>({
             query: () => 'post/show/article/new',
+        }),
+        addFavourite:builder.mutation({
+            query: (data) => ({
+                url: 'post/addFavourite',
+                method: 'POST',
+                body: data,
+            }),
+        }),
+        removeFavourite:builder.mutation({
+            query: (id) => ({
+                url: `post/removeFavourite/${id}`,
+                method: 'DELETE',
+            }),
+        }),
+        getPostFavourite:builder.query<ApiResponse<articleFavourite[]>, any>({
+            query: () => 'post/showFavourite',
+        }),
+        getPostByUser:builder.query<ApiResponse<getArticleType[]>, any>({
+            query: () => 'post/me/show',
         }),
         // -------------------------Update---------------
         updateStatus: builder.mutation({
@@ -92,5 +111,9 @@ export const {
     usePostCommentArticleMutation,
     useUpdateStatusMutation,
     useGetCommentArticleQuery,
-    useGetArticleNewQuery
+    useGetArticleNewQuery,
+    useAddFavouriteMutation,
+    useRemoveFavouriteMutation,
+    useGetPostFavouriteQuery,
+    useGetPostByUserQuery
 } = apiArticleQuery;

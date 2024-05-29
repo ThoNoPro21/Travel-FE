@@ -5,6 +5,7 @@ import {
     faAngleLeft,
     faAngleRight,
     faBars,
+    faBookBookmark,
     faCamera,
     faCaretDown,
     faCartShopping,
@@ -14,6 +15,7 @@ import {
     faExclamationCircle,
     faGripLinesVertical,
     faLocationDot,
+    faMarker,
     faMinus,
     faPlus,
     faSearch,
@@ -24,13 +26,13 @@ import {
 import {
     faComment,
     faHeart,
-    faBookmark,
     faThumbsUp,
     faPenToSquare,
     faCircleCheck,
     faEnvelope,
     faEye,
     faEyeSlash,
+    faBookmark,
 } from '@fortawesome/free-regular-svg-icons';
 import { color } from 'framer-motion';
 import { faLock } from '@fortawesome/free-solid-svg-icons/faLock';
@@ -74,8 +76,9 @@ export const IconDropDown = () => {
 export const IconEllipsis = () => {
     return <FontAwesomeIcon icon={faEllipsis} />;
 };
-export const IconBookMark = () => {
-    return <FontAwesomeIcon icon={faBookmark} />;
+export const IconBookMark = ({color}:{color?:string}) => {
+    const isColor = color || 'black';
+    return <FontAwesomeIcon icon={faBookmark} style={{color:isColor, width: 16, height: 16}}/>;
 };
 export const IconComment = () => {
     return <FontAwesomeIcon icon={faComment} />;
@@ -105,7 +108,7 @@ export const IconMinus = () => {
     return <FontAwesomeIcon icon={faMinus} style={{ color:'white', minHeight: 16, minWidth: 16 }} />;
 };
 export const IconExclamation = () => {
-    return <FontAwesomeIcon icon={faExclamationCircle} style={{color: 'yellow', height: 24, width: 24 }} />;
+    return <FontAwesomeIcon icon={faExclamationCircle} style={{color: 'orange', height: 24, width: 24 }} />;
 };
 export const IconEmail = () => {
     return <FontAwesomeIcon icon={faEnvelope} />;

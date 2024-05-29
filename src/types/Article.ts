@@ -48,3 +48,8 @@ export type getArticleType = {
     user:userType;
     created_at?: any;
 };
+
+export type articleFavourite = {
+    article_id:number,
+    article:getArticleType,
+}

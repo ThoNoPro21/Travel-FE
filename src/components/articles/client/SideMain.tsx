@@ -38,7 +38,7 @@ const SideMain = (props: Props) => {
                     </Flex>
                 </Space>
                 <Space size={'large'}>
-                    <IconBookMark />
+                    {/* <IconBookMark /> */}
                     <IconEllipsis />
                 </Space>
             </Flex>

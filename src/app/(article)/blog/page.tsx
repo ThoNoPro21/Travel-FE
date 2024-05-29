@@ -1,32 +1,37 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { Card, Empty, Flex, Pagination, Skeleton, Spin } from 'antd';
-import { useGetPostByTopicQuery, useGetPostQuery, useGetTopicQuery } from '@/src/store/queries/apiArticle.query';
+import { useGetPostByTopicQuery, useGetPostFavouriteQuery, useGetPostQuery, useGetTopicQuery } from '@/src/store/queries/apiArticle.query';
 import TabsComponent from '../../../components/common/tab/TabsComponent';
 import ArticleComponent from '../../../components/articles/client/ArticleComponent';
 import { useRouter } from 'next/navigation';
-import { useAppDispatch } from '@/src/store/hooks';
+import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { setSelectedMenuHeader } from '@/src/store/slices/common.slice';
 
 type Props = {};
 
 const Page = (props: Props) => {
+    const router = useRouter();
+    const dispatch = useAppDispatch();
+    const [savedArticleIds, setSavedArticleIds] = useState<number[]>([]);
+    const [postData, setPostData] = useState<any[]>([]);
 
-    const dispatch = useAppDispatch()
+    const isStatus = useAppSelector((state) => state.dataAuth.isStatus)
+
     useEffect(() => {
         dispatch(setSelectedMenuHeader('/blog'))
     },[])
 
     const tabOptions: any[] = [{ value: '0' + '', label: <div style={{ padding: 4 }}>Tất cả</div> }];
-    const router = useRouter();
     const [tabActive, setTabActive] = useState(0);
     const [page, setPage] = useState(1);
 
     const {
         data: response_getTopic,
         isLoading: isLoading_getTopic,
-        isSuccess: isSuccess_getTopic,
+        isSuccess:isSuccess_getTopic,
     } = useGetTopicQuery('');
+
     if (isSuccess_getTopic) {
         response_getTopic?.data.map((item) =>
             tabOptions.push({ value: item.topics_id + '', label: <div style={{ padding: 4 }}>{item.name}</div> })
@@ -40,6 +45,22 @@ const Page = (props: Props) => {
         error: error_postByTopic,
     } = useGetPostByTopicQuery([tabActive, page]);
 
+    const {
+        data: response_getPostFavourite,
+        isLoading: isLoading_getPostFavourite,
+        isSuccess: isSuccess_getPostFavourite,
+        isFetching:isFetching_getPostFavourite,
+        refetch: refetch_getPostFavourite,
+    } = useGetPostFavouriteQuery('',{skip:!isStatus});
+
+    useEffect(() => {
+        let id = response_getPostFavourite?.data.map((article)=>article.article_id)||[]
+        const combinedArticles = response_postByTopic?.data?.data?.map(article => ({
+            ...article,
+            isSaved: id.includes(article.articles_id),
+        })) || [];
+        setPostData(combinedArticles);
+    },[response_postByTopic])
     const getTabActive = (value: number) => {
         setTabActive(value);
     };
@@ -65,9 +86,11 @@ const Page = (props: Props) => {
                     {!response_postByTopic?.success ? (
                         <Empty className="tw-col-span-4" description="Không có dữ liệu !" />
                     ) : (
-                        response_postByTopic?.data?.data.map((item, index) => (
+                        postData.map((item, index) => (
                             <div key={index} onClick={() => handleOnClickPost(item.articles_id)}>
                                 <ArticleComponent
+                                    isFavourite={item.isSaved}
+                                    article_id={item.articles_id}
                                     created_at={item.created_at}
                                     src={item.images}
                                     content={item.content}
@@ -76,6 +99,7 @@ const Page = (props: Props) => {
                                     username={item.user.name}
                                     location={item.location.name}
                                     avatar_user={item.user.avatar}
+                                    refetchData={refetch_getPostFavourite}
                                 />
                             </div>
                         ))

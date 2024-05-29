@@ -96,17 +96,25 @@ const NavRightComponent = (props: Props) => {
                 </Link>
             ),
             key: '2',
-            disabled:windowSize.width<768 ? true : false,
+            disabled: windowSize.width < 768 ? true : false,
         },
         {
-            label: <p className=" tw-text-base tw-font-normal tw-font-lora">Bài viết của tôi</p>,
+            label: (
+                <Link href={'/me'}>
+                    <p className=" tw-text-base tw-font-normal tw-font-lora">Bài viết của tôi</p>
+                </Link>
+            ),
             key: '3',
         },
         {
             type: 'divider',
         },
         {
-            label: <p className=" tw-text-base tw-font-normal tw-font-lora">Bài viết đã lưu</p>,
+            label: (
+                <Link href={'/bookmark'}>
+                    <p className=" tw-text-base tw-font-normal tw-font-lora">Bài viết đã lưu</p>
+                </Link>
+            ),
             key: '4',
         },
         {
@@ -180,7 +188,7 @@ const NavRightComponent = (props: Props) => {
                     </>
                 ) : (
                     <Space size={'large'}>
-                        <h1 onClick={handleOnClickLogin} className='tw-hidden md:tw-block'>Đăng nhập</h1>
+                        <h1 onClick={handleOnClickLogin} className='tw-hidden lg:tw-block'>Đăng nhập</h1>
                         <button
                             className="tw-rounded-3xl tw-text-base tw-bg-orange-500 tw-px-5 tw-py-2 tw-font-bold tw-text-white"
                             onClick={handleOnClickRegister}
