@@ -4,12 +4,14 @@ import React, { useState } from 'react';
 type Props = {
     options: any[];
     getTab: (value: number) => void;
+    block?:boolean;
 };
 
 const TabsComponent = (props: Props) => {
     return (
         <div className="tw-relative tw-m-auto lg:tw-m-0 tw-py-2 tw-w-full lg:tw-w-auto">
                 <Segmented
+                    block={props.block || false}
                     onChange={(e) => props.getTab(parseInt(e,10))}
                     size="small"
                     options={props.options}

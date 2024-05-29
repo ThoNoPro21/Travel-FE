@@ -85,9 +85,10 @@ export const apiArticleQuery = createApi({
                 url: `post/show/comments/${id}?page=${page}`,
             }),
         }),
+    
         // updateMonHoc: builder.mutation({
         //     query: ({ maMonHoc, ...body }) => ({
-        //         url: `monhoc/update/${maMonHoc}`,
+        //         url: `monhoc/update/${maMnHoc}`,
         //         method: 'PUT',
         //         body,
         //     }),
@@ -115,5 +116,5 @@ export const {
     useAddFavouriteMutation,
     useRemoveFavouriteMutation,
     useGetPostFavouriteQuery,
-    useGetPostByUserQuery
+    useGetPostByUserQuery,
 } = apiArticleQuery;

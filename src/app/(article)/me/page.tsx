@@ -69,7 +69,7 @@ const Page = (props: Props) => {
                                         <p className=" tw-text-sky-500">Đã xuất bản</p>
                                     </Flex>
                                 )}
-                                {item.status === 3 && (
+                                {item.status === 2 && (
                                     <Flex align="center" gap="small">
                                         <span className="tw-relative tw-flex tw-h-3 tw-w-3">
                                             <span className="tw-animate-ping tw-absolute tw-inline-flex tw-h-full tw-w-full tw-rounded-full tw-bg-red-400 tw-opacity-75"></span>

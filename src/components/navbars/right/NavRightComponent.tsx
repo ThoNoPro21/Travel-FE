@@ -91,6 +91,17 @@ const NavRightComponent = (props: Props) => {
         },
         {
             label: (
+                <Link href={'/order'}>
+                    <p className=" tw-text-base tw-font-normal tw-font-lora">Đơn hàng của tôi</p>
+                </Link>
+            ),
+            key: '6',
+        },
+        {
+            type: 'divider',
+        },
+        {
+            label: (
                 <Link href={'/post'}>
                     <p className="tw-hidden lg:tw-block tw-text-base tw-font-normal tw-font-lora">Viết blog</p>
                 </Link>

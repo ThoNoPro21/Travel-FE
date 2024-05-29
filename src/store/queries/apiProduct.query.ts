@@ -1,6 +1,6 @@
 // Import the RTK Query methods from the React-specific entry point
 import { ApiResponse, PaginationApiResponseData } from '@/src/types/ApiRespone';
-import { categoryType, productInCart, productType } from '@/src/types/Product';
+import { categoryType, orderByUser, productInCart, productType } from '@/src/types/Product';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { selectToken } from '../slices/auth.slice';
 import { RootState } from '../store';
@@ -69,6 +69,11 @@ export const apiProductQuery = createApi({
                 body
             }),
         }),
+        getOrderByUser: builder.query<ApiResponse<orderByUser[]>, any>({
+            query: () => ({
+                url: 'order/showOrderByUser',
+            }),
+        }),
         // ---------Comment-------------
         getCommentByProduct: builder.query<ApiResponse<PaginationApiResponseData<commentType>>, number[]>({
             query: ([id, page]) => ({
@@ -96,7 +101,8 @@ export const {
     useAddOrdersMutation,
     useGetCommentByProductQuery,
     useAddCommentProductMutation,
-    useGetRelatedProductQuery
+    useGetRelatedProductQuery,
+    useGetOrderByUserQuery
 } = apiProductQuery;
 
 

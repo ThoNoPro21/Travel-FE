@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { apiProductQuery } from '../queries/apiProduct.query';
-import { productInCart, productType } from '@/src/types/Product';
+import { orderByUser, productInCart, productType } from '@/src/types/Product';
 import { DataTypeProductInCart } from '@/src/app/product/cart/page';
 
 type State = {
@@ -9,6 +9,7 @@ type State = {
     cart: productInCart[];
     search:string |null;
     MenuId:number;
+    listOrderByUser:orderByUser[];
 };
 
 const initialState: State = {
@@ -17,6 +18,7 @@ const initialState: State = {
     cart: [],
     search:'',
     MenuId:0,
+    listOrderByUser:[],
 };
 
 export const productSlice = createSlice({
@@ -57,9 +59,9 @@ export const productSlice = createSlice({
     //     },
     },
     extraReducers: (builder) => {
-        // builder.addMatcher(apiProductQuery.endpoints.getProductByCategory.matchFulfilled, (state, action) => {
-        //     state.productById = action?.payload.data;
-        // });
+        builder.addMatcher(apiProductQuery.endpoints.getOrderByUser.matchFulfilled, (state, action) => {
+            state.listOrderByUser = action?.payload.data;
+        });
         builder.addMatcher(apiProductQuery.endpoints.addToCart.matchFulfilled, (state, action) => {
             state.isSuccess = true;
         });

@@ -271,7 +271,7 @@ const Page = (props: Props) => {
                         hoverable
                         bordered={false}
                         styles={{ body: { padding: 0 } }}
-                        className="tw-col-span-4 lg:tw-col-span-1 tw-bg-gradient-to-r tw-from-violet-200 tw-to-pink-200"
+                        className="tw-col-span-4 lg:tw-col-span-1 lg:tw-p-4 tw-bg-gradient-to-r tw-from-violet-200 tw-to-pink-200"
                     >
                         <Card>
                             <Space direction="vertical" className="tw-w-full">

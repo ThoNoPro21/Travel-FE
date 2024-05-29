@@ -28,3 +28,24 @@ export type productInCart = {
     products:productType;
     quantity:number
 };
+
+export type orderDetail ={
+    order_details_id: number,
+    quantity: number,
+    total_amount: number,
+    order_id: number,
+    product_id: number,
+    created_at: string,
+    product:productType
+}
+
+export type orderByUser = {
+    orders_id:number,
+    address: string,
+    phone_number:string,
+    total_amount: number,
+    note?: string,
+    status: number,
+    created_at: string,
+    order_details:orderDetail[]
+}
