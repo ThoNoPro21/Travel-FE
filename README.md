@@ -22,9 +22,6 @@ Please install those application so you can setup this project.
 - [Yarn](https://classic.yarnpkg.com/lang/en/docs/install) (optional)
 - IDE (Your Choice - VSCode is recommended)
 
-Then, you can clone this project to your local repository by:
-### `git clone https://dev.azure.com/ntanvu-it/training-yellow-restaurant/_git/training-yellow-restaurant`
-
 ## How to run
 
 ### `yarn` or `npm install`
