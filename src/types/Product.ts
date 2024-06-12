@@ -49,3 +49,11 @@ export type orderByUser = {
     created_at: string,
     order_details:orderDetail[]
 }
+export type DataTypeProductInCart = {
+    key: React.Key;
+    name: string;
+    price: number;
+    quantity: number;
+    avatar: string;
+    product_id: number;
+}

@@ -10,7 +10,7 @@ import {
     IconPlus,
 } from '../../../components/IconComponent';
 import '@/src/styles/app.scss';
-import { productInCart, productType } from '@/src/types/Product';
+import { DataTypeProductInCart, productInCart, productType } from '@/src/types/Product';
 import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { RootState } from '@/src/store/store';
 import Link from 'next/link';
@@ -22,15 +22,6 @@ import { addProductSelected } from '@/src/store/slices/product.slice';
 import ResultComponent from '@/src/components/result/ResultComponent';
 import { setSelectedMenuHeader } from '@/src/store/slices/common.slice';
 type Props = {};
-
-export interface DataTypeProductInCart {
-    key: React.Key;
-    name: string;
-    price: number;
-    quantity: number;
-    avatar: string;
-    product_id: number;
-}
 
 const Page = (props: Props) => {
     const router = useRouter();

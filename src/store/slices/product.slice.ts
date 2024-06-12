@@ -1,7 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { apiProductQuery } from '../queries/apiProduct.query';
-import { orderByUser, productInCart, productType } from '@/src/types/Product';
-import { DataTypeProductInCart } from '@/src/app/product/cart/page';
+import { DataTypeProductInCart, orderByUser, productInCart, productType } from '@/src/types/Product';
 
 type State = {
     isSuccess: boolean;

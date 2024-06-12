@@ -6,9 +6,11 @@ import { imagesJson } from '@/src/types/Article';
 import { formatVND } from '../../validate/String';
 import SwiperComponent from '../../SwiperComponent';
 import { useAddToCartMutation } from '@/src/store/queries/apiProduct.query';
-import { useAppSelector } from '@/src/store/hooks';
+import { useAppDispatch, useAppSelector } from '@/src/store/hooks';
 import { RootState } from '@/src/store/store';
 import { useRouter } from 'next/navigation';
+import { addProductSelected } from '@/src/store/slices/product.slice';
+import { DataTypeProductInCart } from '@/src/types/Product';
 
 type Props = {
     images: imagesJson;
@@ -19,6 +21,7 @@ type Props = {
 
 const OverviewComponent = (props: Props) => {
     const router = useRouter();
+    const dispatch = useAppDispatch();
     const [activeImage, setActiveImage] = useState('');
     const [quantity, setQuantity] = useState(1);
     const [notificationVisible, setNotificationVisible] = useState(false);
@@ -78,6 +81,18 @@ const OverviewComponent = (props: Props) => {
             }
         });
     };
+
+    const handleOnClickBuy = () => {
+        dispatch(addProductSelected([{
+            key:'1',
+            name: props.name,
+            price: props.price,
+            quantity: quantity,
+            avatar: props.images.avatar,
+            product_id: props.product_id
+        }]))
+        router.push('/product/cart/checkout')
+    }
 
     if (isLoading_addToCart) {
         return <Spin fullscreen />;
@@ -162,6 +177,7 @@ const OverviewComponent = (props: Props) => {
                                     size="large"
                                     type="primary"
                                     className="tw-text-base tw-text-white "
+                                    onClick={handleOnClickBuy}
                                 >
                                     Mua ngay
                                 </Button>
